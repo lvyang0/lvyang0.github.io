@@ -6,9 +6,37 @@
     <description>Recent content in Categories on 吕羊羊的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
+    <lastBuildDate>Fri, 18 Dec 2020 18:28:10 +0800</lastBuildDate>
     
 	<atom:link href="https://lvyang0.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>前端</title>
+      <link>https://lvyang0.github.io/categories/%E5%89%8D%E7%AB%AF/</link>
+      <pubDate>Fri, 18 Dec 2020 18:28:10 +0800</pubDate>
+      
+      <guid>https://lvyang0.github.io/categories/%E5%89%8D%E7%AB%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>修电脑</title>
+      <link>https://lvyang0.github.io/categories/%E4%BF%AE%E7%94%B5%E8%84%91/</link>
+      <pubDate>Fri, 18 Dec 2020 18:27:40 +0800</pubDate>
+      
+      <guid>https://lvyang0.github.io/categories/%E4%BF%AE%E7%94%B5%E8%84%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>机器学习</title>
+      <link>https://lvyang0.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 18 Dec 2020 16:24:41 +0800</pubDate>
+      
+      <guid>https://lvyang0.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

@@ -13,16 +13,16 @@
     <meta property="og:title" content="Hugo&#43;github搭建个人博客 - 吕羊羊的博客">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2020-12-18T15:41:05&#43;08:00'>
+    <meta property="article:published_time" content='2020-12-18T18:28:10&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2020-12-18T15:41:05&#43;08:00'>
+    <meta property="article:modified_time" content='2020-12-18T18:28:10&#43;08:00'>
         
     <meta name="Keywords" content="机器学习,算法与数据结构,sql">
     <meta name="description" content="Hugo&#43;github搭建个人博客">
         
     <meta name="author" content="吕羊羊">
-    <meta property="og:url" content="https://lvyang0.github.io/posts/hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+    <meta property="og:url" content="https://lvyang0.github.io/post/Hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
     <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -56,7 +56,7 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="https://lvyang0.github.io/">首页</a>
+                    <a class="current" href="https://lvyang0.github.io/">首页</a>
                     
                     <a  href="https://lvyang0.github.io/tools/" title="工具">工具</a>
                     
@@ -143,11 +143,15 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#hugo">Hugo</a></li>
+    <li><a href="#github-pages">Github Pages</a>
       <ul>
-        <li></li>
+        <li><a href="#第一次git-push">第一次git push</a></li>
+        <li><a href="#第二次git-push-update">第二次git push update</a></li>
+        <li><a href="#更新博客">更新博客</a></li>
       </ul>
     </li>
+    <li><a href="#参考资料">参考资料</a></li>
   </ul>
 </nav>
     </div>
@@ -187,6 +191,13 @@
             2020年12月18日
         </date>
         
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/%E5%89%8D%E7%AB%AF'>前端</a></span>
+            
+        </div>
+        
         
         <div class="post-meta">
             <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
@@ -197,7 +208,7 @@
         <div class="post-content">
             <p>这是一篇关于使用hugo + github搭建博客的踩坑记录~ 终于赶在2020年的小尾巴上，圆满的完成了个人博客小心愿。</p>
 <p>hugo + github搭建博客</p>
-<h4 id="hugo">Hugo</h4>
+<h2 id="hugo">Hugo</h2>
 <p>为什么需要Hugo?</p>
 <ul>
 <li>将Markdown文件转换为html的静态网页</li>
@@ -243,8 +254,8 @@ draft: false</p>
 <li>▸ themes/     <em># 存放主题</em></li>
 <li>▸  config.toml   <em># 是网站的主配置文件</em></li>
 </ol>
-<h4 id="github-pages">Github Pages</h4>
-<h5 id="第一次git-push">第一次git push</h5>
+<h2 id="github-pages">Github Pages</h2>
+<h3 id="第一次git-push">第一次git push</h3>
 <p>为什么需要Github Pages?</p>
 <ul>
 <li>Github Pages 本质上是一个静态网站托管系统，你可以使用它为你的每一个仓库制作一个静态网页入口。</li>
@@ -270,7 +281,7 @@ git commit <span style="color:#f92672">-</span>m <span style="color:#e6db74"></s
 <span style="color:#75715e"># push到远程库</span>
 git push origin master
 </code></pre></div><p>上传之后我遇到了，个人网站404的情况，这时只需要在public文件夹中新建docs文件夹，再新建txt文档，重命名为CNAME（内容为空即可）。</p>
-<h5 id="第二次git-push-update">第二次git push update</h5>
+<h3 id="第二次git-push-update">第二次git push update</h3>
 <p>在搭建好自己blog网站后，你要在网站上跟新Markdown日志，所以就会第二次git push。 在你的本地静态web上，撰写好md，然后预览，如果没有问题。那么继续push。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">hugo <span style="color:#75715e">#假设你已经完成.md更新</span>
 <span style="color:#75715e"># 第二次生成public</span>
@@ -283,14 +294,75 @@ git commit <span style="color:#f92672">-</span>m <span style="color:#e6db74"></s
 git push <span style="color:#f92672">-</span>f origin master
 </code></pre></div><p>注意，public文件夹，要hugo命令生成，之前第一次的public文件可以rm。
 最后浏览器里访问：<a href="https://links.jianshu.com/go?to=http%3A%2F%2Fxxx.github.io%2F">http://xxx.github.io/</a>，就可以看到更新的日志博客了。</p>
-<h4 id="参考资料">参考资料</h4>
+<h3 id="更新博客">更新博客</h3>
+<h4 id="主题">主题</h4>
+<p>完美主义的我渐渐不满足于ananke主题的缺乏归档和分类功能，开始致力于搜寻其他好看的主题。</p>
+<p>于是在一通搜寻后看上了，https://github.com/flysnow-org/maupassant-hugo主题。</p>
+<p>安装过程在上述链接中都有，均为中文，很是方便。唯一需要特别注意的是，md文件需要放在post而不是posts文件夹中。</p>
+<h4 id="代码高亮">代码高亮</h4>
+<p>安装完主题后，发现一个大问题&hellip;</p>
+<p>代码没有高亮的功能，不喜欢原生的淡黄色代码底色，喜欢黑底白code+彩色的代码。</p>
+<p>保证 Hugo 的版本是高于 v0.65.0 的（很奇怪，我的版本的63也能正常高亮）。</p>
+<p>默认的代码高亮配置文件如下，你可以复制到你的配置文件config .toml内对应部分进行修改：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">markup</span>]
+  [<span style="color:#a6e22e">markup</span>.<span style="color:#a6e22e">highlight</span>]
+    <span style="color:#a6e22e">codeFences</span> = <span style="color:#66d9ef">true</span>
+    <span style="color:#a6e22e">guessSyntax</span> = <span style="color:#66d9ef">false</span>
+    <span style="color:#a6e22e">hl_Lines</span> = <span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#a6e22e">lineNoStart</span> = <span style="color:#ae81ff">1</span>
+    <span style="color:#a6e22e">lineNos</span> = <span style="color:#66d9ef">false</span>
+    <span style="color:#a6e22e">lineNumbersInTable</span> = <span style="color:#66d9ef">true</span>
+    <span style="color:#a6e22e">noClasses</span> = <span style="color:#66d9ef">true</span>
+    <span style="color:#a6e22e">style</span> = <span style="color:#e6db74">&#34;monokai&#34;</span>
+    <span style="color:#a6e22e">tabWidth</span> = <span style="color:#ae81ff">4</span>
+
+</code></pre></div><p>参考https://dp2px.com/2020/05/29/hugo-highlighting/</p>
+<h4 id="目录">目录</h4>
+<p>该主题支持文章目录（大纲）,大纲是通过h1~h7标题自动生成，在MD文件里就是##这类标题的标记，这里建议最多使用两层文章目录，而且最好是从h2开始，便于SEO优化。 如果要开启一篇文章的文章目录，只需要在config.toml添加toc=true全局开关即可，默认是不开启文章目录的。</p>
+<p>亲测这个主题只支持两级标题&hellip;即&rdquo;#&ldquo;和&rdquo;##&quot;，不过两级标题大抵也够了。以后文章的唯一大标题就不要了，剩下了大标题和小标题。突然想起来导师给我改开题报告的时候，千叮铃万嘱咐不要有三级标题haha~</p>
+<h4 id="文章分类标签">文章分类&amp;标签</h4>
+<p>找了半天资料才发现文章分类很简单，在exampleSite文件夹里面的post中看到的，只需要在每篇文章的前面加上对应的category和tags即可。</p>
+<p>例如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#66d9ef">title</span>: <span style="color:#e6db74">&#34;Golang Gin 实战（三）| 路由参数&#34;</span>
+<span style="color:#66d9ef">tags</span>: [<span style="color:#e6db74">&#34;golang&#34;</span>]
+<span style="color:#66d9ef">categories</span>: [<span style="color:#e6db74">&#34;Golang&#34;</span>]
+<span style="color:#66d9ef">date</span>: <span style="color:#e6db74">&#34;2019-12-13T21:00:00+08:00&#34;</span>
+<span style="color:#66d9ef">toc</span>: <span style="color:#66d9ef">true</span>
+---
+</code></pre></div><h4 id="文章归档">文章归档</h4>
+<p>天真的我一直以为文档归档就是文章分类的意思，折腾了一趟后，才知道文章归档就是把文章按照时间线列出。</p>
+<p>Hugo默认是不支持生成归档文件的，需要自己实现。该主题已经实现了文章归档，只需要在新建content/archives/index.md文件，文件内容为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#66d9ef">title</span>: <span style="color:#e6db74">&#34;归档&#34;</span>
+<span style="color:#66d9ef">description</span>: 人工智障、炼丹工程师
+<span style="color:#66d9ef">type</span>: archives
+---
+</code></pre></div><p>title和description都可以换成你自己的，但是type必须是archives。</p>
+<p>content/archives/index.md表示在content/archives/目录下的index.md文件</p>
+<h4 id="站内搜索">站内搜索</h4>
+<p>站内搜索默认是关闭的，如果需要使用需要以下步骤开启。</p>
+<ol>
+<li>在config.toml中找到[params]配置段落，增加localSearch = true开启站内搜索</li>
+<li>在content目录下新建search目录,并且在search目录中新建index.md文件，内容如下</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#66d9ef">title</span>: <span style="color:#e6db74">&#34;搜索&#34;</span>
+<span style="color:#66d9ef">description</span>: <span style="color:#e6db74">&#34;搜索页面&#34;</span>
+<span style="color:#66d9ef">type</span>: <span style="color:#e6db74">&#34;search&#34;</span>
+---
+</code></pre></div><p>注意此处的站内搜索，搜索只支持的是搜索标题，并不支持搜索文章内的内容关键词，以后写文章起标题要好好起。。。</p>
+<h4 id="本地图片插入">本地图片插入</h4>
+<h2 id="参考资料">参考资料</h2>
 <p><a href="https://zhuanlan.zhihu.com/p/105021100?utm_source=weibo">https://zhuanlan.zhihu.com/p/105021100?utm_source=weibo</a>  &lt;Hugo参考资料&gt;
 |https://www.liaoxuefeng.com/wiki/896043488029600/ &lt;廖雪峰Git教程&gt;
 <a href="https://www.yht7.com/news/61688">https://www.yht7.com/news/61688</a>  &lt;Github Pages参考资料&gt;
 <a href="https://www.cnblogs.com/come202011/p/12203303.html">https://www.cnblogs.com/come202011/p/12203303.html</a>  &lt;芦荟~lh
 warning: LF will be replaced by CRLF &gt;
 <a href="https://blog.csdn.net/weixin_41147129/article/details/105015451?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control">https://blog.csdn.net/weixin_41147129/article/details/105015451?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control</a>  &lt;github.io 404 解决方法&gt;
-<a href="https://www.jianshu.com/p/f1957e621f97">https://www.jianshu.com/p/f1957e621f97</a>&lt;第二次github更新&gt;</p>
+<a href="https://www.jianshu.com/p/f1957e621f97">https://www.jianshu.com/p/f1957e621f97</a>&lt;第二次github更新&gt;
+<a href="https://github.com/flysnow-org/maupassant-hugo">https://github.com/flysnow-org/maupassant-hugo</a>&lt;更换的主题&gt;
+<a href="https://dp2px.com/2020/05/29/hugo-highlighting/">https://dp2px.com/2020/05/29/hugo-highlighting/</a> &lt;代码高亮&gt;</p>
 
         </div>
 
@@ -298,7 +370,7 @@ warning: LF will be replaced by CRLF &gt;
 <div class="post-archive">
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://lvyang0.github.io/">吕羊羊</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://lvyang0.github.io/posts/hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">https://lvyang0.github.io/posts/hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://lvyang0.github.io/post/Hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">https://lvyang0.github.io/post/Hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -312,11 +384,9 @@ warning: LF will be replaced by CRLF &gt;
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/posts/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/">修电脑踩坑总结</a></li>
+        <li><a href="/post/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/">修电脑踩坑总结</a></li>
         
-        <li><a href="/posts/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/">对比学习</a></li>
-        
-        <li><a href="/posts/my-first-post/">My First Post</a></li>
+        <li><a href="/post/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/">对比学习</a></li>
         
         <li><a href="/archives/">归档</a></li>
         
@@ -437,22 +507,6 @@ warning: LF will be replaced by CRLF &gt;
     
     <li>
         <a href="https://lvyang0.github.io/post/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" title="对比学习">对比学习</a>
-    </li>
-    
-    <li>
-        <a href="https://lvyang0.github.io/posts/hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hugo&#43;github搭建个人博客">Hugo&#43;github搭建个人博客</a>
-    </li>
-    
-    <li>
-        <a href="https://lvyang0.github.io/posts/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/" title="修电脑踩坑总结">修电脑踩坑总结</a>
-    </li>
-    
-    <li>
-        <a href="https://lvyang0.github.io/posts/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" title="对比学习">对比学习</a>
-    </li>
-    
-    <li>
-        <a href="https://lvyang0.github.io/posts/my-first-post/" title="My First Post">My First Post</a>
     </li>
     
 </ul>

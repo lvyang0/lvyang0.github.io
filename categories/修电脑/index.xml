@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>修电脑 on 吕羊羊的博客</title>
+    <link>https://lvyang0.github.io/categories/%E4%BF%AE%E7%94%B5%E8%84%91/</link>
+    <description>Recent content in 修电脑 on 吕羊羊的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 18 Dec 2020 18:27:40 +0800</lastBuildDate>
+    
+	<atom:link href="https://lvyang0.github.io/categories/%E4%BF%AE%E7%94%B5%E8%84%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>修电脑踩坑总结</title>
+      <link>https://lvyang0.github.io/post/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Fri, 18 Dec 2020 18:27:40 +0800</pubDate>
+      
+      <guid>https://lvyang0.github.io/post/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/</guid>
+      <description>修电脑踩坑总结 引子 某天夜黑风高，我来到实验室，发现移动鼠标后主机屏幕毫无反应。 换了一个无线鼠标，无效。 赶紧想到了重启大法，开心地按下了重启键，万万没想到，屏幕一片黑了，主机蓝色电源键疯狂闪烁，除此之外，再无反应。 那时单纯的我一定不会想到，未来四天，我会一直栽在这台电脑上，开启我漫</description>
+    </item>
+    
+  </channel>
+</rss>

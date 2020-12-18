@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>机器学习 on 吕羊羊的博客</title>
+    <link>https://lvyang0.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+    <description>Recent content in 机器学习 on 吕羊羊的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 18 Dec 2020 16:24:41 +0800</lastBuildDate>
+    
+	<atom:link href="https://lvyang0.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>对比学习</title>
+      <link>https://lvyang0.github.io/post/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 18 Dec 2020 16:24:41 +0800</pubDate>
+      
+      <guid>https://lvyang0.github.io/post/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/</guid>
+      <description>对比学习 Motivation 自监督学习属于无监督学习范式的一种，特点是不需要人工标注的类别标签信息，直接利用数据本身作为监督信息，来学习样本数据的特征表达，并用于下游任务。 当前自监督学习可以被大致分为两类： Generative Methods Contrastive Methods Generative Methods（生成式方法）这类方法以自编码器为代表，主要关注pixel label</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>前端 on 吕羊羊的博客</title>
+    <link>https://lvyang0.github.io/categories/%E5%89%8D%E7%AB%AF/</link>
+    <description>Recent content in 前端 on 吕羊羊的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 18 Dec 2020 18:28:10 +0800</lastBuildDate>
+    
+	<atom:link href="https://lvyang0.github.io/categories/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hugo&#43;github搭建个人博客</title>
+      <link>https://lvyang0.github.io/post/Hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Fri, 18 Dec 2020 18:28:10 +0800</pubDate>
+      
+      <guid>https://lvyang0.github.io/post/Hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>这是一篇关于使用hugo + github搭建博客的踩坑记录~ 终于赶在2020年的小尾巴上，圆满的完成了个人博客小心愿。 hugo + github搭建博客 Hugo 为什么需要Hugo? 将Markdown文件转换为html的静态网页 # 查看 Hugo 是否安装成功，通过检查版本号 hugo version ## 创建一个新的网站 # 创建工作目录</description>
+    </item>
+    
+  </channel>
+</rss>

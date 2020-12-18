@@ -143,10 +143,14 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#motivation">Motivation</a></li>
-    <li><a href="#对比学习的范式">对比学习的范式</a></li>
-    <li><a href="#对比预测编码">对比预测编码</a></li>
-    <li><a href="#infonce损失的实现">InfoNCE损失的实现</a></li>
+    <li><a href="#对比学习">对比学习</a>
+      <ul>
+        <li><a href="#motivation">Motivation</a></li>
+        <li><a href="#对比学习的范式">对比学习的范式</a></li>
+        <li><a href="#对比预测编码">对比预测编码</a></li>
+        <li><a href="#infonce损失的实现">InfoNCE损失的实现</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -186,6 +190,13 @@
             2020年12月18日
         </date>
         
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0'>机器学习</a></span>
+            
+        </div>
+        
         
         <div class="post-meta">
             <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
@@ -193,9 +204,15 @@
         </div>
         
         
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
         <div class="post-content">
-            <h1 id="对比学习">对比学习</h1>
-<h2 id="motivation">Motivation</h2>
+            <h2 id="对比学习">对比学习</h2>
+<h3 id="motivation">Motivation</h3>
 <p>自监督学习属于无监督学习范式的一种，特点是不需要人工标注的类别标签信息，直接利用数据本身作为监督信息，来学习样本数据的特征表达，并用于下游任务。</p>
 <p>当前自监督学习可以被大致分为两类：</p>
 <ol>
@@ -208,7 +225,7 @@
         <img class="mx-auto" alt="img" src="https://pic4.zhimg.com/80/v2-49e037dbe70f948f916b3c6320341d33_1440w.jpg" />   
     </p>
 <p>同理，相比起Generative Methods需要对像素细节进行重构来学习到样本特征，Contrastive Methods只需要在特征空间上学习到区分性。因此Contrastive Methods不会过分关注像素细节，而能够关注抽象的语义信息，并且相比于像素级别的重构，优化也变得更加简单。</p>
-<h2 id="对比学习的范式">对比学习的范式</h2>
+<h3 id="对比学习的范式">对比学习的范式</h3>
 <p>对任意数据 $x$ ，对比学习的目标是学习一个编码器$f$使得：</p>
 <p>
         <img class="mx-auto" alt="[公式]" src="https://www.zhihu.com/equation?tex=score%28f%28x%29%2Cf%28x%5E%7B%2B%7D%29%29%3E%3Escore%28f%28x%29%2Cf%28x%5E%7B-%7D%29%29" />   
@@ -231,11 +248,11 @@
      有1个样本和N-1个负样本。可以发现，这个形式类似于交叉熵损失函数，学习的目标就是让 
         <img class="mx-auto" alt="[公式]" src="https://www.zhihu.com/equation?tex=x" />   
      的特征和正样本的特征更相似，同时和N-1个负样本的特征更不相似。在对比学习的相关文献中把这一损失函数称作InfoNCE损失。也有一些其他的工作把这一损失函数称为<a href="https://link.zhihu.com/?target=https%3A//papers.nips.cc/paper/6200-improved-deep-metric-learning-with-multi-class-n-pair-loss-objective">multi-class n-pair loss</a>或者<a href="https://link.zhihu.com/?target=https%3A//arxiv.org/abs/1809.01812">ranking-based NCE</a>。</p>
-<h2 id="对比预测编码">对比预测编码</h2>
+<h3 id="对比预测编码">对比预测编码</h3>
 <p>
         <img class="mx-auto" alt="img" src="https://pic2.zhimg.com/80/v2-795d7581c01c2d35ae154b34a80b2e3d_1440w.jpg" />   
     </p>
-<h2 id="infonce损失的实现">InfoNCE损失的实现</h2>
+<h3 id="infonce损失的实现">InfoNCE损失的实现</h3>
 <p>Pytorch版本的实现（源自SimCLR）</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NT_Xent</span>(nn<span style="color:#f92672">.</span>Module):
     <span style="color:#66d9ef">def</span> __init__(self, batch_size, temperature):
@@ -353,13 +370,7 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/posts/hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">Hugo&#43;github搭建个人博客</a></li>
-        
-        <li><a href="/posts/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/">修电脑踩坑总结</a></li>
-        
-        <li><a href="/posts/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/">对比学习</a></li>
-        
-        <li><a href="/posts/my-first-post/">My First Post</a></li>
+        <li><a href="/archives/">归档</a></li>
         
         <li><a href="/search/">搜索</a></li>
         
@@ -469,23 +480,15 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://lvyang0.github.io/post/Hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hugo&#43;github搭建个人博客">Hugo&#43;github搭建个人博客</a>
+    </li>
+    
+    <li>
+        <a href="https://lvyang0.github.io/post/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/" title="修电脑踩坑总结">修电脑踩坑总结</a>
+    </li>
+    
+    <li>
         <a href="https://lvyang0.github.io/post/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" title="对比学习">对比学习</a>
-    </li>
-    
-    <li>
-        <a href="https://lvyang0.github.io/posts/hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hugo&#43;github搭建个人博客">Hugo&#43;github搭建个人博客</a>
-    </li>
-    
-    <li>
-        <a href="https://lvyang0.github.io/posts/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/" title="修电脑踩坑总结">修电脑踩坑总结</a>
-    </li>
-    
-    <li>
-        <a href="https://lvyang0.github.io/posts/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" title="对比学习">对比学习</a>
-    </li>
-    
-    <li>
-        <a href="https://lvyang0.github.io/posts/my-first-post/" title="My First Post">My First Post</a>
     </li>
     
 </ul>
@@ -496,6 +499,12 @@
     <section class="widget">
         <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
+    
+    <li><a href="https://lvyang0.github.io/categories/%E4%BF%AE%E7%94%B5%E8%84%91/">修电脑 (1)</a></li>
+    
+    <li><a href="https://lvyang0.github.io/categories/%E5%89%8D%E7%AB%AF/">前端 (1)</a></li>
+    
+    <li><a href="https://lvyang0.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习 (1)</a></li>
     
 </ul>
     </section>
