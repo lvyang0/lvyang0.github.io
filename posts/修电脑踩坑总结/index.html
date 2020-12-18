@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>修电脑踩坑总结 | 吕羊羊的博客</title>
+    <meta property="og:title" content="修电脑踩坑总结 - 吕羊羊的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-12-18T15:40:47&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-12-18T15:40:47&#43;08:00'>
+        
+    <meta name="Keywords" content="机器学习,算法与数据结构,sql">
+    <meta name="description" content="修电脑踩坑总结">
+        
+    <meta name="author" content="吕羊羊">
+    <meta property="og:url" content="https://lvyang0.github.io/posts/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://lvyang0.github.io/">
+                        吕羊羊的博客
+                    </a>
+                
+                <p class="description">专注于机器学习,算法与数据结构,sql</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://lvyang0.github.io/">首页</a>
+                    
+                    <a  href="https://lvyang0.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://lvyang0.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://lvyang0.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#修电脑踩坑总结">修电脑踩坑总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">修电脑踩坑总结</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年12月18日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h3 id="修电脑踩坑总结">修电脑踩坑总结</h3>
+<h4 id="引子">引子</h4>
+<p>某天夜黑风高，我来到实验室，发现移动鼠标后主机屏幕毫无反应。</p>
+<p>换了一个无线鼠标，无效。</p>
+<p>赶紧想到了重启大法，开心地按下了重启键，万万没想到，屏幕一片黑了，主机蓝色电源键疯狂闪烁，除此之外，再无反应。</p>
+<p>那时单纯的我一定不会想到，未来四天，我会一直栽在这台电脑上，开启我漫漫修电脑的征程&hellip;&hellip;</p>
+<h4 id="硬件部分">硬件部分</h4>
+<p>在询问了老师之后，老师建议我重插内存条。</p>
+<p>我哆哆嗦嗦地拆了机箱，在小伙伴们的帮助下，找到并重插了内存条，然而，电源键还是闪烁个不停，屏幕一片黑。</p>
+<p>导师驾到后，好心地帮我检查了HDMI接口(CPU主板和1080Ti显卡上两个接口)，两个显示屏，按紧了内存条，检查了风扇，还抠了一个大电容使劲在钥匙在摩擦放电，满怀期待地再次开机，仍然两个显示器一片黑。。不过，唯一的好处是，电源键不再闪烁，而是稳定了。</p>
+<p>接下来，导师判断是CPU主板出问题了，叫了个同城达达快递，给送到维修中心去了（疫情封校，可怜的我和好心的小伙伴还把主机抱到了学校门口），不知道为啥，导师让我机械硬盘、移动硬盘、显卡全拆了。维修中心给的反馈是，主机一切正常没有问题，视频输出也很正常，清了个灰又给送回来了，我&hellip;&hellip;</p>
+<p>我又满怀希望地把主机抱了回来，结果一插视频线，又没有输出，水土不服，我卒了，就把主机丢在实验室回去睡觉了。第二天一早，导师来巡视后给我打电话，你电脑好了，换了根HDMI的线，一切正常了&hellip;我震惊，之前也明明检查过HDMI接口。直至今日，我仍然不知道我的电脑到底出了什么问题，反正经历了重插内存条、放电、清灰等等操作了，就神奇的好了。总之，好了是好事，以结果为导向。</p>
+<p>艰难地在实验室大佬的帮助下，又重新插好了机械硬盘和显卡，一开机，两眼一黑，两个问题：1.报错，进不去系统。 2. 电脑发出了神奇的咔哒咔哒响的声音。</p>
+<p>大佬拆了好多主机部件后，定位到是风扇的问题，重新组织了布线后，咔哒声消失了。</p>
+<p>但是系统报错依然存在:</p>
+<p><em>ACPI</em> <em>Error:[</em><em>*SB</em>.PCI0.RP*05.<em>PXSX]</em> <em>Namespace</em> <em>lookup</em> <em>failure</em></p>
+<p>
+        <img class="mx-auto" alt="微信图片_20201210221801" src="C:%5cUsers%5cly%5cDesktop%5cMD%e6%96%87%e4%bb%b6%5c%e4%bf%ae%e7%94%b5%e8%84%91%5c%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20201210221801.jpg" />   
+    </p>
+<h4 id="软件部分">软件部分</h4>
+<p>接上，束手无策后，我遂决定重装系统为Win10（Ubuntu生态感觉不完善，不好用），由于之前电脑的系统为Ubuntu，遇坑不少，记录如下~</p>
+<h5 id="1制作u盘启动盘">1.制作U盘启动盘</h5>
+<p>（参考https://zhuanlan.zhihu.com/p/36495771）</p>
+<p>找了一个文件大小8G（电脑读取实际大小为7.5G）的U盘。
+进入微软官方网站下载Win 10的界面，会看到提供的安装工具下载链接。</p>
+<p>链接直达：https://www.microsoft.com/zh-cn/software-download/windows10</p>
+<p>
+        <img class="mx-auto" alt="img" src="https://pic1.zhimg.com/v2-577b2e78aee4f3f1d350e23315ee37f8_b.jpg" />   
+    </p>
+<p>下载完成后，直接运行Win 10安装工具，可以通过该工具直接升级本电脑至最新版Win 10系统，这里，我们当然选择后面一项：为另外一台电脑安装介质。
+        <img class="mx-auto" alt="img" src="https://pic4.zhimg.com/v2-bfdc93d577001cd7c719b5300715538f_b.jpg" />   
+    </p>
+<p>然后一直跟着提示走即可，由此制作好U盘启动盘。</p>
+<h5 id="2装系统">2.装系统</h5>
+<p>开机之后进入BIOS（开机的第一个界面有提示如何进行，我的电脑是华硕主板，所以是按DEL键），不同电脑不一样。</p>
+<p>进入BIOS后，找到启动方式，选择刚刚插入的U盘为启动的第一选项，然后重启电脑即可。</p>
+<p>接下来就是按照微软的提示，一路往下，值得注意的是，中间遇到一个问题。</p>
+<p>
+        <img class="mx-auto" alt="微信图片_20201210212851" src="C:%5cUsers%5cly%5cDesktop%5cMD%e6%96%87%e4%bb%b6%5c%e4%bf%ae%e7%94%b5%e8%84%91%5c%e5%be%ae%e4%bf%a1%e5%9b%be%e7%89%87_20201210212851.jpg" />   
+    </p>
+<p>提示：windows必须安装在格式化为ntfs的分区。这是由于之前的固态硬盘格式为EXT4（Linux的文件系统），因此我们格式化为NTFS格式即可，步骤如下。（参考https://www.jianshu.com/p/ed7c79865787）</p>
+<pre><code>（1）按Shift+F10出现命令提示符输入：
+
+（2）diskpart              @这时要使用管理员权限进入diskpart程序；
+
+（3）list  disk            @查看当前磁盘情况
+
+（4）select  disk    0     @选择需要格式化的磁盘
+
+（5）clean                 @先清除所有磁盘分区
+
+（6）convert    ntfs       @转换成ntfs格式
+
+</code></pre><h5 id="3硬盘文件备份">3.硬盘文件备份</h5>
+<p>​     装完系统后，本以为大功告成了&hellip;&hellip;</p>
+<p>然后突然想到自己之前为了防止误操作，将机械硬盘给拆了下来，现在重新安装硬盘后，Win10系统无法识别&hellip;..在计算机管理 -&gt; 硬盘管理中可以看到该硬盘，格式为EXT4，读取不了，自己一堆文件都在里面。。。</p>
+<p>​	Windows和Linux的文件系统不同，linux使用的是ext(Ext2、Ext3、Ext4)，因为Linux支持很多不同的文件系统也包括ntfs，所以Linux系统下一般能直接访问ntfs格式的移动硬盘或者U盘；但是，在Windows下要访问Linux的文件系统比较困难，需要借助第三方软件，Windows目前使用的文件系统主要是ntfs，也支持(FAT、FAT32)。</p>
+<p>​    接连尝试了Ext2 Volume Manager和Ext2Fsd两个软件，由于缺乏教程/有教程仍然无法识别，均宣告失败。</p>
+<p>​    万幸，找到了这篇博客并且在https://blog.csdn.net/qq_32767041/article/details/84069088的指导下，成功对硬盘中的文件进行了备份。</p>
+<p>​	Paragon ExtFS for Windows 是一款适用于Windows操作系统的软件，也有 for Mac的，支持读写ext2/ext3/ext4文件系统，操作简单方便，界面简洁美观。更多介绍详见官网：https://www.paragon-software.com/business/extfs-for-windows/。这是一款收费的软件，要120RMB，可以试用10天，网上有破解版的，这里提供一下链接：https://pan.baidu.com/s/1r6Tzga6gOoqLKDaaQW2cRQ。该文件是一个压缩包，里面包含了Paragon ExtFS for Windows 4.2.651和用于破解的注册机v1.2</p>
+<p>​	安装：</p>
+<ul>
+<li>将下载的压缩包解压</li>
+<li>运行Setup.msi安装Paragon ExtFS，进入软件安装向导，点击next</li>
+<li>勾选接受许可协议条款，点击next</li>
+<li>根据具体情况选择软件安装路径，点击next</li>
+<li>点击install安装</li>
+<li>安装完成，勾选试用10天，点击next，点击Finish退出向导</li>
+</ul>
+<p>​	激活：</p>
+<ul>
+<li>安装完成后先不要运行软件，解压注册机压缩包，将keygen和另外两个文件放到ExtFS的安装目录下
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20181114162027563.png" />   
+    </li>
+<li>运行keygen，点击Patch RSA 2048，分别把Paragon Extfs for Windows.exe和extservice.exe这两个文件patch，patch成功后在安装录下会生成两个同名的新exe文件，原文件被自动备份为后缀名为bak的文件</li>
+<li>点击Generate生成License，出现提示后点击ok</li>
+<li>激活完成，运行软件</li>
+</ul>
+<p>安装完Paragon ExtFS for Windows软件后，一打开该软件，在此电脑中就可以看到正常读取的新D盘（EXT4格式的机械硬盘），再拷贝即可顺利备份文件。</p>
+<h5 id="4硬盘格式化">4.硬盘格式化</h5>
+<p>本想直接在此电脑中，右键硬盘进行格式化，不想右键点击格式化完毫无反应，想来应该又是文件系统不同的锅。</p>
+<p>于是想到了专业的硬盘管理软件diskgenius，下载diskgenius进行格式化后，却遇到了问题。。。</p>
+<p>
+        <img class="mx-auto" alt="image-20201210215718123" src="C:%5cUsers%5cly%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20201210215718123.png" />   
+    </p>
+<p>写扇区错误&hellip;不知道这是什么问题。</p>
+<p>想到了在硬盘中怎么也删不掉的几个文件后，隐隐约约觉得还是需要专业的EXT4管理软件来做这个格式化的事情。</p>
+<p>解决方案：先用Paragon ExtFS for Windows将硬盘格式化为EXT3，清空所有软件，（该软件无法格式化为NTFS格式）。然后再用diskgenius对格式化为EXT3的硬盘再次格式化为NTFS。</p>
+<p>至此，顺利解决!</p>
+
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://lvyang0.github.io/">吕羊羊</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://lvyang0.github.io/posts/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/">https://lvyang0.github.io/posts/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/">对比学习</a></li>
+        
+        <li><a href="/posts/my-first-post/">My First Post</a></li>
+        
+        <li><a href="/search/">搜索</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "your github repo"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2020 <a href="https://lvyang0.github.io/">吕羊羊的博客 By 吕羊羊</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://lvyang0.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://lvyang0.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://lvyang0.github.io/post/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" title="对比学习">对比学习</a>
+    </li>
+    
+    <li>
+        <a href="https://lvyang0.github.io/posts/hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hugo&#43;github搭建个人博客">Hugo&#43;github搭建个人博客</a>
+    </li>
+    
+    <li>
+        <a href="https://lvyang0.github.io/posts/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/" title="修电脑踩坑总结">修电脑踩坑总结</a>
+    </li>
+    
+    <li>
+        <a href="https://lvyang0.github.io/posts/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" title="对比学习">对比学习</a>
+    </li>
+    
+    <li>
+        <a href="https://lvyang0.github.io/posts/my-first-post/" title="My First Post">My First Post</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://lvyang0.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
