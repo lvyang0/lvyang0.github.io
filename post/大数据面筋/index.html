@@ -1,0 +1,3612 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>大数据面筋 | 吕羊羊的博客</title>
+    <meta property="og:title" content="大数据面筋 - 吕羊羊的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-12-29T17:46:52&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-12-29T17:46:52&#43;08:00'>
+        
+    <meta name="Keywords" content="机器学习,算法与数据结构,sql">
+    <meta name="description" content="大数据面筋">
+        
+    <meta name="author" content="吕羊羊">
+    <meta property="og:url" content="https://lvyang0.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9D%A2%E7%AD%8B/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://lvyang0.github.io/">
+                        吕羊羊的博客
+                    </a>
+                
+                <p class="description">专注于机器学习,算法与数据结构,sql</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://lvyang0.github.io/">首页</a>
+                    
+                    <a  href="https://lvyang0.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://lvyang0.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://lvyang0.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#面经总结">面经总结</a>
+      <ul>
+        <li><a href="#flume">Flume</a></li>
+        <li><a href="#kafka">Kafka</a></li>
+        <li><a href="#hadoop">Hadoop</a></li>
+        <li><a href="#mapreduce">Mapreduce</a></li>
+        <li><a href="#zookeeper">Zookeeper</a></li>
+        <li><a href="#spark">Spark</a></li>
+        <li><a href="#数仓">数仓</a></li>
+        <li><a href="#mysql">MySql</a></li>
+        <li><a href="#hive">Hive</a></li>
+        <li><a href="#hbase">hbase</a></li>
+        <li><a href="#hdfs">HDFS</a></li>
+        <li><a href="#计算机网络">计算机网络</a></li>
+        <li><a href="#linux">Linux</a></li>
+        <li><a href="#java">Java</a></li>
+        <li><a href="#redis">Redis</a></li>
+        <li><a href="#flink">Flink</a></li>
+        <li><a href="#nginx">Nginx</a></li>
+        <li><a href="#spring">Spring</a></li>
+        <li><a href="#yarn">Yarn</a></li>
+        <li><a href="#python">Python</a></li>
+        <li><a href="#scala">scala</a></li>
+        <li><a href="#ngnix">ngnix</a></li>
+        <li><a href="#kylin">Kylin</a></li>
+        <li><a href="#计算机基础">计算机基础</a></li>
+        <li><a href="#数据结构">数据结构</a></li>
+        <li><a href="#算法">算法</a></li>
+        <li><a href="#项目">项目</a></li>
+        <li><a href="#其他">其他</a></li>
+        <li><a href="#业务题">业务题</a></li>
+        <li><a href="#反问">反问</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">大数据面筋</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年12月29日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h2 id="面经总结">面经总结</h2>
+<h3 id="flume">Flume</h3>
+<ol>
+<li>flume组件功能</li>
+<li>flume的数据传输如何保证有消息（不漏传或者重复传）</li>
+<li>Flume的channel有哪些。</li>
+<li>FLume主要用来做什么？Flume用tail吗？比如说我删除了一个文件句柄，然后我touch了一个一模一样的文件，文件name是一样的，还能tail到吗？F和f，F的话如果文件名一样还是可以tail到那个文件的。</li>
+<li>Flume的Source（常用的），Channel（常用的），Sink（常用的），Flume拦截器知道不，自定义，Flume小文件处理（调两个参数，我记得是）</li>
+<li>Flume把物理机内存占用比较高，怎么优化</li>
+<li>为什么使用flume+kafka？</li>
+<li>flume的管道是用的哪个  我说用的内存</li>
+<li>他说如果flume突然崩掉怎么办  重启之后是重新输入flume吗我说设置一个偏移量  他问我怎么设置  我说不会。。  flume应该有对应的api吧。。。
+他说如果内存中的数据呢 不是断电就没吗？  其实就是想问我管道的另一种设置方式  文件方式</li>
+<li>听你说用了kafka，为什么不用flume直接接hbase呢？</li>
+<li>flume的事务机制</li>
+<li>flume怎么采集数据</li>
+<li>flume用过是吧？flume数据源如何监听文件夹里有新文件产生？</li>
+</ol>
+<h3 id="kafka">Kafka</h3>
+<ol>
+<li>
+<p>kafka如何保证消息的顺序性（partition分区）</p>
+</li>
+<li>
+<p>kafka 特点（高性能、容错性、高吞吐）</p>
+</li>
+<li>
+<p>kafka高吞吐量的原因</p>
+</li>
+<li>
+<p>kafka broker 挂了怎么办</p>
+</li>
+<li>
+<p>ISR 选举过程讲一遍。</p>
+</li>
+<li>
+<p>Kakfa 概念</p>
+</li>
+<li>
+<p>offset 理解</p>
+</li>
+<li>
+<p>Kafka 每个分区只能被一个消费者消费</p>
+</li>
+<li>
+<p>kafka的副本机制，副本是怎么同步消息的？</p>
+</li>
+<li>
+<p>kafka的消费者组你知道吗？他们是怎么消费消息的。怎么找到消息的，消费的是哪一个副本？</p>
+</li>
+<li>
+<p>kafka怎么实现数据的分类处理，就是一些数据需要删除一些数据要保存什么的。</p>
+</li>
+<li>
+<p>kafka遇到什么问题，如果数据过多会有什么问题。</p>
+</li>
+<li>
+<p>kafka你用过是吧；kafka底层了解吗；副本机制了解吗</p>
+</li>
+<li>
+<p>Kafka搭建过程要配置什么参数</p>
+</li>
+<li>
+<p>Kafka的消费者与消费者组有什么区别，多个消费者组消费用一个主题有什么区别。</p>
+</li>
+<li>
+<p>kafka的数据是自己生成的吗？有没有尝试自己设置kafka的offset。</p>
+</li>
+<li>
+<p>kafka结构，怎样防止脑裂，为什么最新版本不用zookeeper来维护offset。</p>
+</li>
+<li>
+<p>kafka的isr和osr。ack有几种值</p>
+</li>
+<li>
+<p>Kafka，架构，ACK，发送数据，消费数据，高吞吐等</p>
+</li>
+<li>
+<p>kafka如何保证高吞吐的，了不了解kafka零拷贝，具体怎么做的</p>
+</li>
+<li>
+<p>kafka怎么保证高吞吐量， 项目中有测过吞吐量吗，相比于其它MQ，为什么会选择kafka，kafka怎么保证exactly once语义</p>
+</li>
+<li>
+<p>谈谈对kafka的理解，能讲多少讲多少</p>
+</li>
+<li>
+<p>.kafka消息前缀是怎么加的</p>
+</li>
+<li>
+<p>kafka在消费完之后，提交offset之前，机器挂了，怎么处理</p>
+</li>
+<li>
+<p>如何知道sparkstreaming当前消费到了kafka的哪些分区，以及消费到的offset到哪了</p>
+</li>
+<li>
+<p>kafka了解吗?干什么用的?</p>
+</li>
+<li>
+<p>Kafka基本原理说一下（生产消费模型，存储，Leader选举，ISR，反正想到啥就说啥了）</p>
+</li>
+<li>
+<p>Consumer Group中Consumer和Partition的对应关系（Range和RoundRobin）</p>
+</li>
+<li>
+<p>Kafka支持什么语义（三种语义），怎么实现Exactly Once</p>
+</li>
+<li>
+<p>用Kafka的过程中有过什么问题，怎么解决</p>
+</li>
+<li>
+<p>Kafka基本原理说一下，和其他的MQ相比的优势</p>
+</li>
+<li>
+<p>Kafka 消费者怎么从Kafka取数据的</p>
+</li>
+<li>
+<p>消费者怎么保证ExactlyOnce（感觉跟前两面的问题的有点重复）</p>
+</li>
+<li>
+<p>Kafka消费者怎么保证有序性</p>
+</li>
+<li>
+<p>Kafka生产者怎么保证不丢不重复（幂等）</p>
+</li>
+<li>
+<p>Kafka生产者写入怎么保证有序</p>
+</li>
+<li>
+<p>把你认为其他有价值的点再讲讲？基于kafka 巴拉巴拉讲了几分钟</p>
+</li>
+<li>
+<p>kafka是推还是拉的模式？好处？</p>
+</li>
+<li>
+<p>你的项目中用到了Kafka，讲一下你的日志数据发送到Kafka依次经历了什么</p>
+</li>
+<li>
+<p>还了解kafka、ES这些吗？</p>
+</li>
+<li>
+<p>Kafka架构，生产，消费等</p>
+</li>
+<li>
+<p>kafka高吞吐的原因</p>
+</li>
+<li>
+<p>说一下kafka的架构</p>
+</li>
+<li>
+<p>介绍一下kafka</p>
+</li>
+<li>
+<p>前面提到kafka，如何保证全局有序的？flink和sparkstreaming处理的时候，分别怎么做？</p>
+</li>
+<li>
+<p>kafka的消费者，如何保证不消费到重复的数据？通过提交offset，并保证数据的幂等性。通常可以怎么做？保存在<a href="">redis</a>和Mysql有什么区别？如果有一条offset对应的数据，消费完成之后，手动提交失败，如何处理？回滚，利用Kafka的事务解决。介绍下Kafka的事务。</p>
+</li>
+<li>
+<p>flume和kafka的区别？</p>
+</li>
+<li>
+<p>Kafka如何保证生产者不丢失数据，消费端不丢失数据</p>
+</li>
+<li>
+<p>说一下kafka的优势</p>
+</li>
+<li>
+<p>介绍一下Kafka</p>
+</li>
+<li>
+<p>kafka为什么低延迟高吞吐？ 哪些特点？ 原理说一下</p>
+</li>
+<li>
+<p>Kafka的弊端</p>
+</li>
+<li>
+<p>Kafka如何实现幂等性，如果是要你实现，你怎么实现？</p>
+</li>
+<li>
+<p>之后面试官让我去看Kafka蓄水池机制（真的很长）</p>
+</li>
+<li>
+<p>kafka 有序性</p>
+</li>
+<li>
+<p>Kafka复制机制、分区多副本机制</p>
+</li>
+<li>
+<p>kafka如何保证高吞吐的，kafka零拷贝，具体怎么做的</p>
+</li>
+<li>
+<p>kafka存储模型与网络模型</p>
+</li>
+<li>
+<p>kafka接触过吗？实时计算的Spark Streaming、Flink了解过吗？</p>
+</li>
+<li>
+<p>kafka中consumer和consumer group有什么区别，为什么会有consumer group的概念</p>
+</li>
+<li>
+<p>kafka高性能的实现机制</p>
+</li>
+<li>
+<p>kafka的存储机制</p>
+</li>
+</ol>
+<h3 id="hadoop">Hadoop</h3>
+<ol>
+<li>你搭建的hadoop有哪些进程？</li>
+<li>hadoopHA的原理。具体的是怎么实现的？</li>
+<li>Hadoop（hdfs）原理，为什么要用他。</li>
+<li>Hadoop有哪些组件。</li>
+<li>简述hadoop</li>
+<li>Hadoop的高可用，一些要点，两个namenode如何保持同步（会通过JournalNodes的独立进程进行相互通信），脑裂和防止脑裂</li>
+<li>hadoop与spark的区别</li>
+<li>我说Hadoop，结果偏偏没问我HDFS、MR这两个算熟悉的，问了yarn，yarn提交程序的流程？</li>
+<li>Hadoop存储，MR和shuffle，reduce分三个阶段，你怎么分，资源调度</li>
+<li>hadoop的基本组件详细介绍一下</li>
+<li>讲一下对Hadoop的了解</li>
+<li>Hadoop用到的指令 Hadoop fs -ls 、 mkdir、 hdfs fsck（查看块信息）</li>
+<li>Spark和Hadoop的区别</li>
+<li>学过Hadoop，讲一下MR流程。说一下Partition分区的优化是怎么做的（Partition没答出来）
+MR会有数据倾斜，讲一下如何解决（说了一些方法，被要求说的更详细一些。比如为什么增加Reduce数量就可以提高效率，如何自定义分区，如何重新设计key）</li>
+<li>然后问的是Hadoop Streaming （没听说过，讲了下spark streaming）</li>
+<li>Hadoop1和Hadoop2的区别，HDFS原理、</li>
+<li>Hadoop1.x和Hadoop2.x的区别</li>
+<li>Hadoop mapreduce流程</li>
+<li>项目集群结构（spark和hadoop集群）</li>
+<li>Hadoop里面的SecondaryNameNode的作用是什么？具体恢复过程了解么？</li>
+<li>hadoop 生态大概讲下，然后靠纯理论大概讲了讲组件</li>
+<li>Hadoop中NameNode宕了怎么办（答出了SecondaryNameNode，没答完整）</li>
+<li>hadoop有哪两大服务</li>
+<li>Hadoop的MR和Spark有什么区别，为什么Spark有优势。</li>
+<li>hadoop和spark简单讲讲，只说结构原理不说源码</li>
+<li>hadoop ha架构</li>
+<li>hadoop ha当一个namenode挂掉。会有数据丢失吗。如果有，有什么解决方法。</li>
+<li>hadoop namenode的ha，主备切换实现原理，日志同步原理，QJM中用到的分布式一致性算法（就是paxos算法）</li>
+</ol>
+<h3 id="mapreduce">Mapreduce</h3>
+<ol>
+<li>
+<p>mr的shuffle过程</p>
+</li>
+<li>
+<p>mapreduce的过程。maptask数量是怎么决定的？reducetask的数量呢？分区数怎么设置的呢？分区怎么设置，reducetask数量怎么设置？</p>
+</li>
+<li>
+<p>mapReduce对比spark</p>
+</li>
+<li>
+<p>最终MR文件输出的个数取决于什么？</p>
+</li>
+<li>
+<p>MR和spark的执行过程。select a.bp , sum(a.a) from a join b on a.bp=b.bp and a.id=b.id;说一下整个执行过程。</p>
+</li>
+<li>
+<p>MapReduce，Zookeeper，Kafka解释</p>
+</li>
+<li>
+<p>spark和mr对比</p>
+</li>
+<li>
+<p>MR的提交执行流程</p>
+</li>
+<li>
+<p>写过MapReduce吗，说一下shuffle，自定义过分区吗，写过？压缩了解吗？都用过那个（要了解每个的特点）</p>
+</li>
+<li>
+<p>hive sql怎么转换成底层的MapReduce程序，以及shuffle的过程</p>
+</li>
+<li>
+<p>MR的原理</p>
+</li>
+<li>
+<p>mapreduce会吗,会多少个spark算子</p>
+</li>
+<li>
+<p>讲一下MR的流程，结合word count。讲一下shuffle</p>
+</li>
+<li>
+<p>给你两个表，如何用MR实现两个表的笛卡尔乘积</p>
+</li>
+<li>
+<p>mr的流程，mr和Spark的区别</p>
+</li>
+<li>
+<p>1TB数据，top 10单词，不能用mr和spark，描述下思路</p>
+</li>
+<li>
+<p>整个MR的shuffle过程，为什么要shuffle</p>
+</li>
+<li>
+<p>mapreduce的执行过程</p>
+</li>
+<li>
+<p>mapreduce如何实现合并操作</p>
+</li>
+<li>
+<p>mapreduce执行时的瓶颈有哪些？</p>
+</li>
+<li>
+<p>任务并行的几种方式</p>
+</li>
+<li>
+<p>MapReduce为什么比Spark要慢</p>
+</li>
+<li>
+<p>Spark和MapReduce的区别？是不是用了Spark就不需要MapReduce了？（答得不太好）</p>
+</li>
+<li>
+<p>MR流程、RDD流程</p>
+</li>
+<li>
+<p>mapreduce的shuffle机制及其优化</p>
+</li>
+<li>
+<p>mapreduce程序题：还是上面的那个字段，要求求出每个用户的最早登录日期和最晚登录日期</p>
+<p>考点是Mapper类中的setUp方法和clear方法</p>
+</li>
+<li>
+<p>了解mapreduce原理吧  说一下shuffle机制</p>
+</li>
+<li>
+<p>MR详细过程（请注意详细，从RPC开始说）</p>
+</li>
+<li>
+<p>MR和HDFS架构（画出来&amp;说出来）</p>
+</li>
+<li>
+<p>MR是怎么确定MapTask数量的</p>
+</li>
+<li>
+<p>MapReduce熟吗（不熟，了解）</p>
+</li>
+<li>
+<p>mapReduce为什么需要Shuffle这一步</p>
+</li>
+<li>
+<p>有一个文件，每一行是一个数字，如何用 MapReduce 进行排序</p>
+</li>
+<li>
+<p>一个完整的MapReduce整个有哪些过程？这些过程中哪些会用到排序呢？</p>
+</li>
+<li>
+<p>MapReduce作业执行的过程中，中间的数据会存在什么地方？不会存在内存中么？</p>
+</li>
+<li>
+<p>MapReduce和Spark各自的优缺点？</p>
+</li>
+<li>
+<p>除了使用hive、spark。基本统计框架，自己实现一个word统计算法？ 我说了类似与mapreducer算法</p>
+</li>
+<li>
+<p>问了MapReduce执行流程以及问了RDD属性和问了一些transformation和action算子</p>
+</li>
+<li>
+<p>各个文件分布在不同的分布式系统中，如何快速的实现某个字段前三？</p>
+</li>
+<li>
+<p>MapReduce全过程，分片怎么读的，为什么用快排，换别的行不行，多路归并怎么实现的，环形缓冲区怎么实现的。</p>
+</li>
+<li>
+<p>mapreduce的map进程和reducer进程的jvm垃圾回收器怎么选择可以提高吞吐量？</p>
+</li>
+<li>
+<p>mapreduce过程</p>
+</li>
+<li>
+<p>mapreduce支持哪些join，map端？reduce端？semi join？semi join你可以通过什么算法去优化？</p>
+</li>
+<li>
+<p>mapreduce实现二次排序</p>
+</li>
+<li>
+<p>用mapreduce实现两表join</p>
+</li>
+<li>
+<p>用mapreduce实现一个存储kv数据的文件，对里面的v进行全量排序</p>
+</li>
+<li>
+<p>第二题：用mapreduce实现kmeans[算法]</p>
+</li>
+</ol>
+<h3 id="zookeeper">Zookeeper</h3>
+<ol>
+<li>Zookeeper 选举机制</li>
+<li>zk分布式锁</li>
+<li>ZAB是以什么算法为基础；ZAB流程大概说一下</li>
+<li>一致性算法了解吗</li>
+<li>Zookeeper节点设置数量怎么设置比较好，要设置单数个，因为半数机制。</li>
+<li>azkaban，别的任务调度oozie学过吗？现在azkaban用的比较少。</li>
+<li>ZK的ZAB选举算法。他的一个选举算法。ZK里的节点类型有几种？（临时节点、永久节点用来作什么？）</li>
+<li>zookeeper怎么保证原子性，怎么实现分布式锁</li>
+<li>ZK的原理 paxos一致性算法</li>
+<li>ZK的选举机制，一致性算法</li>
+<li>zookeeper的选举机制</li>
+<li>Zookeeper的一致性协议</li>
+<li>zk的实现原理</li>
+<li>zk如何实现分布式锁</li>
+<li>Zookeeper的功能， 详细介绍一下zookeeper的消息的发布订阅功能</li>
+<li>给我讲一下zookeeper是什么。说一下***机制   如果突然leader挂了怎么重新这个前几天正好美团面试问到了，我答得还不错）</li>
+<li>zookeeper了解吧***机制说一下。当Leader挂了之后  那么哪个follwer开始第一次呢</li>
+<li>zookeeper原理  干什么的  在大数据生态下有什么用</li>
+<li>Zookeeper首领选取、节点类型、zookeeper实现原理</li>
+<li>zookeeper怎么保证原子性，怎么实现分布式锁</li>
+<li>Zookeeper脑裂问题</li>
+<li>zookeeper介绍一下，***机制？如果五台机器，一台突然挂掉，那么怎么知道挂掉（说了心跳），心跳在什么时候？然后怎么选主？</li>
+<li>zookeeper的原理，zk是如何保证一致性的，zk是如何判断session超时，connection超时的。如何触发回调。</li>
+<li>zookeeper是如何***新的Active Namenode，没仔细说，说了个原理他又不继续问了，后悔。</li>
+<li>Zookeeper的同步过程</li>
+<li>zookeeper实现原理，zab协议以及原子广播协议</li>
+</ol>
+<h3 id="spark">Spark</h3>
+<ol>
+<li>为什么有spark</li>
+<li>相对于MR它的优势 架构 转换算子</li>
+<li>sparkstreaming 怎么实现的（Spark Streaming在内部处理的机制原理是：先接受实时流的数据，并根据一定的时间间隔拆分成一批批的数据，这些批数据在Spark内核对应一个RDD实例，因此，流数据的DStream可以看成一组RDDs，然后通过调用Spark核心的作业处理这些批数据，最终得到处理后的一批批结果数据。）</li>
+<li>怎么处理（可能就是问如何从 kafka 获取数据receiver+direct）</li>
+<li>spark 内存管理</li>
+<li>Flink、Spark Streaming 区别</li>
+<li>rdd 介绍</li>
+<li>怎么划分 stage</li>
+<li>rdd 转换 行动算子</li>
+<li>项目中用到了spark streaming，那spark算子了解吗，介绍一些常用的(分为 Transformation算子和Action算子举了几个例子)</li>
+<li>reduceByKey()和groupByKey()的区别</li>
+<li>spark你是怎么理解的？</li>
+<li>spark怎么对接kafka的数据流？怎么获取kafka的数据？</li>
+<li>kakfa-spark-es中间如果有挂掉，怎么保证数据不重复不丢失。</li>
+<li>spark如果挂掉的话，数据不就丢失了？</li>
+<li>又让我自己介绍Spark，让我随便说，我说我来说点Spark的任务调度原理吧，balabala，看我简历上有Spark 数据倾斜，然我说说。</li>
+<li>你用SparkStreaming实现了什么功能？</li>
+<li>为什么用SparkStreaming</li>
+<li>Spark和mr的区别</li>
+<li>spark任务执行全过程。</li>
+<li>举下spark的transform和action的算子，并讲下区别。</li>
+<li>spark的rdd原理。spark怎么把你的算子转化成rdd的？rdd之间的一些关系。rdd怎么提交到内存上计算的。</li>
+<li>spark本身的批处理用过吗？</li>
+<li>sparkstreaming的工作机制。spark的工作机制，怎么绘制DAG的？</li>
+<li>sparkstreaming的双流join的过程，怎么做的？讲一下。</li>
+<li>MR和spark的执行过程。select a.bp , sum(a.a) from a join b on a.bp=b.bp and a.id=b.id;说一下整个执行过程。</li>
+<li>手写一个spark场景题，百度一下spark温度二次排序，不出意外有这道题，比较简单吧，这种场景开发中挺常见</li>
+<li>Spark Streaming 和Flink了解多少（一点点）</li>
+<li>spark程序的运行流程</li>
+<li>spark streaming从kafka中读数据的两种方式</li>
+<li>spark怎么划分stage，宽窄依赖，各包括哪些***作</li>
+<li>如何知道sparkstreaming当前消费到了kafka的哪些分区，以及消费到的offset到哪了</li>
+<li>会Spark吗?不会!别问,不知道!</li>
+<li>Spark任务调度（<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%BA%90%E7%A0%81">源码</a>）</li>
+<li>Spark Streaming和Flink的区别（说部门主要用Flink，奈何我没怎么用过）</li>
+<li>Spark、flink具体区别，结合<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E9%A1%B9%E7%9B%AE">项目</a>怎么应用的。</li>
+<li>spark里处理数据具体流程；</li>
+<li>spark的dataset、dataframe、datastream区别；</li>
+<li>spark的rdd了解多少；</li>
+<li>说说Storm、Flink、Spark各自优缺点；</li>
+<li>spark sql 的执行流程</li>
+<li>sparkstreaming的实现原理，它与flink的区别是什么</li>
+<li>hadoop与spark的区别</li>
+<li>spark的调优参数讲讲用到过的</li>
+<li>G1垃圾回收器讲一讲</li>
+<li>spark shuffle机制以及如何划分shuffle</li>
+<li>spark用的时候你遇到过的痛点有哪些</li>
+<li>Spark的stage怎么划分的</li>
+<li>举个宽依赖的算子例子</li>
+<li>spark broadcast join底层如何实现</li>
+<li>spark提交一个任务到运行的整个流程介绍一些</li>
+<li>Spark了解多少说多少。</li>
+<li>Spark宽窄依赖了解吗？区别。</li>
+<li>dataset和dataframe区别；</li>
+<li>Spark的数据倾斜问题和解决方法</li>
+<li>开启了RDB和AOF混合持久化后，机器挂了再重启后，持久化过程是怎样的？</li>
+<li>spark join的几种实现方式 hash join ;merge join,broadcast</li>
+<li>spark streaming访问<a href="https://www.nowcoder.com/jump/super-jump/word?word=redis">redis</a>的时候，数据量比较大，并发度比较高的时候，如何提高访问速度或连接速度</li>
+<li>两阶段提交和三阶段提交讲讲</li>
+<li>spark宽窄依赖</li>
+<li>使用spark写一个wordcount</li>
+<li>从这个spark程序打包提交到spark集群之后，分别发生了什么</li>
+<li>spark宽窄依赖，程序中有几个stage</li>
+<li>程序中的rdd有几个partition</li>
+<li>如果要增加并发应该使用什么参数，executor和core的比例怎么设置（这里我答错了，太久没用都记不清了）</li>
+<li>如果发生数据倾斜怎么处理</li>
+<li>如果某些task很慢应该怎么处理</li>
+<li>spark数据倾斜和怎样解决</li>
+<li>spark集群低带宽怎样从大数据量中找中位数</li>
+<li>说一下宽依赖和窄依赖</li>
+<li>介绍一下spark shuffle</li>
+<li>spark Streaming和Flink的区别</li>
+<li>spark的容错机制</li>
+<li>处理spark数据倾斜的方法</li>
+<li>MapReduce为什么比Spark要慢</li>
+<li>Spark的数据存在哪里</li>
+<li>将一下Kafka的作用</li>
+<li>Saprk Sql和Hive Sql的区别</li>
+<li>Spark Sql的劣势</li>
+<li>说一下spark RDD和mapreduce的区别</li>
+<li>map算子和flatMap算子的区别</li>
+<li>在实际中有遇到数据倾斜吗，如何解决的。回答了之后让我说说用spark的方式怎么解决</li>
+<li>spark的stage如何划分，在<a href="">源码</a>中是怎样判断属于shuffleMapStage或resultStage的？如何判断出现了数据倾斜？如何解决？join的时候，会调用什么<a href="">算法</a>进行shuffle？spark的内存模型知道吗？</li>
+<li>Spark会吧。介绍下宽窄依赖。（从action 讲到 shuffle ，讲了Aggregator,讲了下DAG解析的阶段划分)</li>
+<li>Spark cache和 persite的区别（讲了下广播机制，没回答好）</li>
+<li>Spark的运行原理，什么时候发生宽窄依赖</li>
+<li>Spark源码中的任务调度</li>
+<li>Spark shuffle机制</li>
+<li>spark中有哪些算子会进行数据shuffle</li>
+<li>spark有几个模块  你最喜欢用哪个  每个都干过什么</li>
+<li>DStream和DStreamGraph的区别（SparkStreaming的知识）</li>
+<li>Spark MR区别</li>
+<li>Spark流程,RDD底层了解吗</li>
+<li>Spark join的分类，实现过程，得到的结果</li>
+<li>Spark map join的实现原理</li>
+<li>Spark Shuffle过程</li>
+<li>Spark Streaming和Flink的区别</li>
+<li>说下Spark任务调度吧</li>
+<li>Spark Task失败要从头开始重试吗</li>
+<li>spark运行流程、源码架构</li>
+<li>Spark standalone模型、yarn架构模型（画出来架构图）</li>
+<li>Spark算子（map、flatmap、reducebykey和reduce、groupbykey和reducebykey、join、distinct）原理</li>
+<li>Spark stage的切分、task资源分配、任务调度、master计算资源分配</li>
+<li>Sparksql自定义函数、怎么创建dateframe</li>
+<li>Sparkstreaming项目多久一个批次数据</li>
+<li>Sparkshuffle和hadoopshuffle原理、对比</li>
+<li>Spark调优</li>
+<li>Spark数据倾斜解决方案</li>
+<li>spark的内存管理机制，spark1.6前后对比分析</li>
+<li>spark rdd、dataframe、dataset区别</li>
+<li>spark里面有哪些参数可以设置，有什么用</li>
+<li>hashpartitioner与rangePartitioner的实现</li>
+<li>spark有哪几种join</li>
+<li>spark jdbc(mysql)读取并发度优化</li>
+<li>Spark join算子可以用什么替代</li>
+<li>spark streaming是怎么跟kafka交互的，具体代码怎么写的，程序执行流程是怎样的，这个过程中怎么确保数据不丢（直连和receiver方式）</li>
+<li>Spark的宽窄依赖了解么？</li>
+<li>Spark中的RDD、dataFrame、dataSet的区别</li>
+<li>Spark中的map和flatMap的区别是什么？</li>
+<li>Spark中的groupByKey、reduceByKey、aggregateByKey的区别？</li>
+<li>若Spark要保存数据到HDFS上，要用什么算子？</li>
+<li>Spark的***()和persist()，他们的区别是什么？他们和上面问题里的saveAsTextFile的区别又是什么？</li>
+<li>Spark里面的transform和action你都用过哪些？列举一下。</li>
+<li>Spark里的map和flatMap的区别？</li>
+<li>将RDD中”1\t2\t3\t4\t5”这样的数据用flatMap展平。</li>
+<li>有没有Spark的Task和Executor配比经验（我没有）；</li>
+<li>有没有了解Spark中Partition，Task和Executor；</li>
+<li>宽窄依赖，sparksql的groupby会造成宽窄依赖吗</li>
+<li>spark广播变量的实现和原理。</li>
+<li>大数据量，广播变量和通过形参传递的区别</li>
+<li>spark reducebykey具体实现过程</li>
+<li>stage划分</li>
+<li>宽依赖、窄依赖区别</li>
+<li>在spark和hadoop中如何处理数据倾斜。</li>
+<li>spark的调度过程，DAGScheduler如何划分stage，TaskScheduler如何调度任务的。Spark的shuffle是什么样的，怎么优化的。</li>
+<li>评价一下Hadoop和Spark的代码风格，我曹，我随便说了说，怕送命题。幸好我说完了他就自己说了，疯狂点头</li>
+<li>spark的调优</li>
+<li>spark的原理，我就说了个架子等他问，他不问了！</li>
+<li>spark和hadoop的区别</li>
+<li>为什么选用spark on yarn这种运行模式。</li>
+<li>spark三种运行模式</li>
+<li>讲一下rdd</li>
+<li>宽依赖和窄依赖</li>
+<li>coalesce和reparation的区别</li>
+<li>会Spark吗？不会（面试官很意外）</li>
+<li>spark中的shuffle有哪些？</li>
+<li>mysql、spark中的join原理。</li>
+<li>你理解的spark、运行模式</li>
+<li>spark运行架构</li>
+<li>spark运行原理，从提交一个jar到最后返回结果，整个过程</li>
+<li>spark的stage划分是怎么实现的？拓扑<a href="">排序</a>？怎么实现？还有什么<a href="">算法</a>实现？</li>
+<li>spark rpc，spark2.0为啥舍弃了akka，而用netty?</li>
+<li>spark的各种shuffle，与mapreduce的对比</li>
+<li>spark的各种ha，master的ha，worker的ha，executor的ha，driver的ha,task的ha,在容错的时候对集群或是task有什么影响？</li>
+<li>spark的内存管理机制，spark1.6前后对比分析</li>
+<li>spark2.0做出了哪些优化？tungsten引擎？cpu与内存两个方面分别说明</li>
+<li>spark rdd、dataframe、dataset区别</li>
+<li>一个spark task运行很久，要2个小时，你怎么让它半小时完成？问题定位？问题解决？</li>
+<li>spark里面有哪些参数可以设置？针对各个场景说明</li>
+<li>spark数据倾斜</li>
+<li>spark shuffle</li>
+<li>spark 内存管理</li>
+<li>单机统计一个文本中一个单词相邻单词出现次数的topk?统计不相同数据的个数，布隆过滤器？spark、</li>
+<li>sparksql编码优化</li>
+<li>spark里面的cbo</li>
+<li>手撸代码：数组最大子串累加和，动态规划经典题目，然后实现其分布式算法，假设这个数组被存储在不同的partition中，partition中数据以partitionid实现排序，通过rdd分布式实现这个算法</li>
+<li>手撸代码：
+第一题：从一个rdd中过滤出另一个rdd的数据
+第二题：求一个数组中累加和在一个区间的种数</li>
+<li>spark的任务开启流程，说一下</li>
+</ol>
+<h3 id="数仓">数仓</h3>
+<ol>
+<li>聊一聊数仓吧</li>
+<li>数仓四层是什么？</li>
+<li>数仓分层的意义？</li>
+<li>数仓为什么要分成这几层。原始数据是什么格式的？底层数据处理到dw层是怎么处理的？spark还是什么？如果原始数据是半结构化的数据/非结构化的数据怎么办？</li>
+<li>介绍数据仓库开发，数据迁移项目</li>
+<li>数据建模过程中，数据导入、数据处理、数据展示都使用哪些工具？flume和sqoop有什么区别？</li>
+<li>数仓分层、</li>
+<li>数据仓库建模</li>
+<li>数据仓库的模型，分层，三范式</li>
+<li>如何保证数据质量，数据一致性?</li>
+<li>讲一下数据仓库层级的划分，每层的作用</li>
+<li>数据仓库分层</li>
+<li>数据仓库搭建过程?</li>
+<li>数据质量怎么评估?</li>
+<li>数据仓库分层介绍一下,ods和dwd区别,dm是什么?报表数据为什么不能用ods层的数据?</li>
+<li>维度建模过程?</li>
+<li>缓慢维度变化问题?</li>
+<li>支架表?拉链表?统计带状维度如何更新?</li>
+<li>为什么维度要做到扁平多对一?</li>
+<li>元数据怎么管理?</li>
+<li>数据分层理论</li>
+<li>数据建模过程</li>
+<li>缓慢维度变化问题</li>
+<li>订单表如何存储?</li>
+<li>为什么要有数据仓库?</li>
+<li>数据怎么保证一致性?</li>
+<li>为什么要做元数据管理?如何做元数据管理?</li>
+<li>数据质量怎么评估?</li>
+<li>缓慢维度变化问题*2</li>
+<li>数仓分层</li>
+<li>如何做好元数据管理?</li>
+<li>数据安全怎么保证?为什么做到字段安全困难?</li>
+<li>数据倾斜怎么处理?怎么判断哪里出现倾斜?除了看log日志还有什么方法?</li>
+<li>任务调度系统*2</li>
+<li>数据仓库主题怎么建设?</li>
+<li>数据仓库分层</li>
+<li>临时需求怎么处理?怎么管理?</li>
+<li>数据指标如何保证一致性?</li>
+<li>数据仓库如何对外提供数据</li>
+<li>设计一个平台,要同时满足BI+临时需求+数据API提供.说实话我到现在也没明白出这问题什么意思!沙雕问题!我觉得这三个就不应该揉到一起做,要是做一个也要分三个功能模块.就分模块给的设计.</li>
+<li>数据仓库分层*2</li>
+<li>试着设计实时的数据仓库</li>
+<li>数据维度建模，建模模型</li>
+<li>数据仓库相关</li>
+<li>数仓建模</li>
+<li>累计快照事实表</li>
+<li>日志适合存到哪个数据库里？</li>
+<li>数仓分层，每层做什么</li>
+<li>数仓分层一般分为哪几层？数仓建模时用到的雪花模型和星型模型的区别？</li>
+<li>数仓建模的流程</li>
+<li>星型模型和雪花模型的区别</li>
+<li>大日志分区后的排序</li>
+<li>数据仓库的星型模型和雪花模型，上卷下钻</li>
+<li>数仓层级的划分，怎么对接到mysql拿数据</li>
+</ol>
+<h3 id="mysql">MySql</h3>
+<ol>
+<li>
+<p>行列数据库区别，数据库索引（b树，b+树）</p>
+</li>
+<li>
+<p>写sql left join遇到重复值</p>
+</li>
+<li>
+<p>MySQL底层索引了解吗(B+树)，然后设计了一个情景，大概是有三组数据分别的需求是更新，查询，<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%8E%92%E5%BA%8F">排序</a>，那么这三组数据是否适合建立索引(表述可能不到位)。</p>
+</li>
+<li>
+<p>MySQL在Innodb索引下B+树的最大高度是多少</p>
+</li>
+<li>
+<p>mysql的索引结合sql说一下</p>
+</li>
+<li>
+<p>数据库三范式，有哪些对象。</p>
+</li>
+<li>
+<p>数据库的隔离级别，怎么实现的，解决了什么。</p>
+</li>
+<li>
+<p>数据库优化措施。</p>
+</li>
+<li>
+<p>如果全表建立索引，然后又建立联合索引，会有什么问题。</p>
+</li>
+<li>
+<p>行锁和表锁</p>
+</li>
+<li>
+<p>事务特性；事务隔离级别；可重复度可以解决幻读吗</p>
+</li>
+<li>
+<p>mysql了解过吗；mysql索引；为什么不用平衡二叉树、红黑树；B+树效率更高是吗</p>
+</li>
+<li>
+<p>写一个SQL，难度一般，需要写子查询的，有一个难点就是在排完序后要给出排名，即新增一列为1/2/3.。。。我用了hive的rank（）函数，mysql好像没有这个函数。。</p>
+</li>
+<li>
+<p>数据库中索引的理解。</p>
+</li>
+<li>
+<p>left join和right join</p>
+</li>
+<li>
+<p>假设一张表没有主键，有两条一模一样的数据，想要删除一条保留一条有什么办法？除了rownumber还有其他思路吗？</p>
+</li>
+<li>
+<p>left join 和 right join的区别</p>
+</li>
+<li>
+<p>一个月的数据怎么算月活？</p>
+</li>
+<li>
+<p>手写sql，学生分数按序排名，输出每个学生前百分之三十的学生分数的平均数。</p>
+</li>
+<li>
+<p>维度表和事实表怎么区分。维度是手机号或者地址，会经常变更的维度，这种怎么处理？（渐变维度？）加个版本号是吧。</p>
+</li>
+<li>
+<p>码入Mysql这块怎么做的？你是通过什么往里面写数据的？要监听mysql要开始row模式吗？</p>
+</li>
+<li>
+<p>sql熟吗？点击率那些有了解吗？比如说我有一个页面，A页面曝光次数100次，点进去之后跳到B页面，B页面的refer来源是A页面，来源于A页面的只有50，那A页面的点击率只有50/100。</p>
+</li>
+<li>
+<p>关联两个表（带join和不带join方式），空值的处理</p>
+</li>
+<li>
+<p>MySQL和HBase的对比（底层存储），优缺点</p>
+</li>
+<li>
+<p>MySQL的优化，索引有那些</p>
+</li>
+<li>
+<p>分组排序 rank() over() 这个</p>
+</li>
+<li>
+<p>你给我讲讲数据库的索引。首先说不同的存储引擎的索引是不同的。然后谈到了InnoBD与ISAM的区别。然后画图并且解释，然后谈到了复杂度然后谈到了索引与二叉搜索树与二分查找的关系。时间复杂度。最后谈到了HBase中实现高性能的LSM树。然后谈到事务的实现方式MVCC，谈笑风生。最后是索引的优化与失效，《高性能MySQL》中独立的列。谈一下索引的页，我谈到了索引随机化产生的页分裂的问题。（其实这些知识都在《高性能MySQL中出现过》）。19届三本找实习。。。。。。。。</p>
+</li>
+<li>
+<p>拉链表了解吗？什么情况用到，怎么实现?</p>
+</li>
+<li>
+<p>写个sql，省份，城市，人口数量，统计人口排名前两名城市</p>
+</li>
+<li>
+<p>MySQL的了解，两个引擎区别</p>
+</li>
+<li>
+<p>索引实效的情况</p>
+</li>
+<li>
+<p>学生成绩表，把每科最高分前三名统计出来</p>
+</li>
+<li>
+<p>sql有几种join，map join了解过没</p>
+</li>
+<li>
+<p>写一下mysql binlog的数据格式，怎么进行数据清洗的</p>
+</li>
+<li>
+<p>数据建模，星型模型和雪花模型</p>
+</li>
+<li>
+<p>写一条sql删除订单表中重复的记录</p>
+</li>
+<li>
+<p>sql题：一张网页浏览信息表，有两列，一列是网页ip，一列是浏览网页的用户（比如a或者b、c、d直到z），求这些网页被a和b或者a和c或者b和c两两组合访问的次数</p>
+</li>
+<li>
+<p>设计学生成绩管理系统，符合第三范式要求，并绘出UML图</p>
+</li>
+<li>
+<p>讲讲数据库索引，B树和B+树</p>
+</li>
+<li>
+<p>Elasticsearch的索引，单field索引和多field的联合索引</p>
+</li>
+<li>
+<p>找出单科成绩高于该科平均成绩的同学名单（无论该学生有多少科，只要有一科满足即可）</p>
+</li>
+<li>
+<p>sql题： 找出单科成绩高于该科平均成绩的同学名单（该学生所有科都必须满足）</p>
+</li>
+<li>
+<p>讲讲数据库存储引擎</p>
+</li>
+<li>
+<p>介绍一下索引，索引设置的规则，聚簇索引和非聚簇索引的区别，索引的最左前缀原则</p>
+</li>
+<li>
+<p>讲讲数据库的范式</p>
+</li>
+<li>
+<p>为什么需要元数据?</p>
+</li>
+<li>
+<p>SQL题:一道简单的sql(分组求排名?具体忘了)</p>
+</li>
+<li>
+<p>怎么保证数据一致性?</p>
+</li>
+<li>
+<p>事实都有哪些类型?</p>
+</li>
+<li>
+<p>维度建模的优缺点?还知道别的数据建模吗?除了Innmon模型还有知道吗?</p>
+</li>
+<li>
+<p>SQL语句的执行过程.</p>
+</li>
+<li>
+<p>实时相关你知道吗?</p>
+</li>
+<li>
+<p>SQL题:给定uid,login_time,logout_time 求每分钟最大的在线人数.两个time时间都是标准时间datetime(2019-01-01 12:00:00)这种.说实话这个挺难的,我的直觉想法就是用UDF/transform来解决.面试官肯定了解法,但是 不是想要听到的答案.他说出这道题的目的就不是让你能用SQL写出来的.</p>
+</li>
+<li>
+<p>mysql索引知道吗?索引都有哪些数据类型?为啥不用hashmap?</p>
+</li>
+<li>
+<p>窗口函数会吗?是一对一,还是一对多? 怎么用?</p>
+</li>
+<li>
+<p>SQL题:行转列,列转行</p>
+</li>
+<li>
+<p>SQL题:live_id,uid,in_time,out_time求每个直播间每分钟最大的在线人数.in_time和out_time是datetime类型.跟<a href="">美团</a>一面SQL题一样,就是加个维度.15分钟内写完.</p>
+</li>
+<li>
+<p>SQL题:uid,login_date. 找出每个用户连续登陆的最大天数.如果我还要知道哪几天登陆了,怎么写?</p>
+</li>
+<li>
+<p>MySQL数据库常用引擎有哪些？InnoDB有什么特性？比如两次写？InnoDB和MyISAM分别的适用场景？</p>
+</li>
+<li>
+<p>索引的数据结构？B树和B+树的区别？Hash索引了解么？它有什么优缺点？</p>
+</li>
+<li>
+<p>索引的分类了解么？单一索引和联合索引？最左匹配原则？如果A、B上有俩单一索引，用where A= and B= 会走哪个？</p>
+</li>
+<li>
+<p>事务的特性有哪些？事务隔离级别有哪些，介绍一下？</p>
+</li>
+<li>
+<p>数据库锁的分类？如何手动给select语句加共享锁？加排斥锁呢？</p>
+</li>
+<li>
+<p>三大范式解释下；</p>
+</li>
+<li>
+<p>表与表之间有什么约束；</p>
+</li>
+<li>
+<p>怎样提升数据库性能； 我答了避免全局检索，那么如何避免；</p>
+</li>
+<li>
+<p>什么时候用commit，对数据库有没有影响；</p>
+</li>
+<li>
+<p>写sql查平均分大于80的前三名</p>
+</li>
+<li>
+<p>不用distinct去重 select count(id) from (select id from bigtable group by id) a</p>
+</li>
+<li>
+<p>数据库范式 和 数仓模型</p>
+</li>
+<li>
+<p>数据库索引 为什么用b+树</p>
+</li>
+<li>
+<p>数据库事务</p>
+</li>
+<li>
+<p>drop delete truncate区别</p>
+</li>
+<li>
+<p>数据库范式</p>
+</li>
+<li>
+<p>行转列 列转行</p>
+</li>
+<li>
+<p>开窗函数</p>
+</li>
+<li>
+<p>mysql的事务原理</p>
+</li>
+<li>
+<p>es倒排索引以及ES的分片，节点之间的关系</p>
+</li>
+<li>
+<p>说说MySQL的索引</p>
+</li>
+<li>
+<p>怎么命中索引</p>
+</li>
+<li>
+<p>索引失效问题</p>
+</li>
+<li>
+<p>左连接和左外连接区别？</p>
+</li>
+<li>
+<p>MySQL底层存储</p>
+</li>
+<li>
+<p>MySQL的MVCC怎么实现的</p>
+</li>
+<li>
+<p>es为什么比MySQL快</p>
+</li>
+<li>
+<p>数据倾斜这么优化的？</p>
+</li>
+<li>
+<p>数仓为什么要分层，你们分了哪些层，每一层的作用</p>
+</li>
+<li>
+<p>Group by 和 Order by 执行过程</p>
+</li>
+<li>
+<p>Group by 和 Distinct的区别</p>
+</li>
+<li>
+<p>写SQL（用rank 函数,做的）</p>
+</li>
+<li>
+<p>写SQL（连表，然后group by做）</p>
+</li>
+<li>
+<p>写下面的执行顺序
+select，from，where ，group by ，having，order by ，limit</p>
+</li>
+<li>
+<p>SQL，学生选课，找出至少选了语文，数学，英语这三门课的学生，上亿时，怎么做（比如选了语文-数学-化学）</p>
+</li>
+<li>
+<p>现在有大学考试成绩如下表A：id，subject，score，找出每一科都是这一科前30%的学生的id</p>
+</li>
+<li>
+<p>写SQL，我记得一个是用rank求排名的，一个是用explode函数，把数组炸裂开，让一行变多行的，然后连表</p>
+</li>
+<li>
+<p>数据库的原理，关系型数据库理论知识</p>
+</li>
+<li>
+<p>员工表，求截止当天连续打卡天数</p>
+</li>
+<li>
+<p>数据库三范式，drop，delete，truncate区别说一下</p>
+</li>
+<li>
+<p>SQL优化</p>
+</li>
+<li>
+<p>mysql底层原理及索引优化</p>
+</li>
+<li>
+<p>mysql索引可用哪些数据结构实现？各有哪些应用场景？</p>
+</li>
+<li>
+<p>出了一个sql索引优化题基于联合索引的</p>
+</li>
+<li>
+<p>了解mysql吗，mysql有哪些索引，知道覆盖索引吗（好像是这个，反正我答的不知道）</p>
+</li>
+<li>
+<p>mysql的事务隔离级别是什么</p>
+</li>
+<li>
+<p>接着让写一个sql查询 。日志表 log 分为 id ame time 。查询某用户访问过几个不同的网址（name表示网址名） 。 写完后 面试官让优化成同一用户在不同时间点访问同一网址 记为两次（这个没写出来&hellip;.我太菜了orz）</p>
+</li>
+<li>
+<p>写一个建表的sql语句</p>
+</li>
+<li>
+<p>第三题sql，使用spark来完成下列操作，我使用的是DF的API，用了窗口函数。 年级,班级 姓名 分数。年级下的班级的前三名</p>
+</li>
+<li>
+<p>写两个Mysql
+① 给出两个表，计算left join的结果
+② 一个广告的表，包含广告的id,广告的开始时间，广告的结束时间，给出一个时间（比如2020-03-02 —— 2020-04-02）。所有与这个日期有交集的广告id.</p>
+</li>
+<li>
+<p>学过Mysql，讲一下索引的数据结构吧（自己说了下聚集索引和非聚集索引）</p>
+</li>
+<li>
+<p>还有 sql 各种join之间的不同</p>
+</li>
+<li>
+<p>MySQL引擎，MyISAM和InnodB的区别是什么？</p>
+</li>
+<li>
+<p>数据库索引底层结构</p>
+</li>
+<li>
+<p>mysql索引实现原理  B+树和B树的区别</p>
+</li>
+<li>
+<p>sql题：字段是  用户id  日期  PV</p>
+<p>求每个用户PV量最大的那天的日期和累计到那天的所有PV量</p>
+<p>要求输出字段格式为：用户id  最大PV那天的日期  累计到那天的PV量</p>
+</li>
+<li>
+<p>说一下事务的隔离级别（表示我只会事务的特点  隔离级别。。。。。听都没听说过）</p>
+</li>
+<li>
+<p>mysql事务的隔离级别？</p>
+</li>
+<li>
+<p>mysql的引擎都有什么？ 各自的特点？</p>
+</li>
+<li>
+<p>数据库索引结构</p>
+</li>
+<li>
+<p>索引用法，优化方法</p>
+</li>
+<li>
+<p>数据库引擎结构、区别</p>
+</li>
+<li>
+<p>索引底层结构，插入数据索引结构的变化等</p>
+</li>
+<li>
+<p>索引的优化方法，以及为什么（就是优化底层是怎么实现</p>
+</li>
+<li>
+<p>索引使用（优化器如何界定）</p>
+</li>
+<li>
+<p>数据库几种日志，以及如何刷新，区别</p>
+</li>
+<li>
+<p>数据库三个线程用处</p>
+</li>
+<li>
+<p>数据库事务详细（不是指ACID几个性质，就是事务到底是基于什么实现的）</p>
+</li>
+<li>
+<p>数据库各类索引底层一遍</p>
+</li>
+<li>
+<p>SQL会写吗，写一个统计每个学科的前三名</p>
+</li>
+<li>
+<p>给了两个表三个SQL，把每个结果写出来，其实主要是join，不同join的结果</p>
+</li>
+<li>
+<p>Sql题：</p>
+<p>表内容（年级 学科 姓名 成绩）</p>
+<p>\1.   每个学生总成绩</p>
+<p>\2.   利用spark程序实现上面问题</p>
+<p>\3.   求出三年级总成绩位于前三名的学生（sql）</p>
+</li>
+<li>
+<p>说看你了解mysql, 我就说了索引的实现方式，结果问了如何查看sql的执行情况，优化sql判断的依据是什么？（我只知道explain）</p>
+</li>
+<li>
+<p>怎么知道销售最好的手机款式</p>
+</li>
+<li>
+<p>【SQL题】有一张网页访问日志表，记录了user_id，session_id，page_id，timestamp</p>
+<p>用户在每点击一个连接跳转，就会记录一个时间戳，并且page_id<a href="">排序</a>后与时间戳的<a href="">排序</a>一致，现要求每个用户的每个页面所停留的时间。
+比如：
+1 1 1 10:00
+1 1 3 12:00
+面试官看了后说差不多是这样，但要考虑一个边界的问题，最后一个page_id之类的 <strong>（请问这个怎么处理？</strong></p>
+</li>
+<li>
+<p>有两张表：文章分类表artical_cate（aid, cate）一个文章可能有多种类型; 用户阅读表user_read(uid, aid)，一个用户可能阅读多篇文章。</p>
+</li>
+<li>
+<p>数据库的事务？事务的特性？分别指的是什么含义？</p>
+</li>
+<li>
+<p>数据库的索引，比如MySQL的索引有了解么？B树和B+树有什么区别？聚簇索引和稀疏索引的区别？</p>
+</li>
+<li>
+<p>MySQL的两个引擎InnoDB和MyISAM的区别是什么？</p>
+</li>
+<li>
+<p>“来道sql”常规带子查询求count，md不知道看的哪的博客，说where比have效率高，然后我就用了where，问了问面试老哥，老哥说have肯定推荐用啊，我就赶紧have</p>
+</li>
+<li>
+<p>一个表中有id和age，age的值有重复，求age第N大的值；</p>
+</li>
+<li>
+<p>sql查询，找出互相关注的用户对数</p>
+</li>
+<li>
+<p>关系型数据库用过吗？索引的作用？索引的实现</p>
+</li>
+<li>
+<p>数据库索引为什么用B+树而不用AVL、红黑树</p>
+</li>
+<li>
+<p>聊聊数据库吧，sql优化，讲explain等，最左匹配原则什么的</p>
+</li>
+<li>
+<p>mysql的索引，如何实现的，何时失效，聚簇索引和非聚簇索引，B+树</p>
+</li>
+<li>
+<p>sql,选出每个班级每个科目最高成绩的那个学生</p>
+</li>
+<li>
+<p>SQL的各种join</p>
+</li>
+<li>
+<p>索引什么时候使用适合？</p>
+</li>
+<li>
+<p>性别应该使用索引不？姓名呢？为什么？</p>
+</li>
+<li>
+<p>概况索引使用场景？</p>
+</li>
+<li>
+<p>行锁表锁相关？</p>
+</li>
+<li>
+<p>组合索引是什么？说说使用场景？</p>
+</li>
+<li>
+<p>表数据量很大的时候，如何优化？</p>
+</li>
+<li>
+<p>分表相关概念？</p>
+</li>
+<li>
+<p>MySQL的引擎介绍</p>
+</li>
+<li>
+<p>mysql索引，哪些索引？实现原理？哪些存储引擎支持B树索引，哪些支持hash索引？</p>
+</li>
+<li>
+<p>为啥mysql索引要用B+树而MongoDB用B树？</p>
+</li>
+<li>
+<p>Mysql查询优化？</p>
+</li>
+<li>
+<p>主键和唯一索引的区别</p>
+</li>
+<li>
+<p>事务的隔离机制，mysql默认是哪一级</p>
+</li>
+<li>
+<p>MyISAM和InnoDB存储引擎的区别</p>
+</li>
+<li>
+<p>mysql查询优化，慢查询怎么去定位？</p>
+</li>
+<li>
+<p>mysql中的各种锁，乐观锁，悲观锁（排他锁，共享锁）；行锁，表锁是怎么实现的？</p>
+</li>
+<li>
+<p>sql场景两道题，第一道，一张员工薪资表，找每个员工最近三次薪资的平均值，第二题，sql实现一张表的行列转换</p>
+</li>
+<li>
+<p>mysql索引机制，数据结构等</p>
+</li>
+<li>
+<p>mysql批量查询下，有什么优化？答曰B+ 树的角度，子节点形成一个链表</p>
+</li>
+</ol>
+<h3 id="hive">Hive</h3>
+<ol>
+<li>
+<p>hive了解过么</p>
+</li>
+<li>
+<p>hive用过吗？hive的组件及各个组件的作用。优化器有哪些优化的措施。</p>
+</li>
+<li>
+<p>hive和hdfs交互流程。操作数据时和hdfs怎么操作数据的。</p>
+</li>
+<li>
+<p>hivesql写过吗，数据倾斜遇到过吗，怎么处理的？</p>
+</li>
+<li>
+<p>HIVE怎么把SQL转成MR了解吗？能想想吗？语法解析、XX校验、BLOG？</p>
+</li>
+<li>
+<p>窗口函数有哪些？rownumber排序取第一个</p>
+</li>
+<li>
+<p>UDF、UDTF、UDAF区别？</p>
+</li>
+<li>
+<p>UDF，UDTF，UDAF解释一下，explode()怎么用</p>
+</li>
+<li>
+<p>Hive两个大表join的过程，</p>
+</li>
+<li>
+<p>表级别的优化（表的设计？），Hive的优化，分区，mapjoin</p>
+</li>
+<li>
+<p>hive的计算引擎（mr，tez，spark），tez引擎的优点，自定义UDF，UDTF</p>
+</li>
+<li>
+<p>看你读过kafka源码，讲讲kafka broker的源码里面你最熟悉的类，以及这个类的主要方法，用的什么设计模式</p>
+</li>
+<li>
+<p>怎么解决hive数据倾斜问题</p>
+</li>
+<li>
+<p>hive数据倾斜产生的原因，怎么解决</p>
+</li>
+<li>
+<p>hive sql怎么转换成底层的MapReduce程序，以及shuffle的过程</p>
+</li>
+<li>
+<p>hive的map/reduce数怎么确定?</p>
+</li>
+<li>
+<p>hive数据倾斜怎么办?</p>
+</li>
+<li>
+<p>Hive Map数和Reduce数如何确定?</p>
+</li>
+<li>
+<p>Hive如何调优?都有哪些参数?</p>
+</li>
+<li>
+<p>Hive如何解决小文件问题?Map阶段?Reduce阶段?</p>
+</li>
+<li>
+<p>Hive数据倾斜了解多少自己说</p>
+</li>
+<li>
+<p>你遇到真实的hive倾斜问题 不要背答案</p>
+</li>
+<li>
+<p>Hive用的多吗？来个sql</p>
+</li>
+<li>
+<p>hive和Hbase的区别</p>
+</li>
+<li>
+<p>hiveSQL解析中的SQL解析为抽象语法树AST具体怎么做的，看过<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%BA%90%E7%A0%81">源码</a>吗？将一些具体过程</p>
+</li>
+<li>
+<p>Hive和HBase了解多少说多少。</p>
+</li>
+<li>
+<p>Hive的执行引擎mr，Tez，Spark，mr和Tez问题，适合什么场景，Tez底层，数据倾斜</p>
+</li>
+<li>
+<p>数据倾斜解决</p>
+</li>
+<li>
+<p>Hive的优化</p>
+</li>
+<li>
+<p>大表关联出现数据倾斜，怎么做，大表和小表，mapjoin的方式，原理</p>
+</li>
+<li>
+<p>hive的优化策略，SQL书写的优化，hive平台的优化</p>
+</li>
+<li>
+<p>数据倾斜有处理过没有</p>
+</li>
+<li>
+<p>数据倾斜发生的原因</p>
+</li>
+<li>
+<p>HiveSQL转换为MR过程</p>
+</li>
+<li>
+<p>说一下shuffle过程</p>
+</li>
+<li>
+<p>分区是根据啥分区的，自定义分区</p>
+</li>
+<li>
+<p>数据倾斜产生，做join的倾斜问题，map join 的原理，调整map数和reduce数，怎么调</p>
+</li>
+<li>
+<p>数仓整个过程，项目相关</p>
+</li>
+<li>
+<p>Hive执行流程（SQL转MR过程）</p>
+</li>
+<li>
+<p>hive优化相关，SQL书写优化，连表优化等，hive的调参数优化等</p>
+</li>
+<li>
+<p>Hive分区，分桶，内部表和外部表</p>
+</li>
+<li>
+<p>hive的优点，为什么要使用hive</p>
+</li>
+<li>
+<p>问对Hive的了解？ 自己提了下数据倾斜</p>
+</li>
+<li>
+<p>Hive会用吧。讲一下内表和外表的区别</p>
+</li>
+<li>
+<p>MySQL与Hive索引（我记得Hive没索引）</p>
+</li>
+<li>
+<p>hive的UDF怎么实现？</p>
+</li>
+<li>
+<p>写两个hivesql
+1、table a
+class sujectid  studentid  score
+每个班每个学科前三名学生id</p>
+<p>2、table b
+dt   channel  money
+收入表  记录每天每个渠道收入的总值
+baidu渠道累计收入超过10w的日期是在哪天</p>
+</li>
+<li>
+<p>Hive的内部表和外部表的区别？</p>
+</li>
+<li>
+<p>Hive如何优化 join操作？说了 spark优化 join</p>
+</li>
+<li>
+<p>Hivesql怎么转化为MapReduce任务</p>
+</li>
+<li>
+<p>HiveSQL底层是怎么实现的？比如两张表Join的时候会有哪些操作？需要shuffle这一步吗？</p>
+</li>
+<li>
+<p>Hive 中的 Distribute by</p>
+</li>
+<li>
+<p>Hive里面的join分哪些类型呢？Hive的join的优化一般会怎么优化？除了mapjoin还知道别的么？</p>
+</li>
+<li>
+<p>Hive里面count的用法？count(*)和count(列名的区别)。一般算数量怎么算。</p>
+</li>
+<li>
+<p>Hive里面union和union all的区别？</p>
+</li>
+<li>
+<p>join操作，left join、right join、inner join、outer join的异同？</p>
+</li>
+<li>
+<p>where、having、group by、order by出现在同一个语句中的执行顺序是什么？having和where除了执行顺序还有什么的区别？where中能否用聚合的数，例如count(*)作为条件？</p>
+</li>
+<li>
+<p>hive语句的运行机制，例如包含上面的where、having、group by、order by，整个的执行过程？</p>
+</li>
+<li>
+<p>spark与hive的区别</p>
+</li>
+<li>
+<p>怎么实现spark高可用性</p>
+</li>
+<li>
+<p>说一说spark streaming</p>
+</li>
+<li>
+<p>Hive和Spark的fromjson区别</p>
+</li>
+<li>
+<p>hive能读取txt文件吗？以及读取哪些类型文件，若不能该怎么让其能读？</p>
+</li>
+<li>
+<p>数据倾斜怎么处理？</p>
+</li>
+<li>
+<p>用过Hive是吧？写HiveQL：两张表：一张歌曲表，一张专辑表，找出每张专辑的Top100。（这边花了太多时间，写出来后有2处不对，group by和select的字段不一致，join语法不对(╯﹏╰)）</p>
+</li>
+<li>
+<p>Hive的特点都有什么</p>
+</li>
+</ol>
+<h3 id="hbase">hbase</h3>
+<ol>
+<li>
+<p>hbase 场景  ： 结构化和半结构化的数据  、记录稀疏  、  多版本数据</p>
+</li>
+<li>
+<p>HBase二级索引方案</p>
+</li>
+<li>
+<p>hbase 热点问题怎么解决</p>
+</li>
+<li>
+<p>Hbase热点问题、数据倾斜和rowkey的散列设计</p>
+</li>
+<li>
+<p>HBase rowkey的设计原则(三大原则)</p>
+</li>
+<li>
+<p>hbase用过吗</p>
+</li>
+<li>
+<p>HBase怎么处理热点问题</p>
+</li>
+<li>
+<p>看我写了Hbase，开始问我Hbase 。Hbase 架构、我提到LSM树就让我介绍LSM、我提到跳表就问我跳表，问我是否了解 HFile，Hfile 文件格式，我说了一点。</p>
+</li>
+<li>
+<p>HBase的架构。region主要是用来管理最终table的一个存储。Store里面又有什么呢？</p>
+</li>
+<li>
+<p>.RowKey的设计原则？为什么不能超过一定的长度？为什么要唯一？rowkey太长会影响Hfile的存储是吧？Hfile里面会有memstore，是占内存里的，太长的话放不了太多数据，减慢检索效率。hbase是按字典序存储的，所以要利用这个排序的特点。</p>
+</li>
+<li>
+<p>HBase和ES的场景等等问题</p>
+</li>
+<li>
+<p>HDFS，shuffle，yarn资源调度</p>
+</li>
+<li>
+<p>Kylin的特点，存储HBase的rowkey的优化，</p>
+</li>
+<li>
+<p>hbase中row key该怎么设计</p>
+</li>
+<li>
+<p>了解hbase吗，hbase为什么查询速度快</p>
+</li>
+<li>
+<p>HBase的架构？</p>
+</li>
+<li>
+<p>Hbase底层原理</p>
+</li>
+<li>
+<p>hive和Hbase的区别</p>
+</li>
+<li>
+<p>Hbase和Hive讲讲？Hbase底层实现原理？</p>
+</li>
+<li>
+<p>Hive和HBase了解多少说多少。</p>
+</li>
+<li>
+<p>Hbase的rowkey设计</p>
+</li>
+<li>
+<p>HBase，写数据流程</p>
+</li>
+<li>
+<p>hbase的存储机制和扫描机制  如何调优？</p>
+</li>
+<li>
+<p>如何用sql来操作hbase？</p>
+</li>
+<li>
+<p>我看你写了会hbase 说一下他的优点  他跟mysql有什么区别</p>
+</li>
+<li>
+<p>HBase底层，rowkey怎么设计的，为什么这么设计</p>
+</li>
+<li>
+<p>HBase特点，应用场景</p>
+</li>
+<li>
+<p>hbase 官网列族推荐是几个？</p>
+</li>
+<li>
+<p>Hbase主键设计、hbase为啥比mysql快、为什么项目选用hbase</p>
+</li>
+<li>
+<p>Hbase读写流程，数据compact流程</p>
+</li>
+<li>
+<p>hbase的ha，zookeeper在其中的作用</p>
+</li>
+<li>
+<p>HBase region切分后数据是怎么分的</p>
+</li>
+<li>
+<p>作者：蓝荆凌
+链接：https://www.nowcoder.com/discuss/255702?type=post&amp;order=time&amp;pos=&amp;page=1&amp;channel=-1&amp;source_id=search_post_nctrack
+来源：牛客网</p>
+<p>HBase里面的RowKey的设计。</p>
+<p>①有哪些要遵循的原则？不会，扯了一下<a href="">项目</a>里的RowKey设计。能不能写几个例子看一下？9位”id” + “timestamp”。</p>
+<p>②若现在遇到id前缀基本一样的话在HBase里存储的话，会引发什么问题，例如“4009192~4010000”？</p>
+<p>③如果让你去设计一下均匀分布，或者说优化一下这个rowkey的设计，你有什么好的方法么？扯了一下设计新key值使Hash尽量均匀。面试官说Hash有32位，原本id是9位，问会不会增加rowkey占用的空间大小。如果限制一下空间大小也要和之前尽可能的接近，还有没有其他的设计？</p>
+<p>④如果从某一天开始，id增加了一位变成了10位，此时再用之前的规则是否会有问题，若继续增加位数呢？</p>
+</li>
+<li>
+<p>HBase用过是吧？画一下它的架构图</p>
+</li>
+<li>
+<p>知道HBase的LSM结构吗？乱说一通后，那我这边问完了，出去等通知吧！</p>
+</li>
+<li>
+<p>Hbase存储原理和过程</p>
+</li>
+<li>
+<p>hbase和传统数据库的区别</p>
+</li>
+<li>
+<p>hbase读数据过程</p>
+</li>
+<li>
+<p>hbase master和regionserver的交互</p>
+</li>
+<li>
+<p>hbase的ha，zookeeper在其中的作用，master宕机的时候，哪些能正常工作，读写数据？region分裂？</p>
+</li>
+<li>
+<p>数据倾斜</p>
+</li>
+<li>
+<p>Hbase写入，查找流程，block***这些等</p>
+</li>
+</ol>
+<h3 id="hdfs">HDFS</h3>
+<ol>
+<li>HDFS的读写流程大致说一下</li>
+<li>hdfs读写、HA、副本机制（数据块损坏）</li>
+<li>Namenode和DataNode的工作机制</li>
+<li>hdfs块大小，怎么划分，太大太小有什么影响。</li>
+<li>hdfs数据往里面写的流程；如果DataNode失败怎么办；如果一直失败呢</li>
+<li>为什么数据存入hdfs还要再倒入NoSql，为什么hdfs对olap支持不友好。</li>
+<li>hdfs的读写路径。</li>
+<li>文件读取的时候怎么确定当前的block在哪个datanode上，读数据使用什么算法确定最优的那个datanode。、</li>
+<li>文件写入过程中namenode发现文件以及存在或者创建者没有权限操作，会返回什么错误。</li>
+<li>写文件流程</li>
+<li>HDFS怎么读文件和写文件的？</li>
+<li>HDFS读写原理（怎么读取这个文件系统，API实现可以看一下，包括建立连接这些），分布式文件怎么存储，切片</li>
+<li>HDFS的put和get流程</li>
+<li>机架感应技术是什么（当时我只知道这个词，只知道hdfs的副本同步机制用到了，具体是什么还真不知道。。。）</li>
+<li>hdfs文件上传流程，hdfs的容错机制</li>
+<li>HDFS的数据写入和读取过程是怎么样的？DataNode和Client会通信吗？如果一个block传到一半挂了会怎么样？如果某个DataNode挂了会怎么样？</li>
+<li>HDFS和mysql区别，各自优缺点；</li>
+<li>linux操作命令 hdfs上传</li>
+<li>hdfs读写流程你熟悉吧？我说熟悉，然后讲了一下，面试官说不是问这个，hdfs写入的时候client挑选DataNode具体的距离是怎么判断的？底层怎么实现的？有个负载均衡<a href="">算法</a>，底层怎么实现？你要是没看过<a href="">源码</a>就不要说了，我们时间有限。（当时内心那个崩溃）</li>
+<li>HDFS组成，几个进程，解释一下，HDFS有好几种存储文件类型，底层文件结构，<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E5%AE%A2%E6%88%B7%E7%AB%AF">客户端</a>和datanode通信协议</li>
+<li>HDFS，MR，Hive</li>
+<li>HDFS架构，角色，干啥的，请求上传数据的流程</li>
+<li>namenode的瓶颈，当文件非常多，存储瓶颈是？</li>
+<li>HDFS相关，HA高可用</li>
+<li>HDFS 的高可用</li>
+<li>讲了下HDFS原理、MapReduce的过程，想讲HDFS检查点机制没让讲。</li>
+<li>往hdfs里put文件时  hdfs都做了什么？</li>
+<li>hdfs会吧  我现在要往hdfs上put一个文件  你说说在hdfs上都干了什么</li>
+<li>hdfs读写原理</li>
+<li>HDFS数据如何保证不会丢失？</li>
+<li>HDFS数据本地性等。。。</li>
+<li>导入大文件到HDFS如何自定义分片</li>
+<li>hbase 与mysql 区别</li>
+<li>Hdfs读写流程，数据checkpoint流程</li>
+<li>hdfs的容错机制</li>
+<li>HDFS若要将本地文件拷贝到远程的HDFS上用什么命令？答-put。还有没有其他的方法？从远程往本地拉文件用什么？若有一个文件夹d1，d1下有很多文件，将d1下所有文件聚合起来拉到本地的一个文件中。</li>
+<li>实现hdfs的高可用性</li>
+<li>HDFS的写入机制（临急抱佛脚看了）</li>
+<li>hdfs有哪些数据结构</li>
+<li>client和HDFS文件的读写过程，延迟太高，怎么解决。我当时脑子一蒙，直接说了设计的就是高吞吐量的文件系统。、</li>
+<li>hdfs大量小文件怎么处理</li>
+<li>hdfs存储结构</li>
+<li>HDFS的写入过程</li>
+<li>hdfs读写过程</li>
+<li>hdfs读取流程，小文件处理</li>
+<li>hdfs写入流程，怎么保证不丢失消息，答曰ack机制</li>
+<li>hdfs的secondaryNamenode作用，fsimage和editlog，为什么这么设计？答曰顺序append和小文件加载更方便等</li>
+<li>hdfs高可用方法，联邦机制等等。</li>
+</ol>
+<h3 id="计算机网络">计算机网络</h3>
+<ol>
+<li>http、https、tcp网络协议</li>
+<li>五层网络结构</li>
+<li>tcp/udp区别</li>
+<li>切换</li>
+<li>tcp三次握手</li>
+<li>了解https吗？加密算法？怎么实现？我这方面不太熟</li>
+<li>osi七层模型，三次握手和四次挥手，为什么两次握手不行</li>
+<li>OSI七层，五层，每一层的干什么的，TCP/UDP是哪一层  HTTP是哪一层  IP是哪一层</li>
+<li>计算机网络里面TCP与UDP的区别？TCP连接要几次握手几次挥手？为什么呢？</li>
+<li>三次握手的过程（大家说这个过程的时候记得说清楚双方的状态！）</li>
+<li>TCP三次握手</li>
+<li>tcp的4次挥手过程？</li>
+<li><strong>tcp协议的重传机制</strong></li>
+<li>网站输入url的过程</li>
+<li>dns协议是否使用udp</li>
+<li>三次握手和四次挥手</li>
+<li>为什么建立连接时三次握手，断开连接时四次挥手</li>
+<li>tcp有什么别的保证可靠性的机制嘛</li>
+<li>tcp出现包丢失要怎么处理呢？</li>
+<li>HTTPS的工作流程</li>
+<li>当前面试流程中（牛客网）涉及到了哪些协议</li>
+<li>三次握手</li>
+<li>TCP/IP模型</li>
+<li>TCP四次挥手过程中，time_wait字段的作用？</li>
+<li>TCP和UDP的区别是什么？</li>
+<li>HTTP和HTTPS有什么区别？</li>
+<li>网络的七层协议；</li>
+<li>TCP和UDP在哪一层；</li>
+<li>TCP和UDP的区别；</li>
+<li>HTTP和TCP</li>
+</ol>
+<h3 id="linux">Linux</h3>
+<ol>
+<li>Linux常用的传输指令，随便介绍一个就行(就说了个scp指令)</li>
+<li>Linux三剑客知道吗( awk,sed,grep )</li>
+<li>用过哪些linux命令？查看文件夹大小，查看进程号</li>
+<li>0拷贝技术</li>
+<li>linux查看某文件的大小，vim中怎么替换内容</li>
+<li>Linux进程通信和线程通信</li>
+<li>Linux删除文件夹命令？</li>
+<li>linux操作命令 hdfs上传</li>
+<li>linux查文件指令</li>
+<li>Linux一些命令：怎么看端口，怎么看内存的使用情况，怎么查找一个文件，还有awk的一些用法</li>
+<li>你说你熟悉Linux，那我问你在终端上输入 &ldquo;ls&rdquo; 在Linux中依次经历了什么？</li>
+<li>看你会使用linux，说一说怎么查看内存，怎么查看磁盘空间，怎么查看进程</li>
+<li>Linux知道的命令有哪些，介绍一下用途</li>
+<li>Linux平常用的指令？说了 ls 、 ll 、 df 、 nohup &amp; 、ps 、 kill 等等</li>
+<li>熟悉Linux吗  说一下常用的指令、</li>
+<li>怎样查看磁盘剩余空间？</li>
+<li>linux常用的命令，我们要看操作系统中有哪些进程，用什么命令？如果看端口被哪些程序占用了，用什么看？</li>
+<li>常用的vim命令，如何跳到第一行？怎么跳到最后一行？如何删除一行？</li>
+<li>sed和awk用过么，用这两个实现把一个文件中的空行进行删除。</li>
+<li>Linux的进程和线程区别；</li>
+<li>Linux/Unix命令：查找最近10分钟修改过的文件</li>
+<li>linux 中top命令的用处，返回值中每个参数的意义</li>
+<li>linux基本命令：查看线程，文件，CPU等等</li>
+</ol>
+<h3 id="java">Java</h3>
+<ol>
+<li>
+<p>java基础</p>
+</li>
+<li>
+<p>哪些 gcroots 可以回收</p>
+</li>
+<li>
+<p>虚拟机栈 本地方法栈引用的对象</p>
+</li>
+<li>
+<p>方法区中静态属性、常量引用的对象</p>
+</li>
+<li>
+<p>BIO NIO</p>
+</li>
+<li>
+<p>为什么要分 S0 S1 区</p>
+</li>
+<li>
+<p>重写 重载</p>
+</li>
+<li>
+<p>抽象类 接口区别（答案见https://www.nowcoder.com/discuss/531999?type=post&amp;order=time&amp;pos=&amp;page=1&amp;channel=-1&amp;source_id=search_post_nctrack）</p>
+</li>
+<li>
+<p>static</p>
+</li>
+<li>
+<p>阻塞有哪些方法</p>
+</li>
+<li>
+<p>java的jdk和jre的区别</p>
+</li>
+<li>
+<p>==和equals的区别</p>
+</li>
+<li>
+<p>基本数据类型和占用的内存</p>
+</li>
+<li>
+<p>final的作用</p>
+</li>
+<li>
+<p>类和抽象类的区别</p>
+</li>
+<li>
+<p>抽象类和接口的区别</p>
+</li>
+<li>
+<p>字符串的其他类。具体区别</p>
+</li>
+<li>
+<p>volatile是不是线程安全的</p>
+</li>
+<li>
+<p>thread.start和thread.run有什么区别</p>
+</li>
+<li>
+<p>sleep和wait的区别</p>
+</li>
+<li>
+<p>notify和notifyall的区别</p>
+</li>
+<li>
+<p>为什么要设置wait和notify是object的方法</p>
+</li>
+<li>
+<p>sleep会释放资源吗</p>
+</li>
+<li>
+<p>封装，多态，继承一句话解释</p>
+</li>
+<li>
+<p>说一下代理模式，代理模式应用场景，用没用过动态代理</p>
+</li>
+<li>
+<p>线程安全是怎么实现的</p>
+</li>
+<li>
+<p>加锁是怎么实现的；synchronized和lock的特点及优缺点</p>
+</li>
+<li>
+<p>锁升级机制听说过吗</p>
+</li>
+<li>
+<p>多线程并发相关的内容，如ReentrantLock</p>
+</li>
+<li>
+<p>还有ReentrantLock的Condition、阻塞队列、让你自己来怎么实现一个阻塞队列（就是用Condition来写生产者与消费者就好了）</p>
+</li>
+<li>
+<p>你对JAVA的面向对象的理解？</p>
+</li>
+<li>
+<p>接口不属于面向对象吗？java中可不可以多继承？</p>
+</li>
+<li>
+<p>多态的理解？多态有什么好处呢？</p>
+</li>
+<li>
+<p>方法的覆盖和重载有什么区别？</p>
+</li>
+<li>
+<p>构造函数可以被重载吗？</p>
+</li>
+<li>
+<p>对象生成的生命周期？</p>
+</li>
+<li>
+<p>简述scala和java的主要区别，使用过程中。scala的版本。</p>
+</li>
+<li>
+<p>接口和特质的区别</p>
+</li>
+<li>
+<p>遇到过jar包冲突的情况吗？</p>
+</li>
+<li>
+<p>类的四个特性，解释了下，后面问挺细的</p>
+</li>
+<li>
+<p>高并发中如何解决线程安全问题，除过java中提到的同步代码块，同步方法，锁机制还有没有其他办法，引申到操作系统中的信号量。</p>
+</li>
+<li>
+<p>time-wait 作用？</p>
+</li>
+<li>
+<p>线程池核心参数（corePoolSize，maximumPoolSize，workQueue）线程池的饱和策略</p>
+</li>
+<li>
+<p>JDK1.8的特性</p>
+</li>
+<li>
+<p>volatile解释一下，ThreadLocal</p>
+</li>
+<li>
+<p>讲一下Java中的集合，从ArrayList一直讲到ConcurrentHashMap，其中包括底层数据结构，扩容，并发问题。lz也最后谈到了红黑树以及复杂度与并发中CAS算法。</p>
+</li>
+<li>
+<p>==和equals的区别，如果重写了equals()不重写hashCode()会发生什么</p>
+</li>
+<li>
+<p>volatile怎么保证可见性</p>
+</li>
+<li>
+<p>synchronized和lock的区别</p>
+</li>
+<li>
+<p>synchronized的底层实现</p>
+</li>
+<li>
+<p>sleep和wait的区别，sleep会不会释放锁，notify和notifyAll的区别</p>
+</li>
+<li>
+<p>了不了解线程的局部变量，讲讲线程池参数</p>
+</li>
+<li>
+<p>什么情况会发生死锁，死锁的处理方法</p>
+</li>
+<li>
+<p>Cookie和Session的区别，怎么防止Cookie欺骗</p>
+</li>
+<li>
+<p>从用户在浏览器输入域名，到浏览器显示出页面的过程</p>
+</li>
+<li>
+<p>JVM内存的划分</p>
+</li>
+<li>
+<p>垃圾收集算法</p>
+</li>
+<li>
+<p>java和python的区别，对面向对象的理解，和面向过程相比有什么区别</p>
+</li>
+<li>
+<p>java为什么不能多继承</p>
+</li>
+<li>
+<p>讲一下java抽象类和接口</p>
+</li>
+<li>
+<p>java中为什么要写非static方法</p>
+</li>
+<li>
+<p>volatile和synchronized的区别</p>
+</li>
+<li>
+<p>synchronized的底层实现</p>
+</li>
+<li>
+<p>线程等待时位于哪个区域，具体讲一下</p>
+</li>
+<li>
+<p>jvm类加载机制，类加载器，双亲委派模型</p>
+</li>
+<li>
+<p>java实现多线程的方式</p>
+</li>
+<li>
+<p>讲一下java IO</p>
+</li>
+<li>
+<p>进程和线程，Java实现多线程的方式，什么是线程安全，怎么保证多线程线程安全</p>
+</li>
+<li>
+<p>可重入锁的可重入性是什么意思，哪些是可重入锁</p>
+</li>
+<li>
+<p>为什么要用线程池，线程池的好处</p>
+</li>
+<li>
+<p>JVM垃圾处理方法，对象什么时候进入老年代，什么时候进行FullGC</p>
+</li>
+<li>
+<p>Java堆溢出问题怎么处理，内存泄漏和内存溢出的区别</p>
+</li>
+<li>
+<p>了解垃圾收集器吗，分别介绍介绍</p>
+</li>
+<li>
+<p>jvm调优做过没，-Xms和-Xmx分别指什么</p>
+</li>
+<li>
+<p>线程池的参数</p>
+</li>
+<li>
+<p>什么是内部类，什么是匿名内部类</p>
+</li>
+<li>
+<p>进程与线程的区别</p>
+</li>
+<li>
+<p>线程池的内部原理和多个线程池应用场景，线程池的缺陷</p>
+</li>
+<li>
+<p>说说你所了解的java中有哪些锁</p>
+</li>
+<li>
+<p>java读写锁有哪些，应用场景有哪些</p>
+</li>
+<li>
+<p>JVM内存如何分配?什么时候新生代GC,什么时候老年代GC?</p>
+</li>
+<li>
+<p>JAVA基础:访问属性关键字/接口继承/类继承/接口和类的区别/java8匿名函数/如何将函数付给变量?</p>
+</li>
+<li>
+<p>volatile关键字的作用？一般在哪里使用呢？可以举例说明么？</p>
+</li>
+<li>
+<p>Java里CAS了解吗？</p>
+</li>
+<li>
+<p>实现线程的方法有哪些？</p>
+</li>
+<li>
+<p>多个线程同时对某一个变量做++操作，如何保证计算结果是正确的呢？回答用并发包。那你了解并发包底层具体的实现原理么？</p>
+</li>
+<li>
+<p>Thread的sleep方法和Object的wait方法的区别是什么</p>
+</li>
+<li>
+<p>Java中的引用分为哪几种类型？有什么区别？在什么时候被GC？</p>
+</li>
+<li>
+<p>GC了解么？如何确定一个对象要被回收？可达性分析的GC Roots都有哪些，要从哪里开始？</p>
+</li>
+<li>
+<p>JVM运行时数据区域分区有哪些？栈溢出问题如何解决呢，具体的JVM调优参数？线程有自己独立的内存地址吗？栈是线程独立的吗？堆呢？</p>
+</li>
+<li>
+<p>堆的分区具体讲一下？新生代老年代。新生代的分区呢？Eden区和Sur<a href="">vivo</a>r区。那它们两个的大小比例关系是多少呢？两个分区的垃圾回收<a href="">算法</a>？那一个对象如何判断要放入哪个区呢？如何让一个对象不放入新生代直接进入老年代？</p>
+</li>
+<li>
+<p>垃圾收集器你了解哪些？ParNew会暂停用户线程么？了解CMS收集器么？具体讲一下？他是否会停止线程？</p>
+</li>
+<li>
+<p>JVM内存模型详细说一下？有多少说多少。</p>
+</li>
+<li>
+<p>Java多线程了解吗？写个生产者消费者模型吧（wtf？上来就搞这个）</p>
+</li>
+<li>
+<p>线程池熟悉是吧？写个线程池（？？还好我看过源码）</p>
+</li>
+<li>
+<p>Java线程同步啥的，不太记得了。</p>
+</li>
+<li>
+<p>==和equals</p>
+</li>
+<li>
+<p>JVM知道吗</p>
+</li>
+<li>
+<p>groupbykey和reducebykey的区别</p>
+</li>
+<li>
+<p>JVM全部 CMS G1 堆的内部分区</p>
+</li>
+<li>
+<p>Overload和Override</p>
+</li>
+<li>
+<p>java 字符串拼接怎么实现 StringBuffer和StringBulider区别</p>
+</li>
+<li>
+<p>java多线程实现几种方式 线程池的工作队列 用的什么</p>
+</li>
+<li>
+<p>jsoup是什么</p>
+</li>
+<li>
+<p>SpringMVC了解吗 AOP IOC</p>
+</li>
+<li>
+<p>Jquery选择器怎么用 $和#区别？</p>
+</li>
+<li>
+<p>重定向和转发的区别？</p>
+</li>
+<li>
+<p>你对面向对象的三大特性有什么认识？哪个最重要，为什么？</p>
+</li>
+<li>
+<p>虚拟内存详细讲讲</p>
+</li>
+<li>
+<p>进程调度算法</p>
+</li>
+<li>
+<p>Java基础，线程上下问切换，资源消耗问题</p>
+</li>
+<li>
+<p>垃圾回收算法</p>
+</li>
+<li>
+<p>java基础封装继承多态</p>
+</li>
+<li>
+<p>JVM，内存，堆内存，新生代和老年代。</p>
+</li>
+<li>
+<p>private protected public 三个</p>
+</li>
+<li>
+<p>多线程的yield()，具体讲一下,wait,notify</p>
+</li>
+<li>
+<p>JAVA，接触到设计模式，单例，钩子，装饰者模式，静态代理模式</p>
+</li>
+<li>
+<p>线程实现方式，Thread，Runnable,Callable和FutureTask，线程池，线程池方式</p>
+</li>
+<li>
+<p>锁相关，sync，lock类</p>
+</li>
+<li>
+<p>虚拟机的结构</p>
+</li>
+<li>
+<p>垃圾回收方法</p>
+</li>
+<li>
+<p>什么情况下，会手动调用System.gc()</p>
+</li>
+<li>
+<p>volatile说一下，和底层实现（这这这我不知道）</p>
+</li>
+<li>
+<p>垃圾回收算法，分代回收</p>
+</li>
+<li>
+<p>类加载机制</p>
+</li>
+<li>
+<p>IO多路复用怎么实现的？</p>
+</li>
+<li>
+<p>Java线程池的实现原理？线程池的优点</p>
+</li>
+<li>
+<p>time wait的作用</p>
+</li>
+<li>
+<p>IO多路复用的实现方式？实际用过IO多路复用吗</p>
+</li>
+<li>
+<p>synchronize底层原理</p>
+</li>
+<li>
+<p>了解哪些GC算法</p>
+</li>
+<li>
+<p>CAP原则</p>
+</li>
+<li>
+<p>了解哪些blockingQueue，分别有什么特点</p>
+</li>
+<li>
+<p>利用blockingQueue设计一个生产者消费者模式，如果是nonBlockingQueue应该怎么修改</p>
+</li>
+<li>
+<p>一个volatile修饰的变量x，100个线程执行x++，最终结果是多少。</p>
+</li>
+<li>
+<p>了解哪些java的锁</p>
+</li>
+<li>
+<p>并发编程如何实现</p>
+</li>
+<li>
+<p>生产者，消费者模式的具体实现是什么</p>
+</li>
+<li>
+<p>.JAVA中的并行框架</p>
+</li>
+<li>
+<p>java中的一些集合类</p>
+</li>
+<li>
+<p>java和c++的区别，各自的优缺点</p>
+</li>
+<li>
+<p>6.java是值传递还是引用传递</p>
+</li>
+<li>
+<p>讲一下深复制和浅复制</p>
+</li>
+<li>
+<p>线程和进程的区别</p>
+</li>
+<li>
+<p>线程的实现方式，说完再说一下Runnable和Callable有什么不同</p>
+</li>
+<li>
+<p>队列的poll和remove的区别</p>
+</li>
+<li>
+<p>说一下有哪几种垃圾收集器</p>
+</li>
+<li>
+<p>说一下年轻代的垃圾回收过程</p>
+</li>
+<li>
+<p>JVM的参数有哪些，说完让我说查看GC次数的命令</p>
+</li>
+<li>
+<p>介绍一下JVM内存分配</p>
+</li>
+<li>
+<p>介绍一下垃圾收集器</p>
+</li>
+<li>
+<p>介绍一下CMS收集器</p>
+</li>
+<li>
+<p>CMS收集器哪一个阶段会中断程序</p>
+</li>
+<li>
+<p>说一说多线程下进行 i++，有哪些方法保证安全</p>
+</li>
+<li>
+<p>java的堆内存分为哪些部分？</p>
+</li>
+<li>
+<p>了解 java多线程吗？join和sleep区别？</p>
+</li>
+<li>
+<p>java的基本数据类型有哪些，和对应的引用数据类型有什么区别？</p>
+</li>
+<li>
+<p>简述下java的多态？</p>
+</li>
+<li>
+<p>重写和重载的区别？</p>
+</li>
+<li>
+<p>java的接口和抽象类有什么区别？</p>
+</li>
+<li>
+<p>谈一下java的多线程？java使用线程的方法？</p>
+</li>
+<li>
+<p>谈一下java集合中的List和Set</p>
+</li>
+<li>
+<p>java的ArrayList和LinkedList区别？如果要使用其中一个插入很多个值，并且保持插入有序，你会使用哪一个</p>
+</li>
+<li>
+<p>说一下java的堆和栈的区别？</p>
+</li>
+<li>
+<p>基本数据类型存储在哪里？</p>
+</li>
+<li>
+<p>谈一下java的gc过程，什么情况下会引发gc？</p>
+</li>
+<li>
+<p>Java GC</p>
+</li>
+<li>
+<p>谈谈Java的Collection</p>
+</li>
+<li>
+<p>谈谈Java中的锁，后面扯到CAS</p>
+</li>
+<li>
+<p>Java如何创建线程</p>
+</li>
+<li>
+<p>线程池的参数都有什么</p>
+</li>
+<li>
+<p>线程的状态及状态之间的装换</p>
+</li>
+<li>
+<p>JVM了解多少 内存模型说一下</p>
+</li>
+<li>
+<p>G1垃圾回收器讲一下原理</p>
+</li>
+<li>
+<p>volatile关键字的意义？</p>
+</li>
+<li>
+<p>熟悉JVM吧  说说我main方法new了一个类  并调用他的run方法  JVM中都发生了什么
+表示我只会到类加载  就把类加载给他说了一下  后面的就不会了</p>
+</li>
+<li>
+<p>java官方给提供了几种线程池  他们各自的作用</p>
+</li>
+<li>
+<p>线程池的拒绝策略？</p>
+</li>
+<li>
+<p>Java垃圾回收</p>
+</li>
+<li>
+<p>如何实现线程安全？（Java锁机制）</p>
+</li>
+<li>
+<p>JVM虚拟机内存 回收等</p>
+</li>
+<li>
+<p>JVM虚拟机回收机制（两种分析方法-&gt;几种<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E7%AE%97%E6%B3%95">算法</a>如何选择-&gt;新生代老年代如何分配，特殊情况，具体工作等，还差啥自己补充）</p>
+</li>
+<li>
+<p>线程池种类，自己设计线程池，如何避免处理重复任务</p>
+</li>
+<li>
+<p>Java为什么不用多继承</p>
+</li>
+<li>
+<p>为什么要有Java内存模型</p>
+</li>
+<li>
+<p>收集器有哪些，怎么标记</p>
+</li>
+<li>
+<p>Java反射生成对象</p>
+</li>
+<li>
+<p>Java对象的生命周期（这个我是真没准备到，顶不住，就瞎说了）</p>
+</li>
+<li>
+<p>Java GC说一下，我从内存模型开始说的</p>
+</li>
+<li>
+<p>多线程创建方式</p>
+</li>
+<li>
+<p>抽象类与接口（手写）</p>
+</li>
+<li>
+<p>讲一下JVM的内存模型吧。</p>
+</li>
+<li>
+<p>常用的GC算法有哪些？怎么判断一个对象是否可以被回收？分代内存回收了解么？年轻代的继续划分？如果我要分配一个对象，这个对象已经超过了eden区的大小，这时会发生什么情况？</p>
+</li>
+<li>
+<p>Java的双亲委派模型了解么？</p>
+</li>
+<li>
+<p>Java里面支持多继承么？接口和抽象类的区别是什么？</p>
+</li>
+<li>
+<p>那你介绍一下jvm吧    内存划分模型，垃圾回收算法。</p>
+</li>
+<li>
+<p>final关键字可以修饰哪些？final修饰基本类型、方法、类的作用</p>
+</li>
+<li>
+<p>JVM的内存模型说一下，堆，栈，永久区，GC。</p>
+</li>
+<li>
+<p>Java的多线程。</p>
+</li>
+<li>
+<p>Java的多线程，讲讲锁。synchronized和reentrantlock的区别。讲讲阻塞队列，volatile</p>
+</li>
+<li>
+<p>synchronized为啥是非公平的，这个我真不知道，回来一顿狠查，赶紧记住了。</p>
+</li>
+<li>
+<p>Java的Obejct谈谈</p>
+</li>
+<li>
+<p>Java的容器谈谈</p>
+</li>
+<li>
+<p>Java的NIO用得咋样，不咋样。。。那就不聊了。</p>
+</li>
+<li>
+<p>Java多线程，线程池</p>
+</li>
+<li>
+<p>Java基础，说说容器</p>
+</li>
+<li>
+<p>多线程，线程池</p>
+</li>
+<li>
+<p>java的序列化方式，hadoop的序列化方式，Avro，parquet，transient关键字</p>
+</li>
+<li>
+<p>谈谈java gc算法</p>
+</li>
+<li>
+<p>gc调优经验</p>
+</li>
+<li>
+<p>垃圾回收<a href="">算法</a>，有什么，优缺点；</p>
+</li>
+<li>
+<p>分代<a href="">算法</a>：新生代对象什么时候会上升到老年代？</p>
+</li>
+<li>
+<p>有遇到什么jvm溢出错误？如何解决？</p>
+</li>
+<li>
+<p>如何处理堆溢出？</p>
+</li>
+<li>
+<p>对象从出生到死亡这个过程，历程是什么？</p>
+</li>
+<li>
+<p>有没有用过jvm相关的调优工具？</p>
+</li>
+<li>
+<p>还有些忘记了。</p>
+</li>
+<li>
+<p>讲一下synchronize和volatile锁的问题</p>
+</li>
+<li>
+<p>说一下java的内存模型</p>
+</li>
+<li>
+<p>callable runnable 区别</p>
+</li>
+<li>
+<p>synchronized与lock区别</p>
+</li>
+<li>
+<p>类加载机制</p>
+</li>
+<li>
+<p>gc算法</p>
+</li>
+<li>
+<p>LSM树的思想，memstore之后形成多个小文件，怎么优化？ 多个磁盘IO，怎么解决？提示下答曰布隆过滤器，解释了下原理</p>
+</li>
+<li>
+<p>java方面的基础知识：</p>
+<p>写单例，volatile关键字实现，容器中 concurrent linked blocking分别代表什么，底层实现原理，答曰 并发，<a href="">链表</a>，生产消费 然后详细展开
+IO了解么？答曰不了解，跳过（只知道IO复用的一些模型，select poll epoll是啥，所以答曰不了解）
+线程池的实现原理
+并发编程的关闭线程池，操作有哪些，会发什么？
+JVM 内存分布，垃圾回收<a href="">算法</a>，垃圾回收器等
+类加载过程等
+TCP的拥塞控制<a href="">算法</a>，答曰画了个图，具体记不清，跳过</p>
+</li>
+</ol>
+<h3 id="redis">Redis</h3>
+<ol>
+<li>redis怎么实现日活？</li>
+<li>用过redis吗，redis支持哪些数据类型，redis与mysql的区别</li>
+<li>对<a href="">redis</a>了解多少，如果数据过大，<a href="">redis</a>都存不下，怎么处理；</li>
+<li>说下redis的几种基础数据结构</li>
+<li>redis持久化机制</li>
+<li>redis的持久化机制</li>
+<li>Redis的过期策略</li>
+<li>介绍一下redis的内存淘汰机制</li>
+<li>Redis数据结构、主从同步</li>
+<li>Redis消息队列的几种模式，zset的底层实现</li>
+<li>Redis消息队列里如果有大量数据进入会怎么样</li>
+<li>Redis支持的数据结构</li>
+<li>Redis为什么性能高</li>
+<li>Redis为什么是单线程</li>
+<li>memchache和redis有了解过吗？</li>
+<li>Redis的数据类型及应用场景</li>
+<li>redis用过哪些数据结构？zset底层实现</li>
+</ol>
+<h3 id="flink">Flink</h3>
+<ol>
+<li>Flink了解吗，基本的概念说一下</li>
+<li>什么场景下用flink，有什么优点；</li>
+<li>flink如何保证经一次语义</li>
+<li>flink如何处理背压</li>
+<li>flink和spark的区别？</li>
+<li>flink双流join底层<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%BA%90%E7%A0%81">源码</a>是怎么实现的？</li>
+<li>watermark底层原理<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%BA%90%E7%A0%81">源码</a>中怎么实现的？</li>
+<li>Flink和Spark对于批处理的区别？</li>
+<li>用过flink吗（没用过，面试官挺想让我回答这个的，可是不会&hellip;）</li>
+<li>介绍一下Flink的watermark</li>
+<li>说一说Flink的CheckPoint</li>
+<li>Flink是如何保证一致性的</li>
+<li>Flink的窗口了解哪些，都有什么区别，有哪几种时间？如何定义？watermark需要实现哪个实现类，在何处定义？</li>
+<li>Flink的CEP了解吗？Checkpoint底层如何实现的？savepoint和checkpoint有什么区别？有哪些实现类可以用来保存中间计算结果？分别有什么区别？</li>
+<li>Flink有没有遇到过OOM？如何排查？<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E9%A1%B9%E7%9B%AE">项目</a>的数据规模？问了一些设置参数。</li>
+<li>用Flink时有遇到什么bug吗</li>
+<li>Flink 的 Exactly Once 语义怎么保证</li>
+<li>Flink 的 checkpoint 流程，都是同步 checkpoint 吗？</li>
+<li>Flink 任务故障重启流程，full restart 和 region restart 区别，举例 region restart</li>
+<li>flink会吗，不会</li>
+</ol>
+<h3 id="nginx">Nginx</h3>
+<ol>
+<li>Nginx部署过程、文件配置</li>
+</ol>
+<h3 id="spring">Spring</h3>
+<ol>
+<li>spring 标注了注解或者配到xml中 为什么可以拿到对象 spring 为我们做了什么</li>
+<li>string的方法，substring的参数含义</li>
+<li>stringbuilder和stringbuffer</li>
+<li>String、StringBuffer、StringBuilder的区别，怎么理解String不变性</li>
+<li>StringBuffer 和 String</li>
+<li>StringBuilder和StringBuffer的区别</li>
+<li>StringBuffer又是怎么实现线程安全的呢</li>
+<li>从一个String列表中移除大于某个String的元素(其实不知道为什么要出这个题)</li>
+<li>String是线程安全的？</li>
+<li>Spring系列会吗？不会</li>
+<li>spring 源码看过没？</li>
+<li>spring有什么优势？</li>
+<li>spring MVC源码？</li>
+<li>Spring MVC运行流程</li>
+</ol>
+<h3 id="yarn">Yarn</h3>
+<ol>
+<li>yarn资源申请过程。资源响应、资源分配是怎么进行的。</li>
+<li>Yarn资源调度流程和调度器</li>
+<li>了解yarn吗，几个角色的作用。大概说一下，到Spark的Yarn，问宽窄依赖</li>
+<li>Yarn工作流程、组成架构、</li>
+<li>yarn的结构，RM和NM的交互，如何分配任务的。</li>
+<li>yarn在什么层面调度，和k8s和mesos有什么区别，内存调度是什么怎么调度的，如果考虑CPU怎么调度的。如何实现隔离的，Control group 和Namespace是怎么回事。</li>
+<li>yarn的状态机和epoll</li>
+<li>yarn的公平调度器和容量调度器和FIFO</li>
+<li>yarn抢占</li>
+<li>yarn，集群搭建，会不会shell</li>
+</ol>
+<h3 id="python">Python</h3>
+<ol>
+<li>python装饰器、迭代器、生成器区别和应用，举例子；</li>
+<li>python和c、c++这些区别，为什么慢，多线程和其他语言有啥区别；</li>
+<li>怎样理解面向对象；</li>
+<li>python的newclass怎样理解，有什么用；</li>
+<li>with语句；</li>
+<li>给一个列表，如何删除某个元素</li>
+<li>Python GIL</li>
+<li>常用的python库（requests 、bs4 、keras 等等）如何安装包</li>
+<li>Python 方法的参数带两个*是什么意思</li>
+</ol>
+<h3 id="scala">scala</h3>
+<ol>
+<li>scala的样例类和伴生对象</li>
+<li>Scala的模式匹配和Java有什么区别</li>
+</ol>
+<h3 id="ngnix">ngnix</h3>
+<ol>
+<li>ngnix负载均衡用的是哪个策略？iphash还是最小连接，还是权重？</li>
+</ol>
+<h3 id="kylin">Kylin</h3>
+<ol>
+<li>Kylin的优势，存储在哪里，Presto，Druid区别</li>
+<li>kylin，构建，还有优化</li>
+<li>对Kylin的了解，Cube的优化，减少膨胀率</li>
+<li>Kylin的了解有多少，组成，构建原理，Cube构建的优化手段，HBase rowkey设计原则，Kylin整个结构大的模块那些，数据源，计算引擎这些</li>
+<li>对数仓的了解，Kylin的精确去重，</li>
+<li>Kylin具体在HBase是咋存储的，cuboid+维度值，KV存储原理</li>
+</ol>
+<h3 id="计算机基础">计算机基础</h3>
+<ol>
+<li>多线程</li>
+<li>多线程的实现方式，start方法之后是怎么执行的</li>
+<li>容器是什么。什么东西调用这个机器的资源？container是以什么形式存在于内存当中。（本质上也是一种线程）。</li>
+<li>多线程的了解，实现方式，常用的几种线程池，保持同步（sync，lock类），解释一下线程</li>
+<li>介绍一下你所掌握的计算机网络和操作系统相关知识</li>
+<li>线程安全，线程同步</li>
+<li>说说操作系统打开文件到屏幕显示内容的过程.</li>
+<li>GIL设计初衷是什么，怎么克服问题；</li>
+<li>线程和进程，如何避免死锁；</li>
+<li>进程间通信方式</li>
+<li>死锁的条件</li>
+<li>进程和线程区别</li>
+<li>内存模型</li>
+<li>锁的机制，什么时候用到锁</li>
+<li>内存管理，物理内存与虚拟内存的映射讲讲</li>
+<li>进程和线程的区别</li>
+<li>子网掩码有什么用？</li>
+<li>进程和线程的区别？进程间通信的方式？</li>
+<li>什么是死锁，死锁产生的必要条件有哪些？</li>
+<li>聊聊基础吧，多线程，线程池，怼了蛮多，有什么多线程的场景啊？说了大数据量如何快速落库
+stringbuffer和buider，switch可以是哪些值？枚举，字符串，那能不能是空值呢？还真把我问蒙了，说没试过，但是感觉应该不行</li>
+<li>线程的实现方式有什么，写出来</li>
+<li>进程线程区别</li>
+</ol>
+<h3 id="数据结构">数据结构</h3>
+<ol>
+<li>hashmap底层 <a href="">红黑树</a> 给你几个数字 写出<a href="">红黑树</a>的结构(其实写出来就是BST树的感觉 but我说我不会 面试官就给我看了答案</li>
+<li>如果让你设计hashmap你怎么设计？我说数组加<a href="">链表</a>加<a href="">红黑树</a>，具体呢？先申请数组巴拉巴拉,以put(k,v)为例,按照<a href="">源码</a>一步步来 那扩容呢？多大呢？是全部重新计算hash吗？</li>
+<li>判断是否有环 证明    +1</li>
+<li>hashmap 底层数据结构 数组长度多少 怎么扩容的 为什么是 2 的幂次方</li>
+<li>锁 自旋锁</li>
+<li>红黑树特点 为什么设计（查找树，为了解决二叉查找树在某些情况下退化为线性结构，为节点添加了颜色。根节点是黑色的；叶子节点是黑色的空节点；非红即黑节点是红色的，子节点一定是黑的，反之不一定；黑色高度相同）</li>
+<li>HashMap HashTable ConcurrentHashMap</li>
+<li>ArrayList和LinkedList区别？怎么选择？</li>
+<li>链表的跳表怎么实现的。</li>
+<li>hashmap的原理</li>
+<li>你知道的hash冲突的解决方法</li>
+<li>hash方法有哪些？</li>
+<li>hash方法不同对效率的影响</li>
+<li>分析hash冲突解决方式的应用场景</li>
+<li>分析堆快排的应用场景</li>
+<li>b- b+ 树</li>
+<li>hashmap的实现，怎么找到把元素放在哪里</li>
+<li>线程安全的map；hashtable和concurrenthashmap区别；concurrenthashmap是怎么实现的</li>
+<li>hashmap；默认初始化大小，为什么这么大；是线程安全的吗；为什么不安全；什么方法线程不安全，读有线程安全问题吗</li>
+<li>ArrayList和LinkedList，HashMap和HashTable对比</li>
+<li>HashMap和HashTable的区别，HashMap怎么解决hash冲突，jdk1.8后对HashMap的改进</li>
+<li>讲讲ConcurrentHashMap， ConcurrentHashMap怎么保证线程安全，HashTable怎么保证线程安全</li>
+<li>HashSet的底层实现，是不是线程安全的</li>
+<li>ArrayList和LinkedList的区别，是不是线程安全的</li>
+<li>集合的多个实现类，知道多少说多少，线程安全的有哪些， concurrenthashmap 底层原理， concurrenthashmap在高并发下能不能实现线程安全</li>
+<li>二叉树种类?完全二叉树知道么?有什么应用?</li>
+<li>HashMap和HashTable有什么区别?</li>
+<li>HashMap的底层实现？HashMap的默认容量是多少？扩容系数是多少？容量的数目有什么要求么？为什么要是2的倍数呢？将数据插入HashMap是一个怎样的过程呢？Hash冲突的解决方案？你说HashMap在某个桶数据过大时会转换成红黑树，目的是什么呢，相比链表有什么好处？</li>
+<li>HashTable、ConcurrentHashMap的区别？ConcurrentHashMap是如何实现线程安全的？</li>
+<li>hashmap底层 长度 扩容方式 为什么2倍 线程安全</li>
+<li>ConcurrentHashmap和Hashtable</li>
+<li>AVL 红黑 b树 b+都说一说</li>
+<li>hashmap的实现原理</li>
+<li>说说B+树</li>
+<li>还知道其他树吗? balabala</li>
+<li>数组和<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E9%93%BE%E8%A1%A8">链表</a>对比</li>
+<li>HashMap的实现</li>
+<li>集合相关，list和map那些</li>
+<li>集合，hashmap和hashTable。聊了聊hashMap，到红黑树，又问到赫夫曼树</li>
+<li>HashMap说一下，put，还有1.8做的优化这些</li>
+<li>红黑树定义，优势，是否是绝对平衡</li>
+<li>链表和数组的区别</li>
+<li>ConcurrentHashMap，和HashMap区别</li>
+<li>ConcurrentHashmap底层是怎样的，怎么保证线程安全</li>
+<li>红黑树知道吗？大概说一下</li>
+<li>hashmap</li>
+<li>那你说一说hashmap中怎么解决冲突呢？</li>
+<li>集合框架讲一下，（List Set Map这几个）</li>
+<li>ArrayList和LinkedList的区别</li>
+<li>HashMap和TreeMap的区别、HashSet是怎么实现的</li>
+<li>介绍一下HashMap，这里绕了很久，有的听不懂面试官的意思</li>
+<li>了解树吗，说一下你学过的树？</li>
+<li>HashMap底层通过什么操作进行去重？</li>
+<li>有哪些树结构</li>
+<li>B+树的特点</li>
+<li>HashMap实现原理</li>
+<li>ConcurrentHashmap在1.7和1.8的区别</li>
+<li>HashMap的存储实现方式？HashMap是线程不安全的，不安全会发生哪一个阶段？</li>
+<li>list下都有哪些类 arrayList和LinkedList的区别</li>
+<li>HashMap是怎样散列的，怎么解决冲突</li>
+<li>HashMap和ConcurrentHashMap的区别是什么？ConcurrentHashMap具体是怎么实现线程安全的，了解么？HashMap底层的数据结构了解么？二叉搜索树和平衡二叉树有什么区别？如何将一个二叉搜索树变成一个平衡二叉树？</li>
+<li>怎么判断两个链表是否相交？怎么优化？</li>
+<li>介绍一下array、set、map的继承关系，画图</li>
+<li>说一下ArrayList和linklist的底层实现原理，和数据结构</li>
+<li>Hashmap和hashtable的区别</li>
+<li>hashMap和treeMap的区别，以及实现</li>
+<li>图怎么存的、有哪些图算法</li>
+<li>红黑树怎么实现、如果树里面有两个值相等的节点，怎么识别？</li>
+</ol>
+<h3 id="算法">算法</h3>
+<ol>
+<li>
+<p>贪心、动态规划区别</p>
+</li>
+<li>
+<p>最长不重复子串</p>
+</li>
+<li>
+<p>树的镜像</p>
+</li>
+<li>
+<p>怎么判断一棵树是不是对称的</p>
+</li>
+<li>
+<p>多叉树怎么判断它的深度</p>
+</li>
+<li>
+<p>找出数组中第二大的数。</p>
+</li>
+<li>
+<p>知道二叉树前中序遍历，怎么得到后续遍历，限时5分钟。</p>
+</li>
+<li>
+<p>斐波那契数列。</p>
+</li>
+<li>
+<p>大数据的排序、去重算法。（快排在大数据是不适用的）bitmap、布隆过滤平时可了解过。</p>
+</li>
+<li>
+<p>快速排序怎么实现，时间复杂度</p>
+</li>
+<li>
+<p>字符串排序比如 dDacAs ,排序成AacDds，分大小写排序，本来要写一个统计代码行数（去掉注释）</p>
+</li>
+<li>
+<p>写了leetcode第一题、</p>
+</li>
+<li>
+<p>LeetCode原题129 *树到根节点路径之和</p>
+</li>
+<li>
+<p>反转一个字符串</p>
+</li>
+<li>
+<p>找出二叉树的叶子几点</p>
+</li>
+<li>
+<p>给二维列表中包含每个订单的起始时间，可能会有重叠的订单。如：[[1,4],[2,3]],求司机的有效工作时间。</p>
+</li>
+<li>
+<p>快排思想</p>
+</li>
+<li>
+<p>数据结构常用的，应用过哪些，ArrayList和LinkedList怎么实现的，堆和栈中的存储，操作系统为啥么这么做，链表和数组区别</p>
+</li>
+<li>
+<p>写了个题 和这个类似的一个题《编程之美》——电话号码对应英语单词</p>
+</li>
+<li>
+<p>撕代码：LeetCode 124</p>
+</li>
+<li>
+<p>两个有序链表 合并 去重(LeetCode21题，记得去重)</p>
+</li>
+<li>
+<p>100亿数据全排序，怎么排？ 思路就是外部排序吧，笨点的方法分成一个个的有序数组，然后对有序数组两两归并，但是这样每个数据经历的磁盘IO太多了，不好；优化一下就是采用多路归并，比如有K路，然后K又不能太大，否则每次都需要排序压力也比较大；再一种思路就是尽可能的增大每一个排好序的数组的长度，可以使用堆的数据结构。整个思路网上应该有，大家说的时候注意结合上面试官提供的内存限制来说，用数据说话，最常用的要记住10亿个字节=1GB</p>
+</li>
+<li>
+<p>手撕快排之后lz又谈到了工业界常用的三项切分<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E7%AE%97%E6%B3%95">算法</a>，并且写出了复杂度可以降到O(N(H-1))其中H为香农提出的信息熵。谈笑风生一段。</p>
+</li>
+<li>
+<p>前k大，好吧,是堆排。画图解释堆排，堆的构造下沉操作，这次没让写代码。谈笑风生一段。</p>
+</li>
+<li>
+<p>基于大量数据的前k大，lz当时的反应这肯定得多线程+分布式。最后扯到了MR的思想归并排序。其实后来想了下赛道比马问题的模型解决这个问题更为合适。</p>
+</li>
+<li>
+<p>问了一些比较杂的问题，谈笑风生一段，从安迪比尔定律聊到阿姆达尔法则。面试官起身激动的和我握手。</p>
+</li>
+<li>
+<p>模糊去重和精确去重的算法</p>
+</li>
+<li>
+<p>无序数组求目标值，Hash</p>
+</li>
+<li>
+<p>8个球,一个轻，找出来</p>
+</li>
+<li>
+<p>二维数组中的查找</p>
+</li>
+<li>
+<p>二维矩阵相乘</p>
+</li>
+<li>
+<p>链表中环的入口</p>
+</li>
+<li>
+<p>写一个正则表达式进行手机号匹配</p>
+</li>
+<li>
+<p>斐波那契数列</p>
+</li>
+<li>
+<p>海量数据的Count问题（单机），如果把大文件hash成不同的小文件，此时小文件装不下某个key对应的数据，该怎么办</p>
+</li>
+<li>
+<p>8升水，有一个5L的杯子和3L的杯子，怎么得到4升水</p>
+</li>
+<li>
+<p>被围绕的区域，leetcode第130题原题</p>
+</li>
+<li>
+<p>一头母牛每年生一头小母牛，每头小母牛从第四年开始，每年也会生一头小母牛，写个公式求第n年会有多少头牛</p>
+</li>
+<li>
+<p>树的非递归后序遍历</p>
+</li>
+<li>
+<p>跳台阶问题</p>
+</li>
+<li>
+<p>输入一个字符串，输出该字符串中字符的所有排列</p>
+</li>
+<li>
+<p>二分查找</p>
+</li>
+<li>
+<p>快排的时间复杂度和空间复杂度，最优情况和最差情况分别是多少，是稳定排序吗，快排为什么快</p>
+</li>
+<li>
+<p>两道算法题：路径问题，leetcode上63题和64题原题</p>
+</li>
+<li>
+<p>写正则表达式匹配电话号码</p>
+</li>
+<li>
+<p>一张圆桌子，我和面试官轮流往桌子上放硬币（随便放），直到桌子放不下为止，最后一个放硬币的人赢，如果我先放，怎么保证我肯定赢</p>
+</li>
+<li>
+<p>写个快排，为什么要用三数取中法，好处是什么</p>
+</li>
+<li>
+<p>求数组中连续子数组的最大和</p>
+</li>
+<li>
+<p>使用最小花费爬楼梯，leetcode746题原题</p>
+</li>
+<li>
+<p>输入n个整数，找出其中最大的k个数</p>
+</li>
+<li>
+<p>给一个整数数组和一个目标值，找出数组中和为目标值的两个数</p>
+</li>
+<li>
+<p>50个红球和50个黑球往两个桶里放，然后自己去抽，怎么样才能使抽到红球的概率最高</p>
+</li>
+<li>
+<p>输入两个字符串，输出它们合并排序后的结果</p>
+</li>
+<li>
+<p>二叉树路径和</p>
+</li>
+<li>
+<p>某个金额的硬币兑换方法</p>
+</li>
+<li>
+<p>TOPk问题.除了堆排还有什么解决方式?</p>
+</li>
+<li>
+<p>两个数组求中位数,必须最优解O(log(min(m,n)))的那种解法</p>
+</li>
+<li>
+<p>二叉树后序遍历非递归</p>
+</li>
+<li>
+<p>有序链表合并</p>
+</li>
+<li>
+<p>n*m的带有数字的矩阵，从左上角走到右下角，问最短的路径上经过的数字的和是多少？（dp）</p>
+</li>
+<li>
+<p>给一个不带分隔符的IP字符串，要给出所有的可能的IP地址，返回一个List（懵逼，用回溯写了个大概）。</p>
+</li>
+<li>
+<p>两字符串最长公共子串（一开始是别的题，我没太搞懂他什么意思，就换这个了，反正dp做呗）</p>
+</li>
+<li>
+<p>快速排序记得不，说下流程，是否稳定；</p>
+</li>
+<li>
+<p>快速排序</p>
+</li>
+<li>
+<p>数组里面很多字符串数字，找出最大的组合（卒）</p>
+</li>
+<li>
+<p>给你一个数字和一个数组，找出数组中能组合成这个数字的所有组合数 （卒）</p>
+</li>
+<li>
+<p>满二叉树，求到叶子结点的最大路径。。。。（感觉面试官为了让我写出来一题已经尽力了）</p>
+</li>
+<li>
+<p>手写一个随机快排</p>
+</li>
+<li>
+<p>100亿url的大文件全<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%8E%92%E5%BA%8F">排序</a>，说一下具体怎么做？</p>
+</li>
+<li>
+<p>八皇后问题</p>
+</li>
+<li>
+<p>鸡鸭同笼问题</p>
+</li>
+<li>
+<p>链表找倒数第K个节点，注意各种异常情况，记得是剑指offer原题吧，快慢指针做就可以了。</p>
+</li>
+<li>
+<p>反转字符串内的单词，LeetCode原题，不能用字符串的reverse函数和split函数，比较简单，手写一个split函数就是了。</p>
+</li>
+<li>
+<p>TopK，比较常规，好几种做法，注意讲清楚时间复杂度</p>
+</li>
+<li>
+<p>100亿数据排序，我想到的就是多路归并外排，不知道有更好的思路没</p>
+</li>
+<li>
+<p>两个数字交换，没有额外空间</p>
+</li>
+<li>
+<p>用过哪些查找算法，排序算法，排序最好是</p>
+</li>
+<li>
+<p>快速排序 实现，时间复杂度，稳定性。</p>
+</li>
+<li>
+<p>区间合并的题，LeetCode</p>
+</li>
+<li>
+<p>翻转字符串</p>
+</li>
+<li>
+<p>快速排序</p>
+</li>
+<li>
+<p>1TB数据，top 10单词，不能用mr和spark，描述下思路</p>
+</li>
+<li>
+<p>三个连续自然数，大于6，其中两个为质数，求证，其中必有一个可以被6整除</p>
+</li>
+<li>
+<p>合并两个有序数组</p>
+</li>
+<li>
+<p>数组反转</p>
+</li>
+<li>
+<p>求二叉树的前序遍历</p>
+</li>
+<li>
+<p>二叉树的最大路径和</p>
+</li>
+<li>
+<p>三数之和</p>
+</li>
+<li>
+<p>54张扑克牌乱序的其中少了1张，怎么快速找出来？说思路</p>
+</li>
+<li>
+<p>空间中n个点，求空间中最近点对。说思路</p>
+</li>
+<li>
+<p>俄罗斯套娃问题或者叫信封问题：先排序+最长递增子序列</p>
+</li>
+<li>
+<p>大数组求中位数</p>
+</li>
+<li>
+<p>两个字符串的最大公共子串</p>
+</li>
+<li>
+<p>大整数相乘</p>
+</li>
+<li>
+<p>链表相邻节点反转</p>
+</li>
+<li>
+<p>在数组中随机选取是三个数，越大的数出现的频率越大</p>
+</li>
+<li>
+<p>根据字典来遍历输入字符串</p>
+</li>
+<li>
+<p>岛屿问题</p>
+</li>
+<li>
+<p>数据流中的中位数是怎么找到的</p>
+</li>
+<li>
+<p>问了一下复杂链表的复制</p>
+</li>
+<li>
+<p>你说一说如果我要找出数组中重复的数字要怎么做呢？</p>
+</li>
+<li>
+<p>那你说一下怎么找到数组中的最大的k个值呢？使用小根堆,还有别的方法吗。使用快速排序的思想，时间复杂度是多少</p>
+</li>
+<li>
+<p>给了一个待排序数据，写出第一次快排后的结果</p>
+</li>
+<li>
+<p>写一个二分查找某数</p>
+</li>
+<li>
+<p>归并排序和插入排序</p>
+</li>
+<li>
+<p>说一下DFS和BFS</p>
+</li>
+<li>
+<p>了解排序算法吗，说一下比较排序算法有哪些？我说一个排序算法，你能手写出来吗？</p>
+</li>
+<li>
+<p>使用文件IO读取文件数据，读取每一行数据，将每行数据以分好分割，提取每个单词并统计每个单词的重复数然后进行<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%8E%92%E5%BA%8F">排序</a></p>
+</li>
+<li>
+<p>判断一个数是否为完全平方数，不能使用库函数sqrt()，尽量降低时间复杂度。</p>
+</li>
+<li>
+<p>二叉树节点间的最大距离问题: <a href="https://www.nowcoder.com/discuss/396947?type=post&amp;order=time&amp;pos=&amp;page=1&amp;channel=-1&amp;source_id=search_post_nctrack">https://www.nowcoder.com/discuss/396947?type=post&amp;order=time&amp;pos=&amp;page=1&amp;channel=-1&amp;source_id=search_post_nctrack</a></p>
+</li>
+<li>
+<p>判断二叉树是否为平衡二叉树</p>
+</li>
+<li>
+<p>给定两个等长度的一维数组Y[N]和A[N]，编程实现如下效果https://www.nowcoder.com/discuss/396947?type=post&amp;order=time&amp;pos=&amp;page=1&amp;channel=-1&amp;source_id=search_post_nctrack</p>
+</li>
+<li>
+<p>旋转数组求最小值（剑指offer面试题11）</p>
+</li>
+<li>
+<p>如果有海量数据，如何求Top10?(说错了一块，后来又改过来了)</p>
+</li>
+<li>
+<p>数组去重 上台阶、动态规划和递归的区别</p>
+</li>
+<li>
+<p>二分查找，写一下旋转数组最小值（又是这道题。我说这道题之前做过，面试官没再让我写）。</p>
+</li>
+<li>
+<p>给一个树，每个节点的val都有取或不取两种状态。限定条件是，直接连接的节点不能同时取或者不取（比如父子节点） 想的是分成四次递归。问如何剪枝。没答出来</p>
+</li>
+<li>
+<p>上面那个题没想法了。那咱们换个，给一个二叉树和两个节点 a ,b 找出二叉树的最近公共祖先。（剑指offer原题 最后一题）</p>
+</li>
+<li>
+<p>写个层次遍历</p>
+</li>
+<li>
+<p>写个排序数组中查找k这个数出现的个数 （我用了二分查找，然后向前向后搜索）</p>
+</li>
+<li>
+<p>把一个数字转换成汉字 比如1001 “一千零一&rdquo; 用了递归但是写的太复杂，有点拉分</p>
+</li>
+<li>
+<p>用栈实现队列</p>
+</li>
+<li>
+<p>二叉树层序遍历，按层换行输出。</p>
+</li>
+<li>
+<p>编程题：一个数组有正数有负数，调整数组中的数使得正负交替例：[-3, 6, 7, -4] -&gt;[6, -3, 7, -4]</p>
+</li>
+<li>
+<p>反转字符串</p>
+</li>
+<li>
+<p>判断字符串是否是回文</p>
+</li>
+<li>
+<p>二进制数据的加法，不能转成十进制加法后再转回二进制</p>
+</li>
+<li>
+<p>给你一个字符串ip地址  需要把他转换成int类型  然后要再能转回来</p>
+</li>
+<li>
+<p>a='abcdsfasdfa&rsquo;
+b='abcsdfews&rsquo;
+求两个字符串的公共子串最大长度？</p>
+</li>
+<li>
+<p>有一个整数数组，请你根据快速<a href="https://www.nowcoder.com/jump/super-jump/word?word=%E6%8E%92%E5%BA%8F">排序</a>的思路，找出数组中第K大的数。</p>
+</li>
+<li>
+<p>给出一个有n个整数的数组S，在S中找到三个整数a, b, c，找到所有使得a + b + c = 0的三元组。</p>
+</li>
+<li>
+<p>有一个机器人的位于一个 m × n 个网格左上角。
+机器人每一时刻只能向下或者向右移动一步。机器人试图达到网格的右下角。
+问有多少条不同的路径？</p>
+</li>
+<li>
+<p>八皇后</p>
+</li>
+<li>
+<p>图，最小代价生成树，什么算法，什么思想。</p>
+</li>
+<li>
+<p>有序数组中寻找某个目标数的下标</p>
+</li>
+<li>
+<p>扔鸡蛋问题</p>
+</li>
+<li>
+<p>字符串S1的全排列是否为S2的字串</p>
+</li>
+<li>
+<p>快排（手写）</p>
+</li>
+<li>
+<p>【编程题】有两种数据，分别是被转发的用户和转发的用户，求原视频的用户以及转发的最长深度</p>
+<p>from：1，1，2，2，3，6
+to： 2，3，4，5，6，7
+面试官提示转换成树的结构，我写了求树的最大深度的函数，面试官说构造树比较复杂，差不多写这样可以。</p>
+</li>
+<li>
+<p>n=3 时的全排列</p>
+</li>
+<li>
+<p>二叉树的序列化和反序列化</p>
+</li>
+<li>
+<p>在一棵二叉排序树中，找到比给定数值小的最大节点。</p>
+</li>
+<li>
+<p>编程题判断括号是否匹配，如&rdquo;{[]()]}&rdquo;</p>
+</li>
+<li>
+<p>说说插入排序吧？原理（我真的菜鸡啊，有毒啊，说成选择的原理了好菜啊）？时间复杂度？（n^2，面试官：嗯？是n，我真的好菜，这都差点记错，n^2是最坏情况的）</p>
+</li>
+<li>
+<p>实现 ImmutableStack 即 pop 和 push 都要生成新的 stack，要求复杂度为 O(1)</p>
+</li>
+<li>
+<p>二叉树中序和先序遍历数组，求后序遍历数组</p>
+</li>
+<li>
+<p>实现 36 进制加法 &ldquo;1z&quot;+&quot;1&rdquo; = &ldquo;20&rdquo;</p>
+</li>
+<li>
+<p>常用八大排序算法的时间复杂度？堆排序的时间复杂度是多少？建堆的时间复杂度？堆调整的时间复杂度？哪些排序是稳定的，哪些排序是不稳定的？如果一个数组是基本有序的，那我们要用什么排序会比较好？假设我们要对某个公司所有员工的年龄进行排序，这个时候用什么排序算法比较好？</p>
+</li>
+<li>
+<p>给个正整数 n 要是偶数就n = n/2 要是1奇数就 n = n-1 or n = n+1 .问让n变成 1最少需要几步
+一看以为是动态规划，找状态变量时候，发现暴力递归就完事了，然后写完讲完</p>
+</li>
+<li>
+<p>“来再来道编程题”</p>
+<p>？？？</p>
+<p>又开始code 大概就是在一个英文长句中，提取单词，删去符号 。直接.split(’ ‘） 然后挨个删符号。</p>
+<p>’这么做是不是效率有点低‘</p>
+<p>我暂时想不到不挨个删的办法，笔试又不能调包，要不我import re 效率会高点。</p>
+</li>
+<li>
+<p><a href="">算法题</a>：有一个int数组{1,-5,6,5,0,2,-1,9,6,7}，用最优的时间和空间复杂度，得到一个二元组a+b=0。求所有这样的a、b数据对。</p>
+<p>①先用了HashMap实现。问时间复杂度？</p>
+<p>②如果不允许使用工具类呢？考察底层的<a href="">算法</a>知识。扯了下先<a href="">排序</a>，然后双指针，问时间复杂度？问面试官得知数据有可能存在重复。然后让写双指针遍历的过程。说一下思路吧？</p>
+</li>
+<li>
+<p>判断平衡二叉树</p>
+</li>
+<li>
+<p>给出一个数的集合，求他们拼接起来最小的数；如{3，32，321} = 321323</p>
+</li>
+<li>
+<p>AB轮流抛硬币，谁先抛到正面就赢，A先抛，问A赢的概率；</p>
+</li>
+<li>
+<p>N的反转（可能为负数），如-123 =&gt; -321；</p>
+</li>
+<li>
+<p>与LC950类似（但是我懵了），手里有N张牌，第一张放到桌上，第二张放到手里的最后，如此反复直到手里没牌；</p>
+<p>已知最后桌上的牌从上到下是1~N的倒序，如N=13，为13/12/11/10/9/8/7/6/5/4/3/2/1，给定N，问原来手上从上到下的顺序是怎样；</p>
+<p>（懵了，面试官提示一下有什么数据结构，我说桌上是栈，手上是队列，然后面试官问我怎么反过来，我就开始瞎写代码）</p>
+</li>
+<li>
+<p>手写堆排序</p>
+</li>
+<li>
+<p>LeetCode题：recorded list链表重排序</p>
+</li>
+<li>
+<p>让写一个二叉树最长路径和，返回这个路径和中最大和的那些节点</p>
+</li>
+<li>
+<p>使用队列实现栈的的过程</p>
+</li>
+<li>
+<p>小和问题</p>
+</li>
+<li>
+<p>查找数组的中位数 O（n）</p>
+</li>
+<li>
+<p>topk问题，如何找出超大数据中的最大的那几个，先去重，然后快排思想，分而治之，</p>
+</li>
+<li>
+<p>链表排序。</p>
+</li>
+<li>
+<p>两个栈实现一个队列。</p>
+</li>
+<li>
+<p>大数算法：10亿个int查重，讲思路，布隆过滤，mapreduce，bitmap，算法的复杂度说说</p>
+</li>
+<li>
+<p>最大公共子串</p>
+</li>
+<li>
+<p>先问了栈的知识，然后让我设计一个堆，如何在O(1)的时候可以入栈出栈，查找元素，也是发散思维的题目</p>
+</li>
+<li>
+<p>手撕代码，问了一道题目，一个数组偶数对的数字，只有一个数字是奇数的，如何求出该数字，（根据奇偶特性用二分查找即可）</p>
+</li>
+<li>
+<p>手撕代码，如何用链表实现快排；深入快排分析，如何在有序的情况下使得快排也达到O（logn）复杂度，最开始随机，然后取中位数，然后局部有序求解等等，一步步深入</p>
+</li>
+<li>
+<p>一个有序数组，最优方式找出想要的数</p>
+</li>
+<li>
+<p>链表排序（归并排序的非递归形式）；</p>
+</li>
+<li>
+<p>设计一个数据结构，支持插入，删除和查找。希望该数据结构能尽可能得高并发和尽可能少的阻塞</p>
+</li>
+<li>
+<p>写一个算法判断一个图是不是DAG？（答案是拓扑排序，我一直在说bfs，尴尬，这边花了太多时间，O__O &ldquo;…）</p>
+</li>
+<li>
+<p>矩阵乘法。</p>
+</li>
+<li>
+<p>有一个数组：其中有一个数出现次数超过半数，找到这个数？</p>
+</li>
+<li>
+<p>有一个数组：其中有两个数出现次数都超过了30%，找到这两个数？</p>
+</li>
+<li>
+<p>一排正整数，每次只能去两头的数，甲乙两个人轮流取，如果甲先取，最后谁取得数相加和最大，最大和为多少？典型博弈论问题（可以看看海盗分金问题），写了两个动态规划方程</p>
+</li>
+<li>
+<p>各种排序算法，时间复杂度，空间复杂度，spark和hadoop中shuffle中各个阶段用到的排序算法把这几种排序算法的使用场景表现得淋漓尽致啊。</p>
+</li>
+<li>
+<p>单链表反转</p>
+</li>
+</ol>
+<h3 id="项目">项目</h3>
+<ol>
+<li>怎么做的 流程设计 我不要逻辑 你怎么实现的 技术栈(我疯了)</li>
+<li>你的项目数据量多少？</li>
+<li>ES是自己搭建的吗，还是别人搭建的用它的功能？</li>
+<li>项目中解决了什么，遇到了什么问题。</li>
+<li>项目中怎么设计rowkey。</li>
+<li>搭建这些大数据框架过程有没遇到什么困难，做项目的过程有没什么困难</li>
+<li>考察实际项目的参与度，遇到问题的思维方式。会选对你成长最有帮助的一个项目，讲出你的成长是什么？遇到问题怎么解决的？你是怎么爬坑的？会问你一些原理。</li>
+<li>项目的流程之类的，数据建设的情况，平成做哪些工作</li>
+<li>项目架构有那些，怎么做的，做过那些</li>
+<li>那个项目参与最长，参与度高，聊一聊，还是那些问题，用到啥，做了那些事情，技术选型，项目遇到的问题，难点,优化等</li>
+<li>问项目，问布隆过滤器</li>
+<li>看你写过UDF，谈谈对UDF的理解，写UDF的目的，代码怎么写的</li>
+<li>项目里面从数据采集到最终的数据可视化，每个环节都有可能丢数据，怎么判断数据有没有丢，如果丢了如何定位到在哪一个环节丢的</li>
+<li>项目里面为什么要用kafka stream做实时计算，而不是用spark或者flink</li>
+<li>kafka sql和spark sql了解过吗</li>
+<li>项目里面用到了时序数据库opentsdb，为什么要用这个，有没有跟其它的时序数据库对比过</li>
+<li>平时逛不逛社区，有没有参与过开源项目</li>
+<li>数据接入的时候，怎么往kafka topic里面发的，用的什么方式，起了几个线程，producer是线程安全的吗</li>
+<li>kafka集群有几台机器，怎么确定你们项目需要用几台机器，有评估过吗，吞吐量测过吗</li>
+<li>spark streaming是怎么跟kafka交互的，具体代码怎么写的，程序执行流程是怎样的，这个过程中怎么确保数据不丢</li>
+<li>kafka监控是怎么做的，kafka中能彻底删除数据吗，怎么做的</li>
+<li>结合项目哪里用了哪些技术点，数据怎么存的，怎么处理的等等。</li>
+<li>项目介绍，用到啥，做了那些事情，技术选型，项目遇到的问题，难点,优化等</li>
+<li>数据仓库相关，主要是问项目中的，项目中数仓相关，为什么分层，维度建模，什么是维度</li>
+<li>问项目，问一下数据建设情况，可视化用的什么技术</li>
+<li>你在项目中的角色是什么、你是怎么和其他开发人员沟通的</li>
+<li>重点讲了一下第一个Spark项目的流程与调优，问的很细</li>
+<li>问了下项目中如何实现的Mysql和hdfs数据同步</li>
+<li>项目中的MySQL优化思路</li>
+<li>实习主要做了什么，用什么技术栈</li>
+<li>实习做什么（每次都问）</li>
+<li>你这些实习好像都很短啊，原因是什么？</li>
+<li>问起实习中处理的一些日志字段含义（uid、pids、sid ==&gt;大家可以忽略 可能面试官好奇）</li>
+<li>项目中有没有用到索引</li>
+</ol>
+<h3 id="其他">其他</h3>
+<ol>
+<li>你是怎么理解大数据的</li>
+<li>介绍自己的技术栈？</li>
+<li>你觉得和身边同学相比自己代码能力如何？</li>
+<li>你对自己未来的规划希望的发展？</li>
+<li>问我最擅长那些技术，让我随便说，然后他提问，我说我看过Spark<a href="">源码</a>，然后起手说了内部通讯框架Netty,他就问我 Netty了解吗，我说之前看过，然后开始聊Netty，我说我只现在只记得Reactor 模型，让我介绍这个模型，我又说其实有三个版本，单Reactor 单线程 、单Reactor 多线程、主从Reactor。问我用过Netty吗，有没有自己写过东西。我说没有，然后让我说说Netty的架构，顶不住了啊，我随便说了点组件，让我问我组件的名字，后来看我不行了就说换话题 。</li>
+<li>在学校的课程方向是什么？</li>
+<li>为什么选择这个方向？</li>
+<li>留存率和流失率是什么。</li>
+<li>职业规划是什么？底层源码开发还是业务数据分析</li>
+<li>统计学中p值的意义，中位数的意义，和均值对比，使用场景。</li>
+<li>实习做的事。</li>
+<li>对实习公司的看法。</li>
+<li>实习公司的技术整体架构。</li>
+<li>前后端，数据中心算法团队的协同配合。</li>
+<li>实习做的最有成就的项目。</li>
+<li>遇到过的最有压力的事，怎么客服</li>
+<li>offer情况。</li>
+<li>具体通过什么途径进行通信。rpc</li>
+<li>问了一些ES的问题，集群啊，节点啊什么的</li>
+<li>主从复制是咋样的，三副本写入，是怎么样的，应该要把写流程和机架感知（副本存放），和节点传输应答流程（Pipeline）说一说。</li>
+<li>讲讲设计模式，最常用哪种设计模式，单例模式的实现方式</li>
+<li>分布式场景下全局有序id如何生成，具体到每一个细节，如何去多台机器上取这些分布式id</li>
+<li>单例模式是怎么回事，DCL单例解释一下</li>
+<li>任务调度系统知道吗?如何判断DAG图?写出代码!</li>
+<li>数据清洗（我就不该写清洗，应该写处理）具体有哪些；</li>
+<li>还了解哪些大数据组件，ES了解吗？</li>
+<li>mybatis了解吗 查询条件null不拼接 有的话拼接 怎么实现？</li>
+<li>问平时怎么单元测试？</li>
+<li>你对static有什么理解？</li>
+<li>你为什么没保研?</li>
+<li>大数据框架搭建过哪些，实时做过哪些，</li>
+<li>分布式锁实现原理</li>
+<li>close过多是怎么造成的，会带来什么问题？怎么解决</li>
+<li>输入一个网址，内部发生哪些过程然会显示对应的内容？</li>
+<li>聊了一下疫情的问题</li>
+<li>如何保证消息有序的消费，同时限制每个topic有多个分区</li>
+<li>分布式存储系统和分布式计算框架区别</li>
+<li>伪分布式系统是什么？那么说说HA是怎么实现的？</li>
+<li>一致性Hash有了解过吗？</li>
+<li>正则表达式中的贪婪匹配和非贪婪匹配了解吗？这个具体写的时候怎么写了解么？</li>
+<li>大日志文档中提取指定时间范围的内容</li>
+<li>DAG懂不懂</li>
+<li>你懂哪些数据挖掘算法（简历上写了）？有没有自己用代码实现过？逻辑回归懂吗？</li>
+<li>手推神经网络上的反向传播，把链式求导写出来，激活函数sigmoid。</li>
+<li>介绍一下LSTM，和GRU的区别。</li>
+<li>HA中的***过程，如何防止脑裂，为什么需要fencing，SSH连不上怎么办。</li>
+<li>JMM，全程不打断，我一口气说到了底。。。</li>
+<li>问了推荐系统</li>
+<li>如何设计最优的分布式高性能锁，又是发散题目，从cap理论扯到base理论，然后在推导了下cap中为何三者不可兼得，然后讨论了下分布式锁的一些原理等等</li>
+<li>用过实时计算吗？没用过</li>
+</ol>
+<h3 id="业务题">业务题</h3>
+<ol>
+<li>网易云课堂突然订阅量下降，怎么定位分析原因。</li>
+<li>在各个平台投放简历，怎么评估效果。</li>
+<li>开发统计某app用户各功能使用时长，整个流程怎么实现，怎么优化，怎么横向拓展。</li>
+<li>统计评估各个网页的重要性，采取的算法思路，spark代码实现。（实际就是Google page rank算法）</li>
+<li>有100万司机，每隔10s中上游会收集到司机信息，问：上游如何过滤数据，使得过滤后的数据传到下游，每隔5min给用户显示司机信息。</li>
+<li>一个停车场有一些大车位和小车位，大车只能停大车位，小车既能停大车位又能停小车位，实现这种场景下的调度系统</li>
+<li>设计题：一个市有9个消防站，现在要新增3个消防站，这3个消防站应该放在哪里</li>
+<li>如何确定业务过程?</li>
+<li>给一个场景，mapreduce统计词频原理；</li>
+<li>如何从百亿条IP信息中得出访问量前10的IP地址</li>
+<li>你自己如何设计一个分布式系统，实现对百亿条数据进行分组并求和、</li>
+<li>我备份了元数据，当整个集群崩溃，只剩下几个datanode的时候，是否可以恢复？</li>
+<li>打车的场景下，poi记录了建筑物的坐标：poi(pid, x, y)，odr记录的是乘客上车点的坐标：odr(oid, x, y)；希望对所有的poi，获得其周围的100m的odr：结果(pid, oid)
+我开始用的是欧式距离的暴力求解，面试官让我提出优化的方案，我说可以计算出每个坐标点的geohash值，相等的值说明可以建立映射关系，面试官说geohash存在的一个问题是可能会出现两个相邻100m之内的点各自的geohash不同，这时怎么解决？</li>
+<li>场景，很多牛逼的电脑，大CPU大内存，网卡超烂，如何优化？ 强制本地化，选高压缩的序列化格式，核心就是尽量减少网络IO。</li>
+<li>场景，一个加载在内存里的HashMap，Key和Value全是int，从硬盘读进来只做查询不做修改，不考虑查询效率，尽可能提高空间效率，稍微考虑一下时间效率。从JVM调优到数据结构到GC到。。。。</li>
+<li>业务题，拿spark实现个业务逻辑，拿嘴说就行。map然后reducebykey然后。。。一个白板代码，是他工作业务逻辑的抽象。</li>
+<li>设计一个大数据场景，300G的文件当中是乱序的，重复的不超过1000个，1G的内存，如何在最少的时间用最少的内存得到一个排序好的去重的文件。（最开始不是1G内存，是10G，然后我说用MR思想，用LSM树，用hash等等方法，就一点点减内存，最终减到了1G）</li>
+<li>怎么快速统计出一个城市有多少家餐馆</li>
+</ol>
+<h3 id="反问">反问</h3>
+<ol>
+<li>问了一下公司现在使用的大数据技术栈。</li>
+<li>你有什么想问的呢？咨询了一下大数据或数据开发在米哈游中是做什么方面的？</li>
+</ol>
+<h3 id="总结">总结</h3>
+<p>作者：是时候改个名字了
+链接：https://www.nowcoder.com/discuss/328069?type=post&amp;order=time&amp;pos=&amp;page=1&amp;channel=-1&amp;source_id=search_post_nctrack
+来源：牛客网</p>
+<p>我在刷牛客的过程中也看到好多人都在吐槽说大数据需要看的东西太多了,准备不过来.说实话,我觉得面试主要问问题来源来自你的简历.你把简历上写的都弄明白,不怕深问.怎么着你也能熬过面试的那一个小时.我简历上大数据组件就写了HIVE,Hadoop.在面试过程中你也看到了,甚至Hadoop相关的知识都没问过.当然,我面试的公司也没有大厂,自己也没敢投大厂(觉得自己实时数仓方面知识和实践有欠缺).可能这也是差距,也是我菜的所在吧,不思进取,只看到了碗里的.现在回头看看,我当初刷了好久的JAVA后台的<a href="">面经</a>,以及花了好长时间看JAVA.面试的时候根本没有人问啊,如果花点时间看看spark+hbase+kafka,再自己简单做个<a href="">项目</a>,可能又是一个结果.在这里写份<a href="">面经</a>.给自己做个总结,也帮牛友们踩个坑.</p>
+<p>总结下，简历上的东西：</p>
+<p>每一句都要斟酌！！！！要讲给自己听，反复讲明白细节！！！！</p>
+
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://lvyang0.github.io/">吕羊羊</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://lvyang0.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9D%A2%E7%AD%8B/">https://lvyang0.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9D%A2%E7%AD%8B/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/Hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">Hugo&#43;github搭建个人博客</a></li>
+        
+        <li><a href="/post/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/">修电脑踩坑总结</a></li>
+        
+        <li><a href="/post/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/">对比学习</a></li>
+        
+        <li><a href="/archives/">归档</a></li>
+        
+        <li><a href="/search/">搜索</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "your github repo"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2020 <a href="https://lvyang0.github.io/">吕羊羊的博客 By 吕羊羊</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://lvyang0.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://lvyang0.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://lvyang0.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9D%A2%E7%AD%8B/" title="大数据面筋">大数据面筋</a>
+    </li>
+    
+    <li>
+        <a href="https://lvyang0.github.io/post/Hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hugo&#43;github搭建个人博客">Hugo&#43;github搭建个人博客</a>
+    </li>
+    
+    <li>
+        <a href="https://lvyang0.github.io/post/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/" title="修电脑踩坑总结">修电脑踩坑总结</a>
+    </li>
+    
+    <li>
+        <a href="https://lvyang0.github.io/post/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" title="对比学习">对比学习</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://lvyang0.github.io/categories/%E4%BF%AE%E7%94%B5%E8%84%91/">修电脑 (1)</a></li>
+    
+    <li><a href="https://lvyang0.github.io/categories/%E5%89%8D%E7%AB%AF/">前端 (1)</a></li>
+    
+    <li><a href="https://lvyang0.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习 (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://lvyang0.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
