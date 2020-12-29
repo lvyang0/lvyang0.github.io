@@ -39,6 +39,48 @@
     </item>
     
     <item>
+      <title></title>
+      <link>https://lvyang0.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%A7%E9%9D%A2%E7%AD%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lvyang0.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%A7%E9%9D%A2%E7%AD%8B/</guid>
+      <description>面经总结 Flume  flume组件功能 flume的数据传输如何保证有消息（不漏传或者重复传） Flume的channel有哪些。 FLume主要用来做什么？Flume用tail吗？比如说我删除了一个文件句柄，然后我touch了一个一模一样的文件，文件name是一样的，还能tail到吗？F和f，F的话如果文件名一样还是可以tail到那个文件的。 Flume的Source（常用的），Channel（常用的），Sink（常用的），Flume拦截器知道不，自定义，Flume小文件处理（调两个参数，我记得是） Flume把物理机内存占用比较高，怎么优化 为什么使用flume+kafka？ flume的管道是用的哪个 我说用的内存 他说如果flume突然崩掉怎么办 重启之后是重新输入flume吗我说设置一个偏移量 他问我怎么设置 我说不会。。 flume应该有对应的api吧。。。 他说如果内存中的数据呢 不是断电就没吗？ 其实就是想问我管道的另一种设置方式 文件方式 听你说用了kafka，为什么不用flume直接接hbase呢？ flume的事务机制 flume怎么采集数据 flume用过是吧？flume数据源如何监听文件夹里有新文件产生？  Kafka   kafka如何保证消息的顺序性（partition分区）
+  kafka 特点（高性能、容错性、高吞吐）
+  kafka高吞吐量的原因
+  kafka broker 挂了怎么办
+  ISR 选举过程讲一遍。
+  Kakfa 概念
+  offset 理解
+  Kafka 每个分区只能被一个消费者消费
+  kafka的副本机制，副本是怎么同步消息的？
+  kafka的消费者组你知道吗？他们是怎么消费消息的。怎么找到消息的，消费的是哪一个副本？
+  kafka怎么实现数据的分类处理，就是一些数据需要删除一些数据要保存什么的。
+  kafka遇到什么问题，如果数据过多会有什么问题。
+  kafka你用过是吧；kafka底层了解吗；副本机制了解吗
+  Kafka搭建过程要配置什么参数
+  Kafka的消费者与消费者组有什么区别，多个消费者组消费用一个主题有什么区别。
+  kafka的数据是自己生成的吗？有没有尝试自己设置kafka的offset。
+  kafka结构，怎样防止脑裂，为什么最新版本不用zookeeper来维护offset。
+  kafka的isr和osr。ack有几种值
+  Kafka，架构，ACK，发送数据，消费数据，高吞吐等
+  kafka如何保证高吞吐的，了不了解kafka零拷贝，具体怎么做的
+  kafka怎么保证高吞吐量， 项目中有测过吞吐量吗，相比于其它MQ，为什么会选择kafka，kafka怎么保证exactly once语义
+  谈谈对kafka的理解，能讲多少讲多少
+  .kafka消息前缀是怎么加的
+  kafka在消费完之后，提交offset之前，机器挂了，怎么处理
+  如何知道sparkstreaming当前消费到了kafka的哪些分区，以及消费到的offset到哪了
+  kafka了解吗?干什么用的?
+  Kafka基本原理说一下（生产消费模型，存储，Leader选举，ISR，反正想到啥就说啥了）
+  Consumer Group中Consumer和Partition的对应关系（Range和RoundRobin）
+  Kafka支持什么语义（三种语义），怎么实现Exactly Once
+  用Kafka的过程中有过什么问题，怎么解决
+  Kafka基本原理说一下，和其他的MQ相比的优势
+  Kafka 消费者怎么从Kafka取数据的
+  消费者怎么保证ExactlyOnce（感觉跟前两面的问题的有点重复）
+  Kafka消费者怎么保证有序性</description>
+    </item>
+    
+    <item>
       <title>归档</title>
       <link>https://lvyang0.github.io/archives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
