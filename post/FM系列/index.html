@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>FM系列 | 吕羊羊的博客</title>
+    <meta property="og:title" content="FM系列 - 吕羊羊的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-12-29T22:51:24&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-12-29T22:51:24&#43;08:00'>
+        
+    <meta name="Keywords" content="机器学习,算法与数据结构,sql">
+    <meta name="description" content="FM系列">
+        
+    <meta name="author" content="吕羊羊">
+    <meta property="og:url" content="https://lvyang0.github.io/post/FM%E7%B3%BB%E5%88%97/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://lvyang0.github.io/">
+                        吕羊羊的博客
+                    </a>
+                
+                <p class="description">专注于机器学习,算法与数据结构,sql</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://lvyang0.github.io/">首页</a>
+                    
+                    <a  href="https://lvyang0.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://lvyang0.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://lvyang0.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#fm">FM</a></li>
+    <li><a href="#deepfm">DeepFM</a></li>
+    <li><a href="#ffm">FFM</a></li>
+    <li><a href="#nfm">NFM</a>
+      <ul>
+        <li><a href="#模型结构">模型结构</a></li>
+      </ul>
+    </li>
+    <li><a href="#deepcross-dcn">Deep&Cross (DCN)</a>
+      <ul>
+        <li><a href="#为什么要引入dcn">为什么要引入DCN?</a></li>
+        <li><a href="#dcn的优势">DCN的优势</a></li>
+        <li><a href="#dcn模型结构">DCN模型结构</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#xdeepfm">xDeepFM</a>
+      <ul>
+        <li><a href="#为什么要引入xdeepfm">为什么要引入xDeepFM</a></li>
+        <li><a href="#xdeepfm模型结构">xDeepFM模型结构</a></li>
+        <li><a href="#xdeepfm实现">xDeepFM实现</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">FM系列</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年12月29日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h2 id="前言">前言</h2>
+<p>个人认为，FM、DeepFM、xDeepFM等一系列模型都旨在<strong>自动挖掘交叉特征</strong>。</p>
+<p>1.为什么需要挖掘交叉特征？</p>
+<p>对于预测性的系统来说，特征工程起到了至关重要的作用。特征工程中，挖掘交叉特征是至关重要的。交叉特征指的是两个或多个原始特征之间的交叉组合。例如，在新闻推荐场景中，一个三阶交叉特征为AND(user_organization=msra,item_category=deeplearning,time=monday_morning),它表示当前用户的工作单位为微软亚洲研究院，当前文章的类别是与深度学习相关的，并且推送时间是周一上午。</p>
+<p>2.为什么需要自动挖掘交叉特征？</p>
+<p>传统的推荐系统中，挖掘交叉特征主要依靠人工提取，这种做法主要有以下三种缺点：</p>
+<p>1）重要的特征都是与应用场景息息相关的，针对每一种应用场景，工程师们都需要首先花费大量时间和精力深入了解数据的规律之后才能设计、提取出高效的高阶交叉特征，因此人力成本高昂；
+2）原始数据中往往包含大量稀疏的特征，例如用户和物品的ID，交叉特征的维度空间是原始特征维度的乘积，因此很容易带来维度灾难的问题；
+3）人工提取的交叉特征无法泛化到未曾在训练样本中出现过的模式中。</p>
+<h2 id="fm">FM</h2>
+<p>之前接触过FM算法，一直是一知半解，今天整理一下</p>
+<p>1.FM中的特征到底指什么？</p>
+<p>2.为什么FM被称为因子分解机？</p>
+<p>3.FM如何降低计算量？</p>
+<p>FM主要是为了组合高阶的特征，不同于一阶的LR算法，高阶特征的组合工程量较大，例如所有二阶特征的组合，需要$C^2_n$个系数，从算法的角度而言，空间复杂度$O(n^2)$.而FM通过矩阵分解将系数的空间复杂度降低到$O(n)$.例如，如果特征有100个，那么$100^2$和$100k$的数量级相比，FM的优势就显而易见了。</p>
+<p>一阶线性模型：$y(x)=w_{0}+\sum_{i=1}^{n} w_{i} x_{i} $</p>
+<p>二阶模型：$y(x)=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n} w_{i j} x_{i} x_{j}$</p>
+<p>首先阐述为什么可以降低参数量而不损失过多。分析二阶系数矩阵W，可知为实对称矩阵,即$w_{ij}=w_{ji}$
+$$
+W=\left[\begin{array}{cccc}{w_{11}} &amp; {w_{12}} &amp; {\cdots} &amp; {w_{1 n}} \ {w_{21}} &amp; {w_{22}} &amp; {} \ {\vdots} &amp; {\vdots} &amp; {\ddots} \ {w_{n 1}} &amp; {w_{n 2}} &amp; {\cdots} &amp; {w_{n n}}\end{array}\right]
+$$
+这是很显而易见的，例如&quot;男性&quot;和&quot;老年&quot;这两个特征之间的相关系数与&quot;老年&quot;和&quot;男性&quot;之间的相关系数肯定是相同的。</p>
+<p>由于实对称矩阵性质为$W=Q \Lambda Q^{T}$</p>
+<p>回顾矩阵的特征分解，一个$N\times N$的方阵$A$ 可以进行特征分解$A=Q \Lambda Q^{-1}$，对于实对称矩阵，$A=Q \Lambda Q^{T}$,&lt;参见实对称矩阵的对角化&gt;，并且$Q$是正交单位矩阵（ 正交矩阵不一定是单位矩阵，正交矩阵满足$AA^T=I$），满足$Q$中每一个列向量为单位特征向量 ，$\Lambda$是对角矩阵，且对角线元素全部大于$0$。可以将其对角线元素从大到小排列，即$\Lambda_1 \ge \Lambda_2 \ge &hellip;&gt;0 $。</p>
+<p>基于这些特性$\Lambda=\sqrt{\Lambda} \sqrt{\Lambda^{T}}$，令$V=Q \sqrt{\Lambda}$, 所以有:
+$$
+W=V V^{T}
+$$
+理论上$V$应该是$n \times n$矩阵，但是使用<strong>主成份近似</strong>的思想，取$\sqrt{\Lambda}$最大的前$\mathrm{f}(\ll n)$个主对角元素，
+$$
+W \approx V_{f} V_{f}^{T}
+$$
+这样$V_f$就是$n \times f$的矩阵了，具体形式如下：
+$$
+V_{f}=\left[\begin{array}{cccc}{v_{1,1}} &amp; {v_{1,2}} &amp; {\cdots} &amp; {v_{1, n}} \ {v_{2,1}} &amp; {v_{2,2}} &amp; {\cdots} &amp; {v_{2, n}} \ {\vdots} &amp; {\vdots} &amp; {\vdots} &amp; {\vdots} \ {v_{f, 1}} &amp; {v_{f, 2}} &amp; {\cdots} &amp; {v_{f, n}}\end{array}\right]=\left[v_1,v_2,&hellip;,v_n \right]
+$$
+将该式带入$y(x)=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n} w_{i j} x_{i} x_{j}$</p>
+<p>可得$y(x)=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n} v^T_iv_j x_{i} x_{j}$</p>
+<p>由此，参数量大大的降低，由$O(n^2)$到$O(n)$,即$C^2_n$到$nf$。此外，由于，假设原数据集稀疏且没有$x_ix_j$特征的匹配，导致$w_{ij}$参数无法学习，而今只需要分别学习$V_i,V_j$即可。$V_i$可以被认为和$i$特征的隐向量。</p>
+<p>实际预测，需要加sigmoid函数（对应到0/1之间），并采用阈值进行判断。
+$$
+y_{c}(x)=\theta(y(x))=\frac{1}{1+e^{-\left(w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n} v_{i}^{T} v_{i} x_{i} x_{j}\right)}}
+$$</p>
+<p>综上，回答以上三个问题。</p>
+<p>1.FM中的特征主要指的是单个种类的细致特征，例如女性特征（而非性别），18岁特征（而非年龄）。</p>
+<p>2.FM被称为因子分解机是由于FM中的二阶系数矩阵为实对称矩阵，用实对称矩阵的特征分解可以转换为特征值和特征向量。类似PCA保留主成分（对应特征值较大的成分），即可较为接近的还原原始矩阵。</p>
+<p>3.FM为了降低计算量主要用的是近似计算 。类似PCA保留主成分（对应特征值较大的成分），即可较为接近的还原原始矩阵。</p>
+<p>至于FM的优化过程详见参考资料1。</p>
+<p>参考资料：
+主要参考http://bourneli.github.io/ml/fm/2017/07/02/fm-remove-combine-features-by-yourself.html</p>
+<p><a href="https://baike.baidu.com/item/%E7%89%B9%E5%BE%81%E5%88%86%E8%A7%A3/12522621?fr=aladdin">https://baike.baidu.com/item/%E7%89%B9%E5%BE%81%E5%88%86%E8%A7%A3/12522621?fr=aladdin</a></p>
+<h2 id="deepfm">DeepFM</h2>
+<p>1.DeepFM</p>
+<p>DeepFM是为了对二阶及以上的特征交叉项自动赋予系数。</p>
+<p>​                        <!-- raw HTML omitted --></p>
+<p>其中
+$$
+y_{hat}=sigmoid(y_{FM}+y_{DNN})
+$$
+1)实现一阶项，一阶项的输入**是无embedding**。</p>
+<p>即$\sum^n_{i=1}w_ix_i$</p>
+<p>2)实现二阶项——&gt;将原式转换为 和平方 和 平方和 两部分。为了写代码和求梯度方便，之前的上三角矩阵不容易计算。</p>
+<p><strong>似乎是直接将embedding视为$v_ix_i$的乘积？似乎从维度压缩角度也有点道理</strong></p>
+<p>即$ \sum_{j=i+1}^{n} v^T_iv_j x_{i} x_{j}$
+$$
+\begin{aligned} \sum_{i=1}^{n} \sum_{j=i+1}^{n} v_{i} v_{j}^{T} x_{i} x_{j} &amp;=\frac{1}{2} \sum_{i=1}^{n} v_{i} v_{j}^{T} x_{i} x_{j}-\frac{1}{2} \sum_{i=1}^{n} v_{i} v_{i}^{T} x_{i} x_{i} \ &amp;=\frac{1}{2}\left(\sum_{i=1}^{n} \sum_{j=1}^{n} \sum_{k=1}^{f} v_{i, k} v_{j, k} x_{i} x_{j}-\sum_{i=1}^{n} \sum_{k=1}^{f} v_{i, k} v_{i, k} x_{i} x_{i}\right) \ &amp;=\frac{1}{2}\left(\sum_{k=1}^{f} \sum_{i=1}^{n} v_{i, k} v_{j, k} x_{i} x_{j}-\sum_{i=1}^{f} \sum_{k=1}^{n} v_{i, k} v_{i, k} x_{i} x_{i}\right) \ &amp;=\frac{1}{2}\left(\sum_{i=1}^{n} v_{i, k} x_{i}\right)^{2}-\sum_{i=1}^{n} v_{i, k}^{2} x_{i}^{2} \ &amp;=\frac{1}{2} \sum_{k=1}^{f}\left(\left(\sum_{i=1}^{n} v_{i, k} x_{i}\right)^{2}-\sum_{i=1}^{n} v_{i, k}^{2} x_{i}^{2}\right) \end{aligned}
+$$</p>
+<p>注意本来代码应该是$O(kn^2)$。然而，交叉项是可以化简的，化简为上面的形式后，复杂度是$O(kn)$。梯度如下：
+$$
+\left{\begin{aligned}\frac{\partial y(x)}{\partial w_{0}} &amp;=1 \ \frac{\partial y(x)}{\partial w_{i}} &amp;=x_{i} \\frac{\partial y(x)}{\partial v_{i j}}=x_{i} \sum_{t=1}^{d} v_{t j} x_{t}-x_{i}^{2} v_{i j} \end{aligned}\right.
+$$</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># self.y_first_order None * F * 1</span>
+<span style="color:#75715e"># feat_value None * F</span>
+self<span style="color:#f92672">.</span>y_first_order <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>embedding_lookup(self<span style="color:#f92672">.</span>weights[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">feature_bias</span><span style="color:#e6db74">&#34;</span>], self<span style="color:#f92672">.</span>feat_index) 
+<span style="color:#75715e"># None * F (为了消去self.y_first_order中最后的维度1)</span>
+self<span style="color:#f92672">.</span>y_first_order <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reduce_sum(tf<span style="color:#f92672">.</span>multiply(self<span style="color:#f92672">.</span>y_first_order, feat_value), <span style="color:#ae81ff">2</span>) 
+<span style="color:#75715e"># None * F</span>
+self<span style="color:#f92672">.</span>y_first_order <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>dropout(self<span style="color:#f92672">.</span>y_first_order, self<span style="color:#f92672">.</span>dropout_keep_fm[<span style="color:#ae81ff">0</span>]) 
+
+<span style="color:#75715e"># second order term</span>
+<span style="color:#75715e"># sum-square-part</span>
+<span style="color:#75715e">#self.embeddings# None * F * K</span>
+self<span style="color:#f92672">.</span>summed_features_emb <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reduce_sum(self<span style="color:#f92672">.</span>embeddings,<span style="color:#ae81ff">1</span>) <span style="color:#75715e"># None * k</span>
+self<span style="color:#f92672">.</span>summed_features_emb_square <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>square(self<span style="color:#f92672">.</span>summed_features_emb) <span style="color:#75715e"># None * K</span>
+<span style="color:#75715e"># square-sum-part</span>
+self<span style="color:#f92672">.</span>squared_features_emb <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>square(self<span style="color:#f92672">.</span>embeddings)
+self<span style="color:#f92672">.</span>squared_sum_features_emb <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reduce_sum(self<span style="color:#f92672">.</span>squared_features_emb, <span style="color:#ae81ff">1</span>) <span style="color:#75715e"># None * K</span>
+<span style="color:#75715e">#second order</span>
+self<span style="color:#f92672">.</span>y_second_order<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span><span style="color:#f92672">*</span>tf<span style="color:#f92672">.</span>subtract(self<span style="color:#f92672">.</span>summed_features_emb_square,self<span style="color:#f92672">.</span>squared_sum_					 features_emb)
+self<span style="color:#f92672">.</span>y_second_order <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>dropout(self<span style="color:#f92672">.</span>y_second_order,self<span style="color:#f92672">.</span>dropout_keep_fm[<span style="color:#ae81ff">1</span>])
+
+</code></pre></div><p>3）Deep项——&gt;将原始的特征们concat压平，直接作为深度神经网络的输入</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"> <span style="color:#75715e"># None * (F*K)</span>
+ self<span style="color:#f92672">.</span>y_deep <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reshape(self<span style="color:#f92672">.</span>embeddings, shape<span style="color:#f92672">=</span>[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>field_size <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>embedding_size])
+ self<span style="color:#f92672">.</span>y_deep <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>dropout(self<span style="color:#f92672">.</span>y_deep, self<span style="color:#f92672">.</span>dropout_keep_deep[<span style="color:#ae81ff">0</span>])
+ <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, len(self<span style="color:#f92672">.</span>deep_layers)):
+ 	self<span style="color:#f92672">.</span>y_deep <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>add(tf<span style="color:#f92672">.</span>matmul(self<span style="color:#f92672">.</span>y_deep, self<span style="color:#f92672">.</span>weights[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">layer_</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>i]),
+ 	self<span style="color:#f92672">.</span>weights[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bias_</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">%</span>i]) 
+ 	<span style="color:#75715e"># None * layer[i] * 1</span>
+    <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>batch_norm:
+    <span style="color:#75715e"># None * layer[i] * 1</span>
+    self<span style="color:#f92672">.</span>y_deep <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>batch_norm_layer(self<span style="color:#f92672">.</span>y_deep, train_phase<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>train_phase, scope_bn<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bn_</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span>i) 
+    self<span style="color:#f92672">.</span>y_deep <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>deep_layers_activation(self<span style="color:#f92672">.</span>y_deep)
+    self<span style="color:#f92672">.</span>y_deep <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>dropout(self<span style="color:#f92672">.</span>y_deep, self<span style="color:#f92672">.</span>dropout_keep_deep[<span style="color:#ae81ff">1</span><span style="color:#f92672">+</span>i]) <span style="color:#75715e"># dropout at each Deep layer</span>
+</code></pre></div><h2 id="ffm">FFM</h2>
+<p>FFM引入域的概念，认为每个特征针对不同的field拥有不同的隐变量，例如原来对于特征 $x_i$和$x_j$以及$x_j$和$x_k$，都是$v_j $去$v_i,v_k$去做内积。现在修改为$v_{j,f_i}$分别和$v_{i,f_j}$,   $v_{j,f_k}$$v_{k,fj}$做内积，即原来的$v_j$在针对filed $i$和field $k$的时候，呈现出了不同的隐变量$v_{j,f_i}$，$v_{j,f_k}$。</p>
+<p>为什么要引入FFM?</p>
+<p>FFM是FM的升级版模型，引入了field的概念。FFM把相同性质的特征归于同一个field。对于特征 $x_i$和$x_j$以及$x_j$和$x_k$，都是$v_j $去$v_i,v_k$去做内积。但是对于不同的特征组合，比如天气与地点，天气与性别，关联的程度是不一样的，都使用同样的隐向量去与不同特征做内积，会带来明显的信息损失。</p>
+<p>所以引出了FFM（field FM）。例如“Day=26/11/15”这个特征与“Country”特征和“Ad_type&quot;特征进行关联的时候使用不同的隐向量，这与“Country”和“Ad_type”的内在差异相符，也是FFM中“field-aware”的由来。在FFM中，每一维特征$X_i$，针对每一种field $f_j$，都会学习到一个隐向量$V_{i,f_j}$  因此，隐向量不仅与特征相关，也与field相关。</p>
+<p>设样本一共=有$n$个特征, $f$个field，那么FFM的二次项有$n f$个隐向量。而在FM模型中，每一维特征的隐向量只有一个。FM可以看做FFM的特例，即把所有特征都归属到同一个field中。</p>
+<p>​					$y(x)=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n} v^T_{i,f_j}v_{j,f_i} x_{i} x_{j}$</p>
+<p>如果隐向量的长度为$k$，那么FFM的二次项参数数量为$nfk$，远多于FM模型。此外由于隐向量与field相关，FFM二次项并不能够化简，时间复杂度为 $O(kn^2)$。 FFM的计算量真的是太太大了。个人感觉就是增加了复杂度呗，利用提高参数量，提高模型的拟合能力，堆出来的能力。</p>
+<p>​                                    
+        <img class="mx-auto" alt="img" src="https://upload-images.jianshu.io/upload_images/1129359-fa2292cb2a5fe13a.png?imageMogr2/auto-orient/strip%7cimageView2/2/w/500/format/webp" />   
+    </p>
+<p>使用的损失函数：
+$$
+\min <em>{\mathbf{w}} \sum</em>{i=1}^{L} \log \left(1+\exp \left{-y_{i} \phi\left(\mathbf{w}, \mathbf{x}_{i}\right)\right}\right)+\frac{\lambda}{2}|\mathbf{w}|^{2}
+$$
+​		这是当前$y_i$为$-/+1$时的逻辑斯蒂回归Loss。当预测$&gt;0$，label为1时，该项小，label为-1时，该项大；当预测$&lt;0$，label为$-1$时，该项小，label为1时，该项大。总而言之，当label和预测logit同号时，loss较小。注意这样写的话，loss需要自己写函数，可以直接调用 tf.nn.softmax_cross_entropy_with_logits ，将label编码为$[0,1]$,$[1,0]$。</p>
+<p>​        （补充一个知识点，0/1时的logistic regression loss : logit预测值$z=wx_i+w_0$,$\phi(z)=\frac{1}{1+e^{-z}}$</p>
+<p>​															$\begin{array}{l}{p(y=1 | X ; W)=\phi(z)} \ {p(y=0 | X ; W)=1-\phi(z)} \ {p(y | X ; W)=\phi(z)^{y}(1-\phi(z))^{1-y}}\end{array}$ 即当y=1为式1，y=0为式2</p>
+<p>​															写出最大似然函数，并进行对数化处理</p>
+<p>​							                 $\begin{aligned} L(W) &amp;=\sum_{i=1}^{n} \ln p\left(y_{i} | X_{i} ; W\right) \ &amp;=\sum_{i=1}^{n} \ln \left(\phi\left(z_{i}\right)^{y_{i}}\left(1-\phi\left(z_{i}\right)\right)^{1-y_{i}}\right) \ &amp;=\sum_{i=1}^{n} y_{i} \ln \phi\left(z_{i}\right)+\left(1-y_{i}\right) \ln \left(1-\phi\left(z_{i}\right)\right.\end{aligned}$代价函数为$-L(W)$）</p>
+<p>FFM如何实现？</p>
+<p>似乎没法和FM一样，利用拆分为“平方和”以及“和平方”形式了，来避免双重for循环了。。美团团队貌似开源了libffm，代码，以下仅供理解算法使用。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#embedding部分，注意shape为[p,f,k]，即特征个数，field个数，embedding维度</span>
+self<span style="color:#f92672">.</span>v <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>get_variable(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">v</span><span style="color:#e6db74">&#39;</span>, shape<span style="color:#f92672">=</span>[self<span style="color:#f92672">.</span>p, self<span style="color:#f92672">.</span>f, self<span style="color:#f92672">.</span>k], 					
+            dtype<span style="color:#f92672">=</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">float32</span><span style="color:#e6db74">&#39;</span>,initializer<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>truncated_normal_initializer(mean<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, stddev<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>))
+<span style="color:#75715e"># 推理部分（二阶项，哈哈强行组合，参考表达式一看即知）</span>
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>p):
+    <span style="color:#75715e"># 寻找没有match过的特征，也就是论文中的j = i+1开始</span>
+    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>p):
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">i:</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">,j:</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (i, j))
+        <span style="color:#75715e"># vifj</span>
+        vifj <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>v[i, self<span style="color:#f92672">.</span>feature2field[j]]
+        <span style="color:#75715e"># vjfi</span>
+        vjfi <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>v[j, self<span style="color:#f92672">.</span>feature2field[I]]
+        <span style="color:#75715e"># vi · vj</span>
+        vivj <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reduce_sum(tf<span style="color:#f92672">.</span>multiply(vifj, vjfi))
+        <span style="color:#75715e"># xi · xj</span>
+        xixj <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>multiply(self<span style="color:#f92672">.</span>X[:, i], self<span style="color:#f92672">.</span>X[:, j])
+        self<span style="color:#f92672">.</span>field_cross_interaction <span style="color:#f92672">+</span><span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>multiply(vivj, xixj)
+        
+  <span style="color:#75715e"># loss# -1/1情况下的logistic loss</span>
+self<span style="color:#f92672">.</span>loss <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>reduce_mean(tf<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> tf<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>self<span style="color:#f92672">.</span>y <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>y_out)))
+
+</code></pre></div><p>参考文献：</p>
+<p>​		   	FFM  <a href="https://www.jianshu.com/p/8b57473e385a">https://www.jianshu.com/p/8b57473e385a</a></p>
+<p>​				logitisic  <a href="https://blog.csdn.net/guoziqing506/article/details/81328402">https://blog.csdn.net/guoziqing506/article/details/81328402</a></p>
+<h2 id="nfm">NFM</h2>
+<p>NFM&mdash;-FM的进化版本。</p>
+<p>FM公式：$y(x)=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+\sum_{i=1}^{n} \sum_{j=i+1}^{n} w_{i j} x_{i} x_{j}$</p>
+<p><strong>FM</strong>的一个强大之处在于其<strong>泛化性</strong>，但是因为FM属于多元线性模型，但是现实中的数据是非线性的且不能由线性模型精确的表示，所以FM能力不足 ;</p>
+<p>&quot; However, FM models feature interactions in a linear way, which can be  insufficient  for capturing the non-linear and complex inherent structure of
+real-world data. &quot;                                               							  ——NFM论文</p>
+<hr>
+<p>歪个楼，关于FM为什么会是线性模型？线性模型的定义：指通过样本特征的线性组合来进行预测的模型。给定一个d维样本$[x_1,&hellip;,x_d]^T$,其线性组合函数为：</p>
+<p>​                        $f(x;w)=w_1x_1+w_2x_2+&hellip;+w_dx_d+b=w^Tx+b$</p>
+<p>其中$w=[w_1,&hellip;,w_d]^T$为$d$维的权重向量，$b$为偏置。线性回归就是典型的线性模型，直接用$f(x;w)$来预测输出目标$y=f(x;w)$。在分类问题中，由于输出$y$是一些离散的标签，$f(x;w)$的值域为实数，因此无法直接用$f(x;w)$来进行预测，需要引入一个非线性的决策函数$g(.)$来预测输出目标。</p>
+<p>​														$y=g(f(x;w))$</p>
+<p>其中$f(x;w)$也称为判别函数。也就是说，一个线性分类模型或线性分类器，是由一个（或多个）线性的判别函数$f(x;w)=w^Tx+b$和非线性的决策函数$g(.)$组成。综上所述，由于FM引入了二阶项，本人不认为FM是线性模型。</p>
+<hr>
+<p>FFM公式：</p>
+<p>​                             $\hat y_{NFM}(x)=w_0+\sum^n_{i=1}w_ix_i+f(x)$                 $x\in R^N$</p>
+<p>​                            <!-- raw HTML omitted --></p>
+<p>1).Embedding层：将稀疏向量映射为稠密向量</p>
+<p>​							     得到全部映射为的向量为：$V_x={x_1v_1,&hellip;,x_nv_n}$</p>
+<p>2).Bi-Interaction层：类似于池化操作，将一串的Embedding向量转换为一个向量</p>
+<p>​                                          $f_{BI}(V_x)=\sum^n_{i=1}\sum^n_{j=i+1}x_iv_i \odot x_jv_j$</p>
+<p>其中$ \odot$代表逐个元素对应相乘，所以函数f的输出是一个k维向量，其作用是编码了二阶特征的交互；作者提出NFM模型的Bi-Interaction层不引入新的参数，且可以在常数时间内计算完成；为了证明可以在线性时间内完成交互，将上式重写如下：
+$f_{BI}(V_x)=\frac{1}{2}\left[(\sum^n_{i=1}x_iv_i)^2 - \sum^n_{i=1}(x_iv_i)^2\right]$</p>
+<p>从上式可以看出，时间复杂度是$O(kN_x)$,其中$N_x$代表非零输入x，这意味着Bi-Interaction层不带来额外的成本增加；</p>
+<p>3).Hidden Layers： 这层就是NN，所做内容如下：
+$$
+\begin{aligned} \mathbf{z}<em>{1} &amp;=\sigma</em>{1}\left(\mathbf{W}<em>{1} f</em>{B I}\left(\mathcal{V}<em>{x}\right)+\mathbf{b}</em>{1}\right) \ \mathbf{z}<em>{2} &amp;=\sigma</em>{2}\left(\mathbf{W}<em>{2} \mathbf{z}</em>{1}+\mathbf{b}<em>{2}\right) \ &amp; \cdots \cdots \ \mathbf{z}</em>{L} &amp;=\sigma_{L}\left(\mathbf{W}_{L} \mathbf{z}_{L-1}+\mathbf{b}_{L}\right) \end{aligned}
+$$
+4).Prediction Layer: 输出得分定义为$f(x)=h^Tz_L$, 其中h代表神经元权重</p>
+<p>最后模型的输出为：
+$$
+\begin{aligned} \hat{y}<em>{N F M}(\mathbf{x}) &amp;=w</em>{0}+\sum_{i=1}^{n} w_{i} x_{i} \ &amp;+\mathbf{h}^{T} \sigma_{L}\left(\mathbf{W}_{L}\left(\ldots \sigma_{1}\left(\mathbf{W}_{1} f_{B I}\left(\mathcal{V}_{x}\right)+\mathbf{b}_{1}\right) \ldots\right)+\mathbf{b}_{L}\right) \end{aligned}
+$$
+$More$:**NFM和FM的异同**</p>
+<p>将NFM的全连接层去掉，直接连接输出层，得到如下计算公式：</p>
+<p>​                           $y(x)=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+h^T\sum_{i=1}^{n} \sum_{j=i+1}^{n}x_iv_i \odot x_jv_j$</p>
+<p>可以重写为：</p>
+<p>​                    $y(x)=w_{0}+\sum_{i=1}^{n} w_{i} x_{i}+h^T\sum_{i=1}^{n} \sum_{j=i+1}^{n}\sum^k_{f=1}h_f v_{if} v_{jf} \cdot x_ix_j$</p>
+<p>从上式可以看出，将h置为常量(1,&hellip;,1) ，就和FM的公式是一样的，这就将FM在NN的框架下表示出来了</p>
+<p>$PS$:感觉这个NFM思路很简单，就是在FM的基础上堆了一个NN说能建模非线性的特征交互关系，但是在二阶基础上叠加NN的意义是什么呢，个人感觉还是deepfm将输入完全拼接再mlp的思路更加直接，即分别建模二阶和高阶的交互关系（而非将高阶加在二阶之上），能学习特征之间的非线性交互关系。另外感觉这篇论文和何向南老师另一篇论文的套路很相似：</p>
+<p>&lt;@Deep Item-based Collaborative Filtering for Top-N Recommendation&gt;该论文的目标是捕捉用户历史物品集合的高阶作用关系。高阶关系：例如用户喜欢同一个女演员、同一个导演；或者同一个女演员+导演的电影；这种高阶关系已经被证实是非常重要的。二阶：即物品之间的相似性关系。高阶：确定用户的配置文件中的哪些历史项目集在影响用户对项目做出购买决策时更重要。以下为该论文模型。</p>
+<p>
+        <img class="mx-auto" alt="image-20191112225829498" src="https://lvyang19.oss-cn-beijing.aliyuncs.com/img/image-20191112225829498.png" />   
+    </p>
+<p>参考资料： <a href="https://blog.csdn.net/buwei0239/article/details/86757381">https://blog.csdn.net/buwei0239/article/details/86757381</a></p>
+<p>Deep Item-based Collaborative Filtering for Top-N Recommendation</p>
+<p>NFFM简单来说是在FFM的基础上引入了神经网络</p>
+<h3 id="模型结构">模型结构</h3>
+<p>1).LR 一阶项</p>
+<p>2).</p>
+<p>​                                   <!-- raw HTML omitted --></p>
+<p>​	首先观察FFM的embedding，不同于FM的embedding为一个向量，FFM embedding为矩阵，与不同的特征做交叉时使用不同的向量，这样做本质上是对增加了参数量，对每个特征对不同的field呈现出不同的隐向量。</p>
+<p>​	FFM的表达式：
+$$
+y(x) = w_0+\sum^N_{i=1}w_ix_i+DNN(X)
+$$
+​	其中
+$$
+DNN(X)=FCS({v_{i,f_j},v_{j,f_i}})
+$$</p>
+<p>2.模型的输入：</p>
+<p>模型的输入由两个部分构成，一个是具体每个样本的特征index，实际模型构建的时候用该index用lookup权重和embedding；另一个是用于统计特征的个数参数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+<span style="color:#ae81ff">1.</span><span style="color:#960050;background-color:#1e0010">每</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">样</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span>index
+static_index_dict<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">存</span><span style="color:#960050;background-color:#1e0010">储</span>one<span style="color:#f92672">-</span>hot类特征的字典<span style="color:#960050;background-color:#1e0010">，</span>{<span style="color:#960050;background-color:#1e0010">“</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">名</span><span style="color:#960050;background-color:#1e0010">称</span><span style="color:#960050;background-color:#1e0010">”</span><span style="color:#960050;background-color:#1e0010">：</span>[<span style="color:#960050;background-color:#1e0010">样</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">值</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">样</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">值</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>]}<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">每</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">对</span><span style="color:#960050;background-color:#1e0010">应</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">维</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">组</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">度</span><span style="color:#960050;background-color:#1e0010">为</span><span style="color:#960050;background-color:#1e0010">样</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">度</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#960050;background-color:#1e0010">例</span><span style="color:#960050;background-color:#1e0010">如</span>static_index_dict[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">age</span><span style="color:#e6db74">&#39;</span>]<span style="color:#f92672">=</span>[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>]
+
+dynamic_index_dict<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">存</span><span style="color:#960050;background-color:#1e0010">储</span><span style="color:#960050;background-color:#1e0010">不</span><span style="color:#960050;background-color:#1e0010">定</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">类</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">字</span><span style="color:#960050;background-color:#1e0010">典</span><span style="color:#960050;background-color:#1e0010">。</span>{<span style="color:#960050;background-color:#1e0010">“</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">名</span><span style="color:#960050;background-color:#1e0010">称</span><span style="color:#960050;background-color:#1e0010">”</span>:[[<span style="color:#960050;background-color:#1e0010">第</span><span style="color:#960050;background-color:#1e0010">一</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">样</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">变</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">们</span>],[<span style="color:#960050;background-color:#1e0010">第</span><span style="color:#960050;background-color:#1e0010">二</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">样</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">变</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">们</span>]<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>]},<span style="color:#960050;background-color:#1e0010">每</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">对</span><span style="color:#960050;background-color:#1e0010">应</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">维</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">组</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">组</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">第</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">维</span><span style="color:#960050;background-color:#1e0010">为</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">据</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">样</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">第</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">维</span><span style="color:#960050;background-color:#1e0010">为</span><span style="color:#960050;background-color:#1e0010">该</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">最</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">度</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">如</span><span style="color:#960050;background-color:#1e0010">果</span><span style="color:#960050;background-color:#1e0010">不</span><span style="color:#960050;background-color:#1e0010">足</span><span style="color:#960050;background-color:#1e0010">该</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">度</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">就</span><span style="color:#960050;background-color:#1e0010">补</span><span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#960050;background-color:#1e0010">例</span><span style="color:#960050;background-color:#1e0010">如</span><span style="color:#960050;background-color:#1e0010">，</span>interest1<span style="color:#960050;background-color:#1e0010">，</span>dynamic_index_dict[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">interest1</span><span style="color:#e6db74">&#39;</span>] <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>],[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>]
+
+dynamic_lengths_dict<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">存</span><span style="color:#960050;background-color:#1e0010">储</span><span style="color:#960050;background-color:#1e0010">不</span><span style="color:#960050;background-color:#1e0010">定</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">类</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">度</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">字</span><span style="color:#960050;background-color:#1e0010">典</span><span style="color:#960050;background-color:#1e0010">。</span>{<span style="color:#960050;background-color:#1e0010">“</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">名</span><span style="color:#960050;background-color:#1e0010">称</span><span style="color:#960050;background-color:#1e0010">”</span>:[<span style="color:#960050;background-color:#1e0010">样</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">变</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">度</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">样</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">变</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">度</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>]},<span style="color:#960050;background-color:#1e0010">每</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">对</span><span style="color:#960050;background-color:#1e0010">应</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">维</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">组</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">组</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">度</span><span style="color:#960050;background-color:#1e0010">为</span><span style="color:#960050;background-color:#1e0010">样</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">与</span><span style="color:#960050;background-color:#1e0010">上</span><span style="color:#960050;background-color:#1e0010">方</span><span style="color:#960050;background-color:#1e0010">的</span>dynamic_index_dict一一对应<span style="color:#960050;background-color:#1e0010">。</span><span style="color:#960050;background-color:#1e0010">例</span><span style="color:#960050;background-color:#1e0010">如</span>interest1<span style="color:#960050;background-color:#1e0010">，</span>dynamic_lengths_dict[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">interest1</span><span style="color:#e6db74">&#39;</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2.</span><span style="color:#f92672">.</span><span style="color:#f92672">.</span>]
+
+y<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">存</span><span style="color:#960050;background-color:#1e0010">储</span>label的数组<span style="color:#960050;background-color:#1e0010">。</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">维</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">组</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">组</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">度</span><span style="color:#960050;background-color:#1e0010">为</span><span style="color:#960050;background-color:#1e0010">样</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">。</span>
+
+<span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>
+<span style="color:#ae81ff">2.</span><span style="color:#960050;background-color:#1e0010">统</span><span style="color:#960050;background-color:#1e0010">计</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">参</span><span style="color:#960050;background-color:#1e0010">数</span>
+field_sizes<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">存</span><span style="color:#960050;background-color:#1e0010">储</span>field数量的数组<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">例</span><span style="color:#960050;background-color:#1e0010">如</span><span style="color:#960050;background-color:#1e0010">原</span><span style="color:#960050;background-color:#1e0010">来</span>dataframe中每列的列名<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">以</span>age为例子<span style="color:#960050;background-color:#1e0010">，</span>age的具体取值<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">如</span><span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">、</span><span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">为</span><span style="color:#960050;background-color:#1e0010">实</span><span style="color:#960050;background-color:#1e0010">际</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">，</span>age为field<span style="color:#960050;background-color:#1e0010">，</span>age<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">为</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">。</span>field_size的形状为<span style="color:#960050;background-color:#1e0010">：</span>[static_feature_num, dynamic_feature_num]<span style="color:#960050;background-color:#1e0010">。</span><span style="color:#960050;background-color:#1e0010">比</span><span style="color:#960050;background-color:#1e0010">如</span>onehot特征有20个<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">不</span><span style="color:#960050;background-color:#1e0010">定</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">有</span><span style="color:#ae81ff">14</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">则</span><span style="color:#960050;background-color:#1e0010">该</span><span style="color:#960050;background-color:#1e0010">数</span><span style="color:#960050;background-color:#1e0010">组</span><span style="color:#960050;background-color:#1e0010">为</span>[<span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">14</span>]<span style="color:#960050;background-color:#1e0010">。</span>
+
+static_total_size_dict<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">存</span><span style="color:#960050;background-color:#1e0010">储</span>onehot类特征的原始长度的字典,{<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">field名称</span><span style="color:#e6db74">&#34;</span>:<span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">个</span><span style="color:#960050;background-color:#1e0010">数</span>}<span style="color:#960050;background-color:#1e0010">。</span><span style="color:#960050;background-color:#1e0010">比</span><span style="color:#960050;background-color:#1e0010">如</span>age共有3个值0,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#960050;background-color:#1e0010">则</span>static_total_size_dict[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">age</span><span style="color:#e6db74">&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+
+dynamic_total_size_dict<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">存</span><span style="color:#960050;background-color:#1e0010">储</span><span style="color:#960050;background-color:#1e0010">不</span><span style="color:#960050;background-color:#1e0010">定</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">类</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">原</span><span style="color:#960050;background-color:#1e0010">始</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">度</span><span style="color:#960050;background-color:#1e0010">字</span><span style="color:#960050;background-color:#1e0010">典</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#960050;background-color:#1e0010">别</span><span style="color:#960050;background-color:#1e0010">人</span>interest1假设有8000个值的话<span style="color:#960050;background-color:#1e0010">。</span><span style="color:#960050;background-color:#1e0010">则</span>dynamic_total_size_dict[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">interest1</span><span style="color:#e6db74">&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">8000</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#960050;background-color:#1e0010">注</span><span style="color:#960050;background-color:#1e0010">意</span><span style="color:#960050;background-color:#1e0010">这</span><span style="color:#960050;background-color:#1e0010">里</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#ae81ff">8000</span><span style="color:#960050;background-color:#1e0010">指</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">是</span><span style="color:#960050;background-color:#1e0010">变</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">中</span><span style="color:#960050;background-color:#1e0010">的</span>unique符号的总个数<span style="color:#960050;background-color:#1e0010">。</span>
+
+dynamic_max_len_dict<span style="color:#960050;background-color:#1e0010">：</span><span style="color:#960050;background-color:#1e0010">存</span><span style="color:#960050;background-color:#1e0010">储</span><span style="color:#960050;background-color:#1e0010">不</span><span style="color:#960050;background-color:#1e0010">定</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">特</span><span style="color:#960050;background-color:#1e0010">征</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">在</span><span style="color:#960050;background-color:#1e0010">样</span><span style="color:#960050;background-color:#1e0010">本</span><span style="color:#960050;background-color:#1e0010">中</span><span style="color:#960050;background-color:#1e0010">出</span><span style="color:#960050;background-color:#1e0010">现</span><span style="color:#960050;background-color:#1e0010">的</span><span style="color:#960050;background-color:#1e0010">最</span><span style="color:#960050;background-color:#1e0010">大</span><span style="color:#960050;background-color:#1e0010">长</span><span style="color:#960050;background-color:#1e0010">度</span><span style="color:#960050;background-color:#1e0010">。</span><span style="color:#960050;background-color:#1e0010">比</span><span style="color:#960050;background-color:#1e0010">如</span>interest1最多的时候会在某一条样本中出现5个值<span style="color:#960050;background-color:#1e0010">，</span><span style="color:#960050;background-color:#1e0010">则</span>dynamic_max_len_dict[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">interest1</span><span style="color:#e6db74">&#39;</span>] <span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
+</code></pre></div><p>首先关注LR部分</p>
+<p>1).定义LR的权重变量</p>
+<p>#为LR中的每个one-hot特征和不定长类特征创建weights shape为[当前filed的特征个数,1]，并且用dict来存储，{&ldquo;filed名称&rdquo;:tf.Variable(shape=[当前field的特征个数，1])}；</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># one-hot特征的权重 shape=[当前field的特征个数，1]</span>
+weights[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">static_lr_embeddings_dict</span><span style="color:#e6db74">&#34;</span>] <span style="color:#f92672">=</span> {}
+<span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>static_total_size_dict:
+    weights[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">static_lr_embeddings_dict</span><span style="color:#e6db74">&#34;</span>][key] <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Variable 	(tf<span style="color:#f92672">.</span>truncated_normal([self<span style="color:#f92672">.</span>static_total_size_dict[key]<span style="color:#960050;background-color:#1e0010">，</span>		<span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0001</span>), name<span style="color:#f92672">=</span>key <span style="color:#f92672">+</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">_lr_embeddings</span><span style="color:#e6db74">&#39;</span>)
+
+<span style="color:#75715e"># 不定长特征的权重 shape=[当前field的特征个数，1]   </span>
+weights[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">dynamic_lr_embeddings_dict</span><span style="color:#e6db74">&#34;</span>] <span style="color:#f92672">=</span> {}
+<span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>dynamic_total_size_dict:                     	 weights[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">dynamic_lr_embeddings_dict</span><span style="color:#e6db74">&#34;</span>][key] <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>Variable 	  (tf<span style="color:#f92672">.</span>truncated_normal([self<span style="color:#f92672">.</span>dynamic_total_size_dict[key],
+     <span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.0001</span>),name<span style="color:#f92672">=</span>key<span style="color:#f92672">+</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">_lr_embeddings</span><span style="color:#e6db74">&#39;</span>)
+</code></pre></div><p>2).取出LR的权重系数</p>
+<p>​     假设当前输入one-hot类特征名称存储在self.static_features中，用tf.gather（根据索引提取对应矩阵中的向量）找出当前特征对应的权重系数$\sum^N_{i=1}w_ix_i$,即依据每个$x_i$找出对应的$w_i$。</p>
+<p>​	  I.one-hot类：具体shape变换，对于当前批次样本的每个one-hot特征名称（存储在static_features）中，提取当前批次每个样本的对应特征，static_index_dict[key]中存储[样本1该特征，样本2该特征，&hellip;]。用该数组tf.gather weight的权重矩阵后，生成shape为[样本个数，1]的tf变量，并用列表框住。[tf.Variable([batchsize,1]),tf.Variable([batchsize,1])&hellip;]。然后用tf.concat拼接第二维度，生成—&gt;[batchsize,特征个数]的矩阵，反映每个样本的一维特征对应的权重。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#最后生成权重系数 [batchsize,特征个数]</span>
+self<span style="color:#f92672">.</span>static_lr_embs <span style="color:#f92672">=</span> [tf<span style="color:#f92672">.</span>gather(self<span style="color:#f92672">.</span>weights
+		[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">static_lr_embeddings_dict</span><span style="color:#e6db74">&#34;</span>][key],
+		self<span style="color:#f92672">.</span>static_index_dict[key]) 
+         <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>static_features] 
+<span style="color:#75715e"># static_feature_size * None * 1</span>
+self<span style="color:#f92672">.</span>static_lr_embs <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat(self<span style="color:#f92672">.</span>static_lr_embs, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) 
+<span style="color:#75715e"># None * static_feature_size</span>
+</code></pre></div><p>​	  II.不定长类的特征：</p>
+<p>​      首先针对不定长类特征的每个特征索引系数，生成tf.Variable([batchsize,不定长max长度,1])，表示[样本数,每个样本不定长特征的各自系数们,1]。然后对第二维度求和，得到tf.Variable([batchsize,1])。拼接所有特征得到，[batchsize,特征个数]的矩阵，反映每个样本的各个特征对应的权重。由于此处特征是不定长的，需要生成length矩阵，[batchsize,特征个数]，反映每个样本的每个特征实际长度。并将求和后的系数除以长度，相当于对每个不定长特征的变长系数求平均。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># dynamic_feature_size * None * 1</span>
+self<span style="color:#f92672">.</span>dynamic_lr_embs <span style="color:#f92672">=</span> [tf<span style="color:#f92672">.</span>reduce_sum(tf<span style="color:#f92672">.</span>gather(
+      self<span style="color:#f92672">.</span>weights[<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">dynamic_lr_embeddings_dict</span><span style="color:#e6db74">&#34;</span>][key],
+	  self<span style="color:#f92672">.</span>dynamic_index_dict[key]), axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+      <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>dynamic_features]
+<span style="color:#75715e"># None * dynamic_feature_size</span>
+self<span style="color:#f92672">.</span>dynamic_lr_embs<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>concat(self<span style="color:#f92672">.</span>dynamic_lr_embs, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+<span style="color:#75715e"># [batchsize,特征个数] 相当于求平均</span>
+self<span style="color:#f92672">.</span>dynamic_lengths <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([tf<span style="color:#f92672">.</span>reshape(
+      self<span style="color:#f92672">.</span>dynamic_lengths_dict[key],[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>]) 
+      <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>dynamic_features], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+<span style="color:#75715e"># None * dynamic_feature_size</span>
+self<span style="color:#f92672">.</span>dynamic_lr_embs <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>div(self<span style="color:#f92672">.</span>dynamic_lr_embs,               tf<span style="color:#f92672">.</span>to_float(self<span style="color:#f92672">.</span>dynamic_lengths)) 
+</code></pre></div><h2 id="deepcross-dcn">Deep&amp;Cross (DCN)</h2>
+<h3 id="为什么要引入dcn">为什么要引入DCN?</h3>
+<p>DNN 的缺点在于隐式的学习特征组合带来的<strong>不可解释性</strong>(都是高度非线性的高阶组合特征)，以及<strong>低效率的学习</strong>(并不是所有的特征组合都是有用的)．</p>
+<p>能否设计一种 DNN 的特定网络结构来改善 DNN，使得其学习起来更加高效那？</p>
+<h3 id="dcn的优势">DCN的优势</h3>
+<ol>
+<li>使用 cross network，在每一层都应用 feature crossing。高效的学习了 bounded degree 组合特征。不需要人工特征工程。</li>
+<li>网络结构简单且高效。多项式复杂度由 layer depth 决定。</li>
+<li>相比于 DNN，DCN 的 logloss 更低，而且参数的数量将近少了一个数量级。</li>
+</ol>
+<h3 id="dcn模型结构">DCN模型结构</h3>
+<p>
+        <img class="mx-auto" alt="img" src="https://img-blog.csdnimg.cn/20190116094813179.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RieV9mcmVlZG9t,size_16,color_FFFFFF,t_70" />   
+    </p>
+<h4 id="embedding层">Embedding层</h4>
+<p>对于输入有三种Embedding的方式：</p>
+<p>1） sparse特征，进行one-hot编码再进行Embedding</p>
+<p>2）Multi-hot的sparse特征，embedding之后再进行average pooling</p>
+<p>3）对dense特征归一化，然后和embedding特征拼接，作为随后Cross层和Deep层的共同输入。</p>
+<h4 id="cross层">Cross层</h4>
+<p>目标：以显式、可控且高效的方式，<strong>自动</strong>构造<strong>有限高阶</strong>交叉特征 。</p>
+<p>其中cross层的每个子层的操作如下：</p>
+<p><!-- raw HTML omitted --></p>
+<p>即 $\boldsymbol{x}<em>{l+1}=\boldsymbol{x}</em>{0} \boldsymbol{x}<em>{l}^{T} \boldsymbol{w}</em>{l}+\boldsymbol{b}+\boldsymbol{x}<em>{l}=f\left(\boldsymbol{x}</em>{l}, \boldsymbol{w}<em>{l}, \boldsymbol{b}</em>{l}\right)+\boldsymbol{x}_{l}$</p>
+<p>Cross Layer 设计的巧妙之处全部体现在上面的计算公式中，我们先看一些明显的细节：</p>
+<ol>
+<li>
+<p>每层的神经元个数都相同，都等于输入$x_0$的维度 $d$ ，也即每层的输入输出维度都是相等的；</p>
+</li>
+<li>
+<p>受残差网络（Residual Network）结构启发，每层的函数$f$拟合的是$x_{l+1}-x_l$的残差，残差网络有很多优点，其中一点是处理梯度消失的问题，使网络可以“更深”.</p>
+</li>
+</ol>
+<p>那么这层到底做了什么？
+$$
+假设x_0=\left[\begin{array}{c}{x_{0,1}} \ {x_{0,2}}\end{array}\right]</p>
+<p>为了方便讨论，各层b_i=0</p>
+<p>\</p>
+<p>\boldsymbol{x}<em>{1}=\boldsymbol{x}</em>{0} \boldsymbol{x}<em>{0}^{T} \boldsymbol{w}</em>{0}+\boldsymbol{x}<em>{0}=\left[\begin{array}{c}{x</em>{0,1}} \ {x_{0,2}}\end{array}\right]\left[x_{0,1}, x_{0,2}\right]\left[\begin{array}{c}{w_{0,1}} \ {w_{0,2}}\end{array}\right]+\left[\begin{array}{c}{x_{0,1}} \ {x_{0,2}}\end{array}\right]=\left[\begin{array}{c}{w_{0,1} x_{0,1}^{2}+w_{0,2} x_{0,1} x_{0,2}+x_{0,1}} \ {w_{0,1} x_{0,2} x_{0,1}+w_{0,2} x_{0,2}^{2}+x_{0,2}}\end{array}\right]</p>
+<p>\</p>
+<p>\begin{aligned} \boldsymbol{x}<em>{2} &amp;=\boldsymbol{x}</em>{0} \boldsymbol{x}<em>{1,1}^{T} \boldsymbol{w}</em>{1}+\boldsymbol{x}<em>{1} \ &amp;=\left[\begin{array}{l}{w</em>{1,1} x_{1,1}^{T}+w_{1,2} x_{1, x}+x_{1,1}} \ {w_{1,1} x_{1,2} x_{1,1}+w_{1,2} x_{1,2}+x_{1,2}}\end{array}\right] \</p>
+<p>&amp;=\left[\begin{array}{l}{w_{0,1} w_{1,1} x_{0,1}^{3}}+\left(w_{0,2} w_{1,1}+w_{0,1} w_{1,2}\right) x_{0,1}^{2} x_{0,2}+w_{0,2} w_{1,2} x_{0,1} x_{0,2}^{2}+(w_{0,1}+w_{1,1})x_{0,1}^{2}+(w_{0,2}+w_{1,2})x_{0,1}x_{0,2}+x_{0,1}\ &hellip;\end{array}\right]</p>
+<p>\end{aligned}
+$$
+最后得到 $y_{cross}=x^T_2w_{cross}$ 参与到最后的loss计算。可以看到$x_1$包含了原始特征$x_{0,1},x_{0,2}$从一阶到二阶的所有可能叉乘组合，而$x_2$包含了其从一阶到三阶的所有$x_{0,1},x_{0,2}$可能叉乘组合。现在大家应该可以理解cross layer计算公式的用心良苦了，上面这个例子也可以帮助我们更深入地理解Cross的设计：</p>
+<p>讨论Cross层的四部分特性</p>
+<ol>
+<li>有限高阶：</li>
+</ol>
+<p>​       **即假设，输入$x_0$为$x_{0,1},x_{0,2}$，则第一层包含1、2阶的所有可能叉乘；第二层包含1、2、3阶的所有可能叉乘；第n层包含最高n+1阶的所有可能叉乘.**</p>
+<p>​	   叉乘阶数由网络深度决定，深度$L_{c}$对应最高$L_{c}+1$阶的叉乘。</p>
+<ol start="2">
+<li>自动叉乘：</li>
+</ol>
+<p>​		Cross输出包含了原始特征从一阶（即本身）到 阶$L_{c}+1$的所有叉乘组合，而模型参数量仅仅随输入维度成线性增长。</p>
+<p>​	    具体参数量(假设模型深度为$L_c$，输入维度为$d$，权重+偏置) ——&gt; <strong>$2<em>L_c</em>d$</strong></p>
+<p>​        所以相比于deep network，cross network引入的复杂度微不足道。</p>
+<p>​	 论文中表示，Cross Network 之所以能够高效的学习组合特征，就是因为 $x_0 * x_T$ 的秩为 1 ( rank-one 特性(两个向量的叉积))，使得我们不用计算并存储整个的矩阵就可以得到所有的 cross terms。</p>
+<p>​		下面通过代码来体会这一点：</p>
+<pre><code>    主流的实现 cross layer 的方法，代码如下: 
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">cross_layer</span>(x0, x, name):
+  <span style="color:#66d9ef">with</span> tf<span style="color:#f92672">.</span>variable_scope(name):
+    input_dim <span style="color:#f92672">=</span> x0<span style="color:#f92672">.</span>get_shape()<span style="color:#f92672">.</span>as_list()[<span style="color:#ae81ff">1</span>]
+    w <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>get_variable(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">weight</span><span style="color:#e6db74">&#34;</span>, [input_dim],                initializer<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>truncated_normal_initializer(stddev<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>))
+    b <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>get_variable(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bias</span><span style="color:#e6db74">&#34;</span>, [input_dim], initializer<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>truncated_normal_initializer(stddev<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>))
+    xx0 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>expand_dims(x0, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># shape &lt;?, d, 1&gt;</span>
+    xx <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>expand_dims(x, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># shape &lt;?, d, 1&gt;</span>
+    mat <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>matmul(xx0, xx, transpose_b<span style="color:#f92672">=</span>True)  <span style="color:#75715e"># shape &lt;?, d, d&gt;</span>
+    <span style="color:#66d9ef">return</span> tf<span style="color:#f92672">.</span>tensordot(mat, w, <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> b <span style="color:#f92672">+</span> x  <span style="color:#75715e"># shape &lt;?, d&gt;</span>
+
+</code></pre></div><p>这种方法在逻辑上没有什么问题，但实际上却是非常消耗计算和存储资源的，原因在于显式地计算$x_0x^T_l$需要非常大的内存空间来存储临时计算结果。我们来计算一下，一个 cross layer 仅仅是计算$x_0x^T_l$ ，这一个操作就需要消耗$batch_size \times d \times d \times 4$字节的内存（一个浮点数占4个字节）。在企业级的模型中，$d$通常是几千甚至几万的量级，假设 $d=1k$ ，则需要 $batch_size \times 4M$的存储空间，这通常情况下已经是 G 级别的大小了，何况我们仅仅计算了一个 Layer，别忘了我们总共有 $L_c$个 cross layer。另外，该操作的结果（一个矩阵）再和$w$向量相乘时也是非常消耗计算资源的。即使你在离线训练时通过减少 cross layer 的个数，减小 batch_size 等手段完成了模型的训练，在模型部署中线上之后，线性的打分系统依然要面临 Out of Memory 的风险，因为线上预测我们总是希望一次请求尽可能返回多条记录的预测分数，否则要么是影响全局的效果，要么是需要更多的请求次数，从而面临巨大的性能压力。</p>
+<p>正确的实现方式不是先计算$x_0x^T_l$ ，而是先计算$x^T_lw$，因为的计$x^T_lw$算结果是一个标量，几乎不占用存储空间。这两种方法的计算结果是一致的，因为矩阵乘法是满足结合律的：$ (AB)C=A(BC)$。高效的实现代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">cross_layer2</span>(x0, x, name):
+  <span style="color:#66d9ef">with</span> tf<span style="color:#f92672">.</span>variable_scope(name):
+    input_dim <span style="color:#f92672">=</span> x0<span style="color:#f92672">.</span>get_shape()<span style="color:#f92672">.</span>as_list()[<span style="color:#ae81ff">1</span>]
+    w <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>get_variable(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">weight</span><span style="color:#e6db74">&#34;</span>, [input_dim], initializer<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>truncated_normal_initializer(stddev<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>))
+    b <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>get_variable(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">bias</span><span style="color:#e6db74">&#34;</span>, [input_dim], initializer<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>truncated_normal_initializer(stddev<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>))
+    xb <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>tensordot(tf<span style="color:#f92672">.</span>reshape(x, [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, input_dim]), w, <span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">return</span> x0 <span style="color:#f92672">*</span> xb <span style="color:#f92672">+</span> b <span style="color:#f92672">+</span> x
+</code></pre></div><p><!-- raw HTML omitted --></p>
+<p>​		<strong>对照该图，将$x_0 * x'$先相乘，得到$3<em>3$的矩阵，再与$w$相乘得到$3</em>1$的矩阵；</strong></p>
+<p>​		<strong>然而，若将$ x&rsquo; * w$先相乘，由矩阵的交换律，可行。即可得到一个标量，该标量直接与$x_0$相乘即可</strong></p>
+<ol start="3">
+<li>参数共享：</li>
+</ol>
+<p>​	  不同叉乘项对应的权重不同，但并非每个叉乘组合对应独立的权重（指数数量级）， 通过参数共享，Cross有效降低了参数量。此外，参数共享还使得模型有更强的泛化性和鲁棒性。例如，如果独立训练权重，当训练集中$x_{i} \neq 0 \wedge x_{j} \neq 0$这个叉乘特征没有出现 ，对应权重肯定是零，而参数共享则不会，类似地，数据集中的一些噪声可以由大部分正常样本来纠正权重参数的学习。</p>
+<p>这里有一点很值得留意，前面介绍过，文中将dense特征和embedding特征拼接后作为Cross层和Deep层的共同输入。这对于Deep层是合理的，但我们知道人工交叉特征基本是对原始sparse特征进行叉乘，那为何不直接用原始sparse特征作为Cross的输入呢？联系这里介绍的Cross设计，每层layer的节点数都与Cross的输入维度一致的，直接使用大规模高维的sparse特征作为输入，会导致极大地增加Cross的参数量。当然，可以畅想一下，其实直接拿原始sparse特征喂给Cross层，才是论文真正宣称的“省去人工叉乘”的更完美实现，但是现实条件不太允许。所以将高维sparse特征转化为低维的embedding，再喂给Cross，实则是一种trade-off的可行选择。</p>
+<p>4） 有效映射：</p>
+<p>对于 cross layer 可以换一种理解方式。假设 $\tilde{x} \in R^d$是一个 cross layer 的输入，cross layer 首先构建$d^2$个关于$x_i \tilde{x}_j$的pairwise交叉。接着以一种内存高效的方式将它们投影到维度 d 上。如果采用全连接 Layer 那样直接投影的方式会带来 3 次方的开销。($n<em>n$的矩阵和$n</em>n$的矩阵相乘是<em>n^3</em>的运算量，由于运算结果有$n^2$个元素，每个元素经历了n次乘法加法，for循环层)。Cross layer提供了一种有效的解决方式，将开销减小到维度 d 的量级上。</p>
+<p>本来，先构造所有高阶次项，再赋予相应的权重，为$n^3$运算量。
+$$
+x_0=\left[\begin{array}{c}{x_{0,1}} \ {x_{0,2}}\end{array}\right]  \left[\begin{array}{c}{x_{0,1},x_{0,2}}\end{array}\right] \left[\begin{array}{c}{w_{0,0},w_{0,1}} \ {w_{1,0},w_{1,1}}\end{array}\right]
+\<br>
+=\left[\begin{array}{c}{x_{0,1}^2 , x_{0,1}x_{0,2}} \ {x_{0,1}x_{0,2}, x_{0,2}^2}\end{array}\right] \left[\begin{array}{c}{w_{0,0},w_{0,1}} \ {w_{1,0},w_{1,1}}\end{array}\right]
+\<br>
+=\left[\begin{array}{c}{w_{0,0}x_{0,1}^2 + w_{1,0}
+x_{0,1}x_{0,2}，w_{0,1}x_{0,1}^2+w_{1,1}x_{0,1}x_{0,2}}
+\ {w_{0,0}x_{0,1}x_{0,2}+w_{1,0}x_{0,2}^2,w_{0,1}x_{0,1}x_{0,2}+w_{1,1}x_{0,2}^2}\end{array}\right]
+$$
+若将后面的权重矩阵修改为权重向量：
+$$
+x_0=\left[\begin{array}{c}{x_{0,1}} \ {x_{0,2}}\end{array}\right]  \left[\begin{array}{c}{x_{0,1},x_{0,2}}\end{array}\right] \left[\begin{array}{c}{w_{0,0}} \ {w_{1,0}}\end{array}\right]
+\<br>
+=\left[\begin{array}{c}{x_{0,1}^2 , x_{0,1}x_{0,2}} \ {x_{0,1}x_{0,2}, x_{0,2}^2}\end{array}\right] \left[\begin{array}{c}{w_{0,0}} \ {w_{1,0}}\end{array}\right]
+\<br>
+=\left[\begin{array}{c}{w_{0,0}x_{0,1}^2 + w_{1,0}
+x_{0,1}x_{0,2}}
+\ {w_{0,0}x_{0,1}x_{0,2}+w_{1,0}x_{0,2}^2}\end{array}\right]
+$$
+值得注意的是，正是因为 cross network 的参数比较少导致它的表达能力受限，为了能够学习高度非线性的组合特征，DCN 并行的引入了 Deep Network。</p>
+<h4 id="deep-network">Deep Network</h4>
+<p>交叉网络的参数数目少，从而限制了模型的能力（capacity）。为了捕获高阶非线性交叉，我们平行引入了一个深度网络。</p>
+<p>深度网络就是一个全连接的前馈神经网络，每个深度层具有如下公式：</p>
+<p>​												$h_{l+1}=f\left(W_{l} h_{l}+b_{l}\right)$</p>
+<p>其中$h_{l} \in R^{n_{l}}, h_{l+1} \in R^{n_{l+1}}$分别是第 l 层和第 (l+1) 层hidden layer；</p>
+<p>$W_{l} \in R^{n_{l+1} \times n_{l}}, b_{l} \in R^{n_{l+1}}$ 第 l 层 deep layer 的参数；</p>
+<p>$f(.)$为 ReLU 激活函数。</p>
+<p>==&gt; Deep Network 复杂度分析</p>
+<p>出于简洁性，我们假设所有的 deep layers 具有相同的 size。假设$L_d$表示 deep layers 的数目，$m$表示 deep layer 的 size。</p>
+<p>那么，在该 deep network 中的参数的数目为：</p>
+<p>​                                     $d \times m+m+\left(m^{2}+m\right) \times\left(L_{d}-1\right)$</p>
+<p>其中 $ d \times m + m$ 是第一层参数，而第二层至最后一层参数为：$(m \times m + m)×(L_d−1)$，因为到了第二层，输入已经转变成了$m$维。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">build_deep_layers</span>(x0, params):
+  <span style="color:#75715e"># Build the hidden layers, sized according to the &#39;hidden_units&#39; param.</span>
+  net <span style="color:#f92672">=</span> x0
+  <span style="color:#66d9ef">for</span> units <span style="color:#f92672">in</span> params[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">hidden_units</span><span style="color:#e6db74">&#39;</span>]:
+    net <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>dense(net, units<span style="color:#f92672">=</span>units, activation<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>relu)
+  <span style="color:#66d9ef">return</span> net
+
+</code></pre></div><h4 id="combination-layer">Combination Layer</h4>
+<p><strong>Combination Layer</strong> 把 Cross Network 和 Deep Network 的输出拼接起来，然后经过一个加权求和后得到 logits，然后经过 sigmoid 函数得到最终的预测概率。形式化如下：</p>
+<p>​                                            $p=\sigma\left(\left[x_{L_{1}}^{T}, h_{L_{2}}^{T}\right] w_{l o g i t s}\right)$</p>
+<p>$p$是最终的预测概率； $x_{L_{1}}^{T}$是$d$维的，表示 Cross Network 的最终输出；$h_{L_{2}}^{T}$是 $m$ 维的，表示 Deep Network 的最终输出；$W_{logits}$是 Combination Layer 的权重；最后经过 sigmoid 函数，得到最终预测概率。</p>
+<p>损失函数使用<strong>带正则项的 log loss</strong>:</p>
+<p>​					$\operatorname{loss}=-\frac{1}{N} \sum_{i=1}^{N} y_{i} \log \left(p_{i}\right)+\left(1-y_{i}\right) \log \left(1-p_{i}\right)+\lambda \sum_{l}|w|^{2}$</p>
+<p>另外，针对Cross Network和Deep Network，DCN是<strong>一起训练的</strong>，这样网络可以知道另外一个网络的存在。</p>
+<p>类似于WDL模型，我们对两个network进行jointly train，在训练期间，每个独立的network会察觉到另一个。下面给出整个模型的实现代码:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">dcn_model_fn</span>(features, labels, mode, params):
+  x0 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>feature_column<span style="color:#f92672">.</span>input_layer(features, params[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">feature_columns</span><span style="color:#e6db74">&#39;</span>])
+  last_deep_layer <span style="color:#f92672">=</span> build_deep_layers(x0, params)
+  last_cross_layer <span style="color:#f92672">=</span> build_cross_layers(x0, params)
+  last_layer <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([last_cross_layer, last_deep_layer], <span style="color:#ae81ff">1</span>)
+  my_head <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>contrib<span style="color:#f92672">.</span>estimator<span style="color:#f92672">.</span>binary_classification_head(thresholds<span style="color:#f92672">=</span>[<span style="color:#ae81ff">0.5</span>])
+  logits <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>dense(last_layer, units<span style="color:#f92672">=</span>my_head<span style="color:#f92672">.</span>logits_dimension)
+  optimizer <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>train<span style="color:#f92672">.</span>AdagradOptimizer(learning_rate<span style="color:#f92672">=</span>params[<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">learning_rate</span><span style="color:#e6db74">&#39;</span>])
+  <span style="color:#66d9ef">return</span> my_head<span style="color:#f92672">.</span>create_estimator_spec(
+    features<span style="color:#f92672">=</span>features,
+    mode<span style="color:#f92672">=</span>mode,
+    labels<span style="color:#f92672">=</span>labels,
+    logits<span style="color:#f92672">=</span>logits,
+    train_op_fn<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> loss: optimizer<span style="color:#f92672">.</span>minimize(loss, global_step<span style="color:#f92672">=</span>tf<span style="color:#f92672">.</span>train<span style="color:#f92672">.</span>get_global_step())
+  )
+
+</code></pre></div><h3 id="总结">总结</h3>
+<p>主要贡献：</p>
+<p>1). 提出一种新型的交叉网络结构，可以用来提取交叉组合特征，并不需要人为设计的特征工程；</p>
+<p>2). 这种网络结构足够简单同时也很有效，可以获得随网络层数增加而增加的多项式阶（polynomial degree）交叉特征；</p>
+<p>3). 十分节约内存（依赖于正确地实现），并且易于使用；</p>
+<p>4). 实验结果表明，DCN相比于其他模型有更出色的效果，与DNN模型相比，较少的参数却取得了较好的效果</p>
+<p><a href="https://blog.csdn.net/dby_freedom/article/details/86502623#comments">https://blog.csdn.net/dby_freedom/article/details/86502623#comments</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/55234968">https://zhuanlan.zhihu.com/p/55234968</a></p>
+<h2 id="xdeepfm">xDeepFM</h2>
+<h3 id="为什么要引入xdeepfm">为什么要引入xDeepFM</h3>
+<p>DCN 的Cross层接在Embedding层之后，虽然可以显示自动构造高阶特征，但它是以<strong>bit-wise</strong>的方式。例如，Age Field对应嵌入向量&lt;a1,b1,c1&gt;，Occupation Field对应嵌入向量&lt;a2,b2,c2&gt;，在Cross层，a1,b1,c1,a2,b2,c2会拼接后直接作为输入，即它意识不到Field vector的概念。Cross 以嵌入向量中的单个bit为最细粒度，而FM是以向量为最细粒度学习相关性，即<strong>vector-wise</strong>。<strong>xDeepFM的动机，正是将FM的vector-wise的思想引入Cross部分</strong>。</p>
+<p><strong>vector-wise</strong>&amp;&amp;<strong>bit-wise</strong></p>
+<p><strong>vector-wise</strong>往往是$ f(w * (a1 * a2 ,b1 * b2,c1 * c2))$，而<strong>bit-wise</strong>$是f(w1 * a1 * a2,w2 * b1 * b2 ,w3 * c1 * c2)$。</p>
+<p><strong>explicitly &amp;&amp; implicitly</strong>
+显式的特征交互和隐式的特征交互。以两个特征为例xi和xj，在经过一系列变换后，我们可以表示成 wij * (xi * xj)的形式，就可以认为是显式特征交互，否则的话，是隐式的特征交互。两个典型的模型，显式的代表DCN，隐式的代表DeepFM，DCN中特征为显式的有限阶的叉乘，每一个步骤都可以以公式的形式进行表达，最终对于 (xi * xj)特征是可以计算出阶数的；而DeepFM仅仅是将特征一股脑的拼接为长长的一串，如何丢入MLP中，完全没有显式的表达式。</p>
+<h3 id="xdeepfm模型结构">xDeepFM模型结构</h3>
+<p>
+        <img class="mx-auto" alt="preview" src="https://pic1.zhimg.com/v2-59adaaf81958514ffb44af2c72251918_r.jpg" />   
+    </p>
+<p>主要有创新的模型就是CIN (Compressed Interaction Network)</p>
+<p>如图1所示，CIN层的输入来自Embedding层，假设有$m$个field，每个field的embedding vector维度为$D$，则输入可表示为矩阵$X^0 \in R^{m*D}$ 。</p>
+<p>CIN 结构如上图所示，咋一看图2可能有点蒙，我们先看一下CIN每层是这么计算的。</p>
+<p>令$X^k \in R^{H_k*D}$ 表示第$k$层的输出，其中$H_k$表示第 $k$层的vector个数，vector维度始终为$D$，保持和输入层一致。具体地，第$k$ 层每个vector的计算方式为：</p>
+<p>​      $\boldsymbol{X}<em>{h, *}^{k}=\sum</em>{i=1}^{H_{k-1}} \sum_{j=1}^{m} \boldsymbol{W}_{i j}^{k, h}\left(\boldsymbol{X}_{i, *}^{k-1} \circ \boldsymbol{X}_{j, *}^{0}\right) \in \mathbb{R}^{1 * D}, \quad \text { where } 1 \leq h \leq H_{k}$</p>
+<p>先直观感受一下。图一$\boldsymbol{X}<em>{j, *}^{0}$和$\boldsymbol{X}</em>{i, *}^{k-1}$分布为$X^0$和$X^{k-1}$的一列，它们两两哈达玛积形成图二，即一个立方体。图三将立方体的每层进行全连接缩成一个元素，最终形成一列，即第$k$ 层的某个vector。</p>
+<p>
+        <img class="mx-auto" alt="img" src="https://upload-images.jianshu.io/upload_images/4155986-52d9f278c189208a.png?imageMogr2/auto-orient/strip%7cimageView2/2/w/1200/format/webp" />   
+    </p>
+<p>该式子的含义为 :</p>
+<ol>
+<li>
+<p>总体：第k层的特征为$X^k$，形状为一个矩阵$R^{H_k*D}$，$H_k$为矩阵的行数（多少个vector），类比CNN中feature map的个数，D为每个vector的维度，类比feature map的shape。其中$H_k$是可以任意指定的，具体第h个vector由上式计算得到。</p>
+</li>
+<li>
+<p>其中$\boldsymbol{W}^{k, h} \in \mathbb{R}^{H_{k-1} * m}$表示第 $k$ 层的第$h$个vector的权重矩阵，$\circ$ 表示Hadamard乘积，即逐元素乘，例如$&lt;a_{1}, b_{1}, c_{1}&gt;0&lt;a_{2}, b_{2}, c_{2}&gt;=&lt;a_{1} b_{1}, a_{2} b_{2}, a_{3} b_{3}&gt;$。</p>
+<p>该式子取前一层$\boldsymbol{X}^{k-1} \in \mathbb{R}^{H_{k-1} * D}$中的$H_{k-1}$个vector，与输入层 $X^{0} \in \mathbb{R}^{m * D}$中的$m$个vector，进行两两Hadamard乘积运算，得到$m*H_{k-1}$个 vector，然后加权求和。
+第$k$层的不同vector区别在于，对这$m*H_{k-1}$个 vector 求和的权重矩阵不同。$H_k$即对应有多少个不同的权重矩阵$W_k$ , 是一个可以调整的超参。</p>
+</li>
+</ol>
+<p>为什么这么设计，好处是什么？CIN与DCN中Cross层的设计动机是相似的，Cross层的input也是前一层与输出层。至于为什么这么搞，在之前的DCN解读里已经讲解得很清楚。CIN 保持了DCN的优点：有限高阶、自动叉乘、参数共享。</p>
+<p>再来看看CIN的主要特点：</p>
+<p>1）CIN为vector-wise：</p>
+<p>​		Cross是bit-wise的，而CIN 是vector-wise的；
+​		在第$l$层，Cross包含从 1 阶 ～$l+1$阶 的所有组合特征，而CIN只包含$l+1$阶的组合特征(vector们两两相乘了$l$次)。相应地，Cross在输出层输出全部结果，而CIN在每层都输出中间结果。
+​		造成差异2的原因是，Cross层计算公式中除了与CIN一样包含“上一层与输入层的✖️”外，会再额外“➕输入层”。 这是两种涵盖所有阶特征的不同策略，CIN和Cross其实也可以使用对方的策略，两种方式的优缺点，大家可以发表自己的看法一起交流。</p>
+<p>2）CIN为显式：</p>
+<p>$X^1 $的第h个神经元向量可以表示成：</p>
+<p>​									$\begin{aligned}
+&amp;\mathbf{x}<em>{h}^{1}=\sum</em>{i \in[m],j \in[m]} \mathbf{W}<em>{i, j}^{1, h}\left(\mathbf{x}</em>{i}^{0} \circ \mathbf{x}_{j}^{0}\right)\<br>
+\end{aligned}$</p>
+<p>$X^2$的第h个神经元向量可以表示成：</p>
+<p>​								$\begin{aligned}
+\mathbf{x}<em>{h}^{2}=&amp; \sum</em>{i \in[m],j \in[m]} \mathbf{W}<em>{i, j}^{2, h}\left(\mathbf{x}</em>{i}^{1} \circ \mathbf{x}<em>{j}^{0}\right) \ \<br>
+=&amp; \sum</em>{i \in[m],j \in[m]} \sum_{l \in[m],k \in[m]} \mathbf{W}_{i, j}^{2, h} \mathbf{W}_{l, k}^{1, i}\left(\mathbf{x}_{j}^{0} \circ \mathbf{x}_{k}^{0} \circ \mathbf{x}_{l}^{0}\right) \<br>
+\end{aligned}$</p>
+<p>$X^k$的第h个神经元向量可以表示成：</p>
+<p>$\begin{aligned}
+\mathbf{x}<em>{h}^{k} &amp;=\sum</em>{i \in[m] \atop j \in[m]} \mathbf{W}<em>{i, j}^{k, h}\left(\mathbf{x}</em>{i}^{k-1} \circ \mathbf{x}<em>{j}^{0}\right) \<br>
+&amp;=\sum</em>{i \in[m] \atop j \in[m]} \ldots \sum_{r \in[m]\atop t\in[m]} \sum_{l \in[m] \atop t \in[m]} \mathbf{W}_{i, j}^{k, h} \ldots \mathbf{W}_{l, s}^{1, r} \underbrace{\left(\mathbf{x}_{j}^{0} \circ \ldots \circ \mathbf{x}_{s}^{0} \circ \mathbf{x}_{l}^{0}\right)}_{k v e c t o r s}
+\end{aligned}$</p>
+<p>注意图2的CIN结构，可以思考两个问题，这涉及到CIN的另一位亲戚FM：</p>
+<p>每层通过sum pooling对vector的元素加和输出，这么做的意义或合理性？</p>
+<p>可以设想，如果CIN只有1层， 只有m个vector，即$H_1=m$，且加和的权重矩阵恒等于1，即$W^1=1$ ，那么sum pooling的输出结果，就是一系列的两两向量内积之和，即标准的FM（不考虑一阶与偏置）。
+除了第1层，中间层的这种基于vector高阶组合有什么物理意义？回顾FM，虽然是二阶的，但可以扩展到多阶，例如考虑三阶FM，是对三个嵌入向量作Hadamard乘再对得到的vector作sum，CIN基于vector-wise的高阶组合再作sum pooling与之是类似的，这也是模型名字 “eXtreme Deep Factorization Machine (xDeepFM) ”的由来。</p>
+<p>为什么取名CIN?(Compressed Interaction Network)</p>
+<p>CIN名字由来与它特定的计算方式有关。由前式可知，同层不同vector的区别仅仅在于不同的加和权重矩阵 $W$ ，我们可以提前计算好两两向量间Hadamard乘的结果。</p>
+<p>具体的方式如下图所示，首先如图 a 计算中间结果—— tensor $Z^{k+1}$，然后使用权重矩阵$\boldsymbol{W}^{k, i} \in \mathbb{R}^{H_{k} * m} $顺着tensor的维度$D$，逐层相乘加和，得到 k+1 层的第$i$ 个vector，如图 b 所示。如果把$W$看成filter，这和CNN的方式很像。可以看到，最后$Z^{k+1}$被压缩成了一个矩阵，这是名字中“Compressed”的由来。</p>
+<p>
+        <img class="mx-auto" alt="img" src="https://pic3.zhimg.com/80/v2-d50f6360a2cec7641c870dad2f1b441e_hd.jpg" />   
+    </p>
+<h3 id="xdeepfm实现">xDeepFM实现</h3>
+<p>这一块的主要难点在于CIN模块的实现。</p>
+<hr>
+<p>~~补习一个骚操作函数 tf.einsum/torch.einsum</p>
+<p>爱因斯坦简记法：是一种由爱因斯坦提出的，对向量、矩阵、张量的求和运算$\sum$的求和简记法。在该简记法当中，</p>
+<p><strong>省略掉的部分是</strong>：
+1).  求和符号$\sum$
+2).  求和号的下标i</p>
+<p><strong>省略规则为</strong>:  默认成对出现的下标（如下例1中的i和例2中的k）为求和下标。</p>
+<p>1). 用$x_iy_i$简化表示内积$&lt;x,y&gt;$</p>
+<p>​					          		   $x_iy_i := \sum_ix_iy_i = o$   其中o为输出。</p>
+<ol start="2">
+<li>用$X_{ik}Y_{kj}$简化表示矩阵乘法$XY$</li>
+</ol>
+<p>​					  $X_{ik}Y_{kj} := \sum_j X_{ik}Y_{kj} = O_{ij}$   其中$O_{ij}$为输出矩阵的第$ij$个元素。</p>
+<p>这样的<strong>求和简记法</strong>，能够以一种统一的方式表示各种各样的张量运算（内积、外积、转置、点乘、矩阵的迹、其他自定义运算），为不同运算的实现提供了一个统一模型。</p>
+<p>以torch为例：</p>
+<ol>
+<li>矩阵转置     $B_{ji}=A_{ij}$</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> torch
+a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">6</span>)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+torch<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ij-&gt;ji</span><span style="color:#e6db74">&#39;</span>, [a])
+</code></pre></div><ol start="2">
+<li>求和      $b=\sum_{i} \sum_{j} A_{i j}$</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">torch<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ij-&gt;</span><span style="color:#e6db74">&#39;</span>, [a])
+</code></pre></div><ol start="3">
+<li>对列求和     $b_{j}=\sum_{i} A_{i j}$</li>
+</ol>
+<p>​                行求和     $b_{i}=\sum_{j} A_{i j}$</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#75715e"># 列求和</span>
+torch<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ij-&gt;j</span><span style="color:#e6db74">&#39;</span>, [a])
+<span style="color:#75715e"># 行求和 </span>
+torch<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ij-&gt;j</span><span style="color:#e6db74">&#39;</span>, [a])
+</code></pre></div><ol start="4">
+<li>矩阵-向量相乘   $ c_{i}=\sum_{k} A_{i k} b_{k}=A_{i k} b_{k}$</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">6</span>)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+b <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">3</span>)
+torch<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ik,k-&gt;i</span><span style="color:#e6db74">&#39;</span>, [a, b])
+</code></pre></div><ol start="5">
+<li>矩阵-矩阵相乘  $ C_{i j}=\sum_{k} A_{i k} B_{k j}=A_{i k} B_{k j}$</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">6</span>)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+b <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">15</span>)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>)
+torch<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ik,kj-&gt;ij</span><span style="color:#e6db74">&#39;</span>, [a, b])
+</code></pre></div><ol start="6">
+<li>点积  $ c=\sum_{i} a_{i} b_{i}=a_{i} b_{i}$</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">3</span>)
+b <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">6</span>)  <span style="color:#75715e"># [3, 4, 5]</span>
+torch<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">i,i-&gt;</span><span style="color:#e6db74">&#39;</span>, [a, b])
+</code></pre></div><ol start="7">
+<li>哈达玛积 $ C_{i j}=A_{i j}B_{i j}$</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">6</span>)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+b <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">12</span>)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+torch<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ij,ij-&gt;ij</span><span style="color:#e6db74">&#39;</span>, [a, b])
+</code></pre></div><ol start="8">
+<li>外积 $ C_{i j}=a_i b_j$</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">3</span>)
+b <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">7</span>)
+torch<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">i,j-&gt;ij</span><span style="color:#e6db74">&#39;</span>, [a, b])
+</code></pre></div><ol start="9">
+<li>batch矩阵相乘  $C_{i j l}=\sum_{k} A_{i j k} B_{i k l}=A_{i j k} B_{i k l}$</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">5</span>)
+b <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">3</span>)
+torch<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">ijk,ikl-&gt;ijl</span><span style="color:#e6db74">&#39;</span>, [a, b])
+</code></pre></div><ol start="10">
+<li>
+<p>张量缩约</p>
+<p>batch矩阵相乘是张量缩约的一个特例。比方说，我们有两个张量，一个$n$阶张量$A \in R^{l1 \times l2,&hellip;, ln}$，一个$m$阶张量$B \in R^{J1 \times J2,⋯, Jm}$。举例来说，我们取$n = 4，m = 5$，并假定$I2 = J3$且$I3 = J5$。我们可以将这两个张量在这两个维度上相乘（A张量的第2、3维度，B张量的3、5维度），最终得到一个新张量$C \in R^{I1 × I4 × J1 × J2 × J4} $，如下所示：</p>
+<p>$C_{p s t u v}=\sum_{q} \sum_{r} A_{p q r s} B_{t u q v r}=A_{p q r s} B_{t u q v r}$</p>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python">a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">7</span>)
+b <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">13</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">17</span>,<span style="color:#ae81ff">5</span>)
+torch<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">pqrs,tuqvr-&gt;pstuv</span><span style="color:#e6db74">&#39;</span>, [a, b])<span style="color:#f92672">.</span>shape
+torch<span style="color:#f92672">.</span>Size([<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">17</span>])
+</code></pre></div><p>​		<strong>“einsum满足你一切需要”</strong></p>
+<hr>
+<p>从实际需求出发，我们来体验一下，假设我们的batch为2，field数量为4，embedding的size是3。</p>
+<p>在经过CIN的第一步之后，我们目标的矩阵大小应该是2(batch)  * 4(X^k的field数) * 4(X^0的field数)* 3(embedding Dimension)。如果只考虑batch中第一条数据的话，应该形成的是 1* 4 * 4 * 3 的矩阵。</p>
+<p>需要的乘法为
+tensor 1:    $2(batch)* 4(X^0的field数) * 3(embedding Dimension)  $
+tensor 2:    $ 2(batch) * 4(X^k的field数) * 3(embedding Dimension) $
+=&gt; tensor :  $ 2(batch) * 4(X^k的field数) * 4(X^0的field数)* 3(embedding Dimension)$</p>
+<p>该步骤需要的函数为: torch.einsum(&ldquo;ikj,ilj -&gt; iklj&rdquo;,tensor1,tensor2)</p>
+<p>复原CIN的核心代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>,len(cin_layers)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>):
+	<span style="color:#75715e"># 相乘</span>
+	zk <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">bhd,bmd -&gt; bhmd</span><span style="color:#e6db74">&#39;</span> ,x_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], x_list[<span style="color:#ae81ff">0</span>])
+    <span style="color:#75715e"># reshape为立方体的shape</span>
+    <span style="color:#75715e"># x0.shape[0] batchsize </span>
+    <span style="color:#75715e"># x_list[-1].shape[1] x0.shape[1]当前的channel层数（即xk的） 输入channel层数（即x0的field个数）</span>
+    <span style="color:#75715e"># x0.shape[2] 每个field的embedding维度</span>
+	zk <span style="color:#f92672">=</span> zk<span style="color:#f92672">.</span>reshape(x0<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>],x_list[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">*</span>x0<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>],x0<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">2</span>])
+    <span style="color:#75715e"># conv1ds为事先准备好的存储了卷积操作的列表</span>
+    <span style="color:#75715e"># nn.Conv1d(inchannel,outchannel,kernel_size)</span>
+    zk <span style="color:#f92672">=</span> conv1ds[k<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>](zk)
+    zk <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>relu(zk)
+</code></pre></div>
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://lvyang0.github.io/">吕羊羊</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://lvyang0.github.io/post/FM%E7%B3%BB%E5%88%97/">https://lvyang0.github.io/post/FM%E7%B3%BB%E5%88%97/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9D%A2%E7%AD%8B/">大数据面筋</a></li>
+        
+        <li><a href="/post/Hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">Hugo&#43;github搭建个人博客</a></li>
+        
+        <li><a href="/post/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/">修电脑踩坑总结</a></li>
+        
+        <li><a href="/post/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/">对比学习</a></li>
+        
+        <li><a href="/archives/">归档</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "your github repo"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2020 <a href="https://lvyang0.github.io/">吕羊羊的博客 By 吕羊羊</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://lvyang0.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://lvyang0.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://lvyang0.github.io/post/FM%E7%B3%BB%E5%88%97/" title="FM系列">FM系列</a>
+    </li>
+    
+    <li>
+        <a href="https://lvyang0.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9D%A2%E7%AD%8B/" title="大数据面筋">大数据面筋</a>
+    </li>
+    
+    <li>
+        <a href="https://lvyang0.github.io/post/Hugo&#43;github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hugo&#43;github搭建个人博客">Hugo&#43;github搭建个人博客</a>
+    </li>
+    
+    <li>
+        <a href="https://lvyang0.github.io/post/%E4%BF%AE%E7%94%B5%E8%84%91%E8%B8%A9%E5%9D%91%E6%80%BB%E7%BB%93/" title="修电脑踩坑总结">修电脑踩坑总结</a>
+    </li>
+    
+    <li>
+        <a href="https://lvyang0.github.io/post/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" title="对比学习">对比学习</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://lvyang0.github.io/categories/%E4%BF%AE%E7%94%B5%E8%84%91/">修电脑 (1)</a></li>
+    
+    <li><a href="https://lvyang0.github.io/categories/%E5%89%8D%E7%AB%AF/">前端 (1)</a></li>
+    
+    <li><a href="https://lvyang0.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习 (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://lvyang0.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
